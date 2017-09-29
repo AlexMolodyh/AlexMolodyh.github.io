@@ -98,7 +98,7 @@
 
 /*when hovering over a dropdown menuitem, the background color is changed as well as the font*/
 .dropdown .dropdown-menu li a:hover{
-    background-color: #3F51B5;
+    background-color: #1A237E;
     color: #f3f1f1;
 }
 
