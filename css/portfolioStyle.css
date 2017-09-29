@@ -70,3 +70,69 @@
     color: aqua;
     font-size: 60px;
 }
+
+/*Class section on navbar*/
+#classSectionHeader{
+    background: #1A237E;
+}
+
+/*change the navbar-brand font*/
+.navbar-default .navbar-brand{
+    color: #f3f1f1;
+}
+
+/*change the color of the navbar-brand text so it stays white when hovering over it*/
+.navbar-default .navbar-brand:hover{
+    color: #f3f1f1;
+}
+
+/*change the color of the navbar item font*/
+.nav.navbar-nav li a {
+    color: #f3f1f1;
+}
+
+/*when hovering over a dropdown tab, the font color is changed*/
+.nav.navbar-nav li a:hover{
+    color: #d2b0b0;
+}
+
+/*when hovering over a dropdown menuitem, the background color is changed as well as the font*/
+.dropdown .dropdown-menu li a:hover{
+    background-color: #3F51B5;
+    color: #f3f1f1;
+}
+
+/*when a dropdown tab is selected, the background is changed*/
+.navbar-default .navbar-nav .dropdown.open a:focus {
+    background-color: #303F9F;
+    color: #f3f1f1;
+}
+
+/*this colors the dropdown menu background*/
+.dropdown-menu {
+    background-color: #303F9F;
+}
+
+/*this colors the font in the dropdown menu*/
+.dropdown-menu li a{
+    color: #f3f1f1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
