@@ -1,3 +1,7 @@
+---
+title: Document Center
+---
+
 #Hello World
 
 ```language-javascript
