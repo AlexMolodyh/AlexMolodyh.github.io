@@ -1,6 +1,8 @@
 /*Class section on navbar*/
 .navbar{
     background: #1A237E;
+    margin-bottom: 0px;
+    border: none;
 }
 
 /*change the navbar-brand font*/
