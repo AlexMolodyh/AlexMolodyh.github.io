@@ -35,6 +35,12 @@
     color: #f3f1f1;
 }
 
+/*when a dropdown tab is selected, the background is changed*/
+.navbar-default .navbar-nav .active a{
+    background-color: #303F9F;
+    color: #f3f1f1;
+}
+
 /*this colors the dropdown menu background*/
 .dropdown-menu {
     background-color: #303F9F;
