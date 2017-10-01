@@ -10,7 +10,8 @@ body {
 
 #contentFont h3 {
     color: #202020;
-    font-size: 18px;
+    font-size: 16px;
+    line-height: 20px;
     font-weight: 400;
 }
 
@@ -41,17 +42,6 @@ body {
   line-height: 40px;
   color: #f3f1f1;
   margin-bottom: 25px;
-}
-
-/*scrollable text element*/
-.myBoxElement {
-    border: 1px solid #C0C0C0;
-    border-radius: 4px;
-    padding: 5px;
-    font: 18px/22px sans-serif;
-    overflow: scroll;
-    height: 200px;
-    background-color: #F5F5F5;
 }
 
 .main-code-container{

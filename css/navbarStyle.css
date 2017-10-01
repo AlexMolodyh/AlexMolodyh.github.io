@@ -1,6 +1,8 @@
 /*Class section on navbar*/
 .navbar{
     background: #1A237E;
+    padding-top: 4px;
+    height: 60px;
     margin-bottom: 0px;
     border: none;
 }
@@ -18,6 +20,7 @@
 /*change the color of the navbar item font*/
 .nav.navbar-nav li a {
     color: #f3f1f1;
+    
 }
 
 /*when hovering over a dropdown tab, the font color is changed*/
