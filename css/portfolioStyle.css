@@ -2,6 +2,10 @@ body {
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 
+#contentFont {
+    margin-top: 20px;
+}
+
 #contentFont h1 {
     color: #202020;
     font-size: 24px;
