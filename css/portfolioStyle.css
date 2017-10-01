@@ -2,6 +2,22 @@ body {
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 
+#refPages {
+    text-align: center;
+    color: #202020;
+}
+
+#refPages h1 {
+    font-size: 80px;
+    font-weight: 700;
+}
+
+#refPages h3 {
+    font-size: 28px;
+    line-height: 30px;
+    font-weight: 400;
+}
+
 #contentFont {
     margin-top: 20px;
 }
@@ -17,6 +33,10 @@ body {
     font-size: 16px;
     line-height: 20px;
     font-weight: 400;
+}
+
+#contentFont li {
+    font-size: 20px;
 }
 
 #heading {
