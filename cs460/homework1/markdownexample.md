@@ -1,9 +1,8 @@
 ---
-layout: default
-title: Document Center
+
 ---
 
-#Hello World
+
 
 ```language-javascript
 function()
