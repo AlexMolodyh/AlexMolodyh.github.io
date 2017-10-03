@@ -1,11 +1,12 @@
 ---
-
+title: Homework 1
+layout: default
 ---
 
-#HTML
+# HTML
 
-###In this page I have left myself some notes on how to start an HTML page
-###and how to make a table.
+### In this page I have left myself some notes on how to start an HTML page
+### and how to make a table.
 
 
 ##To create and HTML5 document we need the following code:
@@ -25,7 +26,7 @@
 </html>
 ```
 
-##If you want to create a table in HTML then you need the following code
+## If you want to create a table in HTML then you need the following code
 
 ```html 
 <table style="width:100%">

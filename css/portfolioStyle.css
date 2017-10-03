@@ -39,6 +39,30 @@ body {
     font-size: 20px;
 }
 
+/*table style*/
+.myTable {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #414dd8;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+#homeScreenTable {
+    
+}
+
 #heading {
   width: 100%;
   height: 300px;
