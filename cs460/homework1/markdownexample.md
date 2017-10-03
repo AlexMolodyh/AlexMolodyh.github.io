@@ -2,23 +2,25 @@
 
 ---
 
+#HTML
+
+###In this page I have left myself some notes on how to start an HTML page
+###and how to make a table.
 
 
-```language-javascript
-function()
-{
-    $("file.html").load("anotherFile.html");
-}
-```
+##To create and HTML5 document we need the following code:
 
-```bash
-cd Documents/CS460
-mkdir repos
-cd repos
-git clone https://morses@bitbucket.org/morses/myprojectname.git
-cd myprojectname
+```html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+    </head>
+    <body>
 
-git config --global user.name "Scot Morse"
-git config --global user.email morses@wou.edu
-git config --global --edit         # to check
+        <h1>This is a Heading</h1>
+        <p>This is a paragraph.</p>
+
+    </body>
+</html>
 ```
