@@ -9,7 +9,7 @@ layout: default
 ### and how to make a table.
 
 
-##To create and HTML5 document we need the following code:
+## To create and HTML5 document we need the following code:
 
 ```html
 <!DOCTYPE html>
@@ -26,7 +26,8 @@ layout: default
 </html>
 ```
 
-## If you want to create a table in HTML then you need the following code
+## Create a Table
+### If you want to create a table in HTML then you need the following code
 
 ```html 
 <table style="width:100%">
