@@ -2,40 +2,40 @@ body {
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
 }
 
-#refPages {
+.refPages {
     text-align: center;
     color: #202020;
 }
 
-#refPages h1 {
+.refPages h1 {
     font-size: 80px;
     font-weight: 700;
 }
 
-#refPages h3 {
+.refPages h3 {
     font-size: 28px;
     line-height: 30px;
     font-weight: 400;
 }
 
-#contentFont {
+.contentFont {
     margin-top: 20px;
 }
 
-#contentFont h1 {
+.contentFont h1 {
     color: #202020;
     font-size: 24px;
     font-weight: 700;
 }
 
-#contentFont h3 {
+.contentFont h3 {
     color: #202020;
     font-size: 16px;
     line-height: 20px;
     font-weight: 400;
 }
 
-#contentFont li {
+.contentFont li {
     font-size: 20px;
 }
 
