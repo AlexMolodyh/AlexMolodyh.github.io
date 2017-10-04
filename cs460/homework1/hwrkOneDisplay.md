@@ -5,16 +5,16 @@ layout: default
 
 # Homework 1 Code Display
 
-## I will list the requirements in a sequence and provide 
-## links to the actual code on github for further inspection.
+## I will list the requirements in a sequence as they are described on 
+the homework page and I will provide links to the actual code on github for further inspection.
 
 
 ### The first requirement is the use of Bootstrap. 
-#### I have provided a Bootstrap navbar in my landing and homework 1 page. 
+#### I have provided a Bootstrap navbar in my landing page and homework 1 page. 
 [Landing Page](https://goo.gl/CynbUB)
-[Homework 1](https://goo.gl/RLCGrC
+[Homework 1 Page](https://goo.gl/RLCGrC)
 
-1. ```html
+```html
     <nav class="navbar navbar-default navbar-static-top" role="navigation">
         <div class="container-fluid">
             <div class="navbar-header">
