@@ -8,7 +8,7 @@ layout: default
 
 ### The first requirement is the use of Bootstrap. 
 #### I have provided a Bootstrap navbar in my landing page and homework 1 page. 
-[Landing Page](https://goo.gl/CynbUB) #### and 
+[Landing Page](https://goo.gl/CynbUB) and 
 [Homework 1 Page](https://goo.gl/RLCGrC)
 
 ```html
