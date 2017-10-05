@@ -38,7 +38,7 @@
 .previewBox {
     border: 1px solid #C0C0C0;
     height: 200px;
-    width: 200px;
+    width: 100%;
     background-repeat: no-repeat;
     background-size: contain;;
     margin-top: 40px;
@@ -48,6 +48,8 @@
 
 .previewBoxTop {
     background: #1A237E;
+    padding-top: 7px;
+    padding-bottom: 9px;
 }
 
 .previewBoxBottom {
