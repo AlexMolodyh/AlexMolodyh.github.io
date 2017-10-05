@@ -2,7 +2,7 @@
 .navbar{
     background: #1A237E;
     padding-top: 4px;
-    height: 60px;
+    min-height: 60px;
     margin-bottom: 0px;
     border: none;
 }
