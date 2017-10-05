@@ -27,20 +27,28 @@
     <nav class="navbar navbar-default navbar-static-top" id="homeworkOneNav">
         <div class="container-fluid">
             <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a class="navbar-brand" href="#">Homework One</a>
             </div>
-            <ul class="nav navbar-nav">
-                <li><a href="gitPage.html">Git</a></li>
-                <li><a href="htmlMd">HTML</a></li>
-                <li><a href="#">CSS</a></li>
-                <li><a href="#">Bootstrap</a></li>
-                <li><a href="hwrkOneDisplay">Display Code</a></li>
-            </ul>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="gitPage.html">Git</a></li>
+                    <li><a href="htmlMd">HTML</a></li>
+                    <li><a href="#">CSS</a></li>
+                    <li><a href="#">Bootstrap</a></li>
+                    <li><a href="hwrkOneDisplay">Code Display</a></li>
+                </ul>
+            </div>
         </div>
     </nav>
 
     <div class="introBackground">
-        <h1><br><br>Homework One</h1>
+        <h1>Homework One</h1>
         <h3>This page hosts homework sections for Git, HTML, CSS, and Bootstrap</h3>
     </div>
 
@@ -62,7 +70,9 @@
             <div class="col-sm-3 ">
                 <div class="previewBox">
                     <div class="previewBoxTop">
-                        <h1>HTML</h1>
+                        <a href="htmlMd">
+                            <h1>HTML</h1>
+                        </a>
                     </div>
                     <div class="previewBoxBottom">
                         <h3>A short tutorial on how to make a HTML5 template. 
@@ -95,7 +105,20 @@
             </div>
         </div>
         <div class="row">
-
+            <div class="col-sm-12 ">
+                <div class="previewBox">
+                    <div class="previewBoxTop">
+                        <a href="hwrkOneDisplay">
+                            <h1>Code Display</h1>
+                        </a>
+                    </div>
+                    <div class="previewBoxBottom">
+                        <h3>This section contains all of the requirement code for display. You can
+                        either click on the link above or use the <strong>Code Display</strong> 
+                        tab in the navbar.</h3>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
