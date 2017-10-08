@@ -26,3 +26,15 @@ label {
     font-weight: 300;
 }
 
+#generateButton {
+    width: 215px;
+    margin-top: 10px;
+}
+
+#generateBtnLabel {
+    width: 100%;
+}
+
+#tableContainer {
+    height: 100%;
+}

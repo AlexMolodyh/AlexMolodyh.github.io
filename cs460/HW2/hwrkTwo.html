@@ -54,20 +54,22 @@
         <div class="row">
             <div class="col-md-3">
                 <form>
-                    <label for="Rows" id="rowsLabel">
-                                <span class="inputSpan">Rows:</span>
+                    <label for="rows" id="rowsLabel">
+                                <span class="inputSpan">Rows</span>
                                 <input class="form-control" type="text" id="rows" maxlength="2" name="tableRows" required>
                                 <h6 id="rowsLabelError"></h6>
                         </label>
                     <label for="columns" id="columnsLabel">
-                                <span class="inputSpan">Columns:</span>
+                                <span class="inputSpan">Columns</span>
                                 <input class="form-control" type="text" id="columns" maxlength="2" name="tableColumns" required>
                                 <h6 id="columnsLabelError"></h6>
                         </label>
+                    <label for="generateButton" id="generateBtnLabel">
+                        <button type="button" onclick="generateClick()" class="btn btn-primary form-control" id="generateButton">GENERATE</button>
+                    </label>
                 </form>
             </div>
             <div class="col-md-9">
-                <button type="button" onclick="generateClick()" class="btn btn-primary" id="generateButton">GENERATE</button>
             </div>
         </div>
     </div>
@@ -77,50 +79,142 @@
             <div class="col-sm-4">
                 <form>
                     <label for="Attemps">
-                        <span class="inputSpan">Attemps:</span>
+                        <span class="inputSpan">Remaining Attemps</span>
                         <input class="form-control" type="text" id="attemps" maxlength="2" name="attempsDisplay">
                     </label>
                 </form>
             </div>
+            <div class="col-sm-4">
+            </div>
         </div>
-        <div class="row">
-            <div class="col-sm-8">
-                <div class="tileTable">
+        <hr>
+        <div class="row" id="tableContainer">
+            <div class="col-sm-8 col-sm-offset-2">
+                <div>
+                    <table class="table table-bordered" id="tileTable">
 
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
+        //$('#generateButton').bind('click', generateClick());
+
+        // $('#tileTable').click(function (e) {
+        //     alert($(e).get(0));
+        // });
+
         function generateClick() {
+            initialize();
+        }
+
+        function initialize() {
             var row = $("#rows").val().trim();
             var col = $("#columns").val().trim();
 
+            isValidInput(row, col);
+            var attempsAllowed = calculateAttempsAllowed(row, col);
+            var randomOIndex = new Object();
+            randomOIndex = randomizeO(row, col);
+
+            var table = createTable(row, col);
+
+            $("#tileTable").empty();
+            $("#tileTable").append(table);
+        }
+
+        /*creates a table and adds id's to each cell*/
+        function createTable(row, col) {
+            var tableHead = $('<thead></thead>');
+            var tableHeadRow = $('<tr></tr>');
+
+            for (var i = 0; i <= col; i++) {
+                var tableCol = $('<th> ' + i + '</th>');
+                $(tableCol).css("text-align", "center")
+                    .css("color", "#3F51B5")
+                    .css("background-color", "white");
+                tableHeadRow.append(tableCol);
+            }
+
+            tableHead.append(tableHeadRow);
+
+            for (var ri = 0; ri < row; ri++) {
+                var tableRow = $('<tr></tr>').attr("id", "r" + (ri + 1));
+
+                for (var ci = 0; ci <= col; ci++) {
+                    var cell;
+                    var id = "r" + (ri + 1) + "c" + ci;
+                    if (ci === 0) {
+                        cell = $('<th>' + (ri + 1) + '</th>')
+                            .attr("id", id)
+                            .css("background-color", "white").css("color", "#3F51B5");
+                    } else {
+
+                        cell = $('<th></th>')
+                            .attr("id", id)
+                            .css("background-color", "#3F51B5");
+
+                        cell.on("click", function () {
+                            alert("r" + ri + "c" + ci);
+                        });
+                    }
+
+                    tableRow.append(cell);
+                }
+                tableHead.append(tableRow);
+            }
+            return tableHead;
+        }
+
+        /*checks if the row and column inputs have valid values*/
+        function isValidInput(row, col) {
             if (isInteger(row) && row >= 3 && row <= 10) {
                 hideElementById("#rowsLabelError");
             } else {
                 showElementById("#rowsLabelError");
-                invalidInput("#rowsLabel");
+                showInvalidInput("#rowsLabel");
             }
 
-            if(isInteger(col) && col >= 3 && col <= 10) {
+            if (isInteger(col) && col >= 3 && col <= 10) {
                 hideElementById("#columnsLabelError");
-            }else{
+            } else {
                 showElementById("#columnsLabelError");
-                invalidInput("#columnsLabel");
+                showInvalidInput("#columnsLabel");
             }
         }
 
-        function hideElementById(id) {$(id).hide();}
+        /*returns an array with a random row and column index*/
+        function randomizeO(row, col) {
+            var index = new Object();
+            index[0] = Math.floor((Math.random() * row));
+            index[1] = Math.floor((Math.random() * col));
+            return index;
+        }
 
-        function showElementById(id){$(id).show();}
+        /*returns the amount of attemps a user has based on the row and column count*/
+        function calculateAttempsAllowed(row, col) {
+            var sum = (parseInt(row) + parseInt(col));
 
-        function invalidInput(id) {
+            var attempts = Math.floor((sum - 6) / 2) + 1; //6, 2, and 1 are just chosen numbers for the calculation
+            return attempts;
+        }
+
+        function hideElementById(id) {
+            $(id).hide();
+        }
+
+        function showElementById(id) {
+            $(id).show();
+        }
+
+        /*displays red text below the input areas if input isn't valid*/
+        function showInvalidInput(id) {
             $(id + "Error").text("Invalid input, must be integer between 3-10").css("color", "red");
         }
 
-
+        /*checks to see if the value is an integer*/
         function isInteger(x) {
             if (!isNaN(x) && x % 1 === 0)
                 return true;
