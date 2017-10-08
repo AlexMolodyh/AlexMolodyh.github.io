@@ -77,12 +77,9 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <form>
-                    <label for="Attemps">
-                        <span class="inputSpan">Remaining Attemps</span>
-                        <input class="form-control" type="text" id="attemps" maxlength="2" name="attempsDisplay">
-                    </label>
-                </form>
+                <h4>Remaining Attempts: 
+                <h5 id="attemptsLabel">0</h5>
+                </h4>
             </div>
             <div class="col-sm-4">
             </div>
@@ -106,6 +103,9 @@
         //     alert($(e).get(0));
         // });
 
+        window.attempts = 0;
+        window.randomIndex = new Object();
+
         function generateClick() {
             initialize();
         }
@@ -114,15 +114,31 @@
             var row = $("#rows").val().trim();
             var col = $("#columns").val().trim();
 
-            isValidInput(row, col);
-            var attempsAllowed = calculateAttempsAllowed(row, col);
-            var randomOIndex = new Object();
-            randomOIndex = randomizeO(row, col);
+            if (isInputValid(row, col)) {
+                attempts = calculateAttempsAllowed(row, col);
+                randomIndex = randomizeO(row, col);
+                displayTable(row, col);
+                updateAttempts();
+            } else {
+                clearTable();
+            }
+        }
 
+        function displayTable(row, col) {
             var table = createTable(row, col);
 
-            $("#tileTable").empty();
+            clearTable();
             $("#tileTable").append(table);
+        }
+
+        function clearTable() {
+            $("#tileTable").empty();
+        }
+
+        function updateAttempts() {
+            alert("Attempts: " + attempts);
+            $('#attemptsLabel').text(attempts);
+        
         }
 
         /*creates a table and adds id's to each cell*/
@@ -147,17 +163,19 @@
                     var cell;
                     var id = "r" + (ri + 1) + "c" + ci;
                     if (ci === 0) {
-                        cell = $('<th>' + (ri + 1) + '</th>')
+                        cell = $('<td>' + (ri + 1) + '</td>')
                             .attr("id", id)
                             .css("background-color", "white").css("color", "#3F51B5");
                     } else {
 
-                        cell = $('<th></th>')
+                        cell = $('<td></td>')
                             .attr("id", id)
                             .css("background-color", "#3F51B5");
 
                         cell.on("click", function () {
-                            alert("r" + ri + "c" + ci);
+                            var colClicked = $(this).parent().children().index($(this));
+                            var rowClicked = $(this).parent().parent().children().index($(this).parent());
+                            clickedCell(rowClicked, colClicked);
                         });
                     }
 
@@ -168,21 +186,33 @@
             return tableHead;
         }
 
+        function clickedCell(row, col) {
+            alert("Row: " + row + " Col: " + col + " indexes: " + randomIndex[0] + " " + randomIndex[1]);
+        }
+
         /*checks if the row and column inputs have valid values*/
-        function isValidInput(row, col) {
+        function isInputValid(row, col) {
+            var validRow = false;
+            var validCol = false;
             if (isInteger(row) && row >= 3 && row <= 10) {
                 hideElementById("#rowsLabelError");
+                validRow = true;
             } else {
                 showElementById("#rowsLabelError");
                 showInvalidInput("#rowsLabel");
+                validRow = false;
             }
 
             if (isInteger(col) && col >= 3 && col <= 10) {
                 hideElementById("#columnsLabelError");
+                validCol = true;
             } else {
                 showElementById("#columnsLabelError");
                 showInvalidInput("#columnsLabel");
+                validCol = false;
             }
+
+            return (validRow && validCol);
         }
 
         /*returns an array with a random row and column index*/
