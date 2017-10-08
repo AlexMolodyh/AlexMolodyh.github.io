@@ -20,7 +20,7 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!--        <script type="text/javascript" src="js/tileGame.js"></script>-->
+    <script type="text/javascript" src="js/tileGame.js"></script>
 </head>
 
 <body>
@@ -64,7 +64,7 @@
                 </form>
             </div>
             <div class="col-md-9">
-                <button type="submit" class="btn btn-primary" id="generateButton">GENERATE</button>
+                <button type="button" onclick="generateClick()" class="btn btn-primary" id="generateButton">GENERATE</button>
             </div>
         </div>
     </div>
@@ -90,17 +90,7 @@
     </div>
 
     <script>
-        $("#generateButton").submit(function(event) {
-            event.preventDefault();
-            alert("Hello");
-            var row = $("#rows").val().trim();
-            var col = $("#columns").val().trim();
 
-        });
-
-        function buttonClick() {
-            alert("Hello");
-        }
     </script>
 </body>
 
