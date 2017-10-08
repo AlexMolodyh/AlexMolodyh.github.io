@@ -96,22 +96,25 @@
         function generateClick() {
             var row = $("#rows").val().trim();
             var col = $("#columns").val().trim();
-            //alert("Row: " + row + "\nColumn: " + col);
 
             if (isInteger(row) && row >= 3 && row <= 10) {
-                $("#rowsLabelError").hide();
+                hideElementById("#rowsLabelError");
             } else {
-                $("#rowsLabelError").show();
+                showElementById("#rowsLabelError");
                 invalidInput("#rowsLabel");
             }
 
             if(isInteger(col) && col >= 3 && col <= 10) {
-                $("#columnsLabelError").hide();
+                hideElementById("#columnsLabelError");
             }else{
-                $("#columnsLabelError").show();
+                showElementById("#columnsLabelError");
                 invalidInput("#columnsLabel");
             }
         }
+
+        function hideElementById(id) {$(id).hide();}
+
+        function showElementById(id){$(id).show();}
 
         function invalidInput(id) {
             $(id + "Error").text("Invalid input, must be integer between 3-10").css("color", "red");
