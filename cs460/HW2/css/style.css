@@ -1,0 +1,28 @@
+/*Primary button color is: #3F51B5*/
+
+.btn-primary {
+    background-color: #3F51B5;
+}
+
+.centerVertical {
+    display: flex;
+    align-items: center;
+}
+
+.alignBottom {
+    vertical-align: bottom;
+}
+
+.centerTextH {
+    text-align: center;
+}
+
+label {
+    margin-bottom: 0px;
+}
+
+.inputSpan {
+    font-size: 120%;
+    font-weight: 300;
+}
+
