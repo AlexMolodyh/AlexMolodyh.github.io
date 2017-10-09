@@ -77,8 +77,8 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-4">
-                <h4>Remaining Attempts: 
-                <h5 id="attemptsLabel">0</h5>
+                <h4>Remaining Attempts:
+                    <h5 id="attemptsLabel">0</h5>
                 </h4>
             </div>
             <div class="col-sm-4">
@@ -88,7 +88,7 @@
         <div class="row" id="tableContainer">
             <div class="col-sm-8 col-sm-offset-2">
                 <div>
-                    <table class="table table-bordered" id="tileTable">
+                    <table class="table table-bordered centerTextH" id="tileTable">
 
                     </table>
                 </div>
@@ -117,11 +117,18 @@
             if (isInputValid(row, col)) {
                 attempts = calculateAttempsAllowed(row, col);
                 randomIndex = randomizeO(row, col);
-                displayTable(row, col);
-                updateAttempts();
+                    alert("Random: " + randomIndex[0] + " " + randomIndex[1]);
+                if (attemptsAvailable()) {
+                    displayTable(row, col);
+                    updateAttempts();
+                }
             } else {
                 clearTable();
             }
+        }
+
+        function attemptsAvailable() {
+            return attempts > 0;
         }
 
         function displayTable(row, col) {
@@ -136,9 +143,8 @@
         }
 
         function updateAttempts() {
-            alert("Attempts: " + attempts);
             $('#attemptsLabel').text(attempts);
-        
+
         }
 
         /*creates a table and adds id's to each cell*/
@@ -170,7 +176,7 @@
 
                         cell = $('<td></td>')
                             .attr("id", id)
-                            .css("background-color", "#3F51B5");
+                            .css("background-color", "#3F51B5").css("color", "#3F51B5");
 
                         cell.on("click", function () {
                             var colClicked = $(this).parent().children().index($(this));
@@ -186,8 +192,47 @@
             return tableHead;
         }
 
+        /*checks to see if the current cell contains the "O"*/
         function clickedCell(row, col) {
-            alert("Row: " + row + " Col: " + col + " indexes: " + randomIndex[0] + " " + randomIndex[1]);
+            if(attemptsAvailable() && isValidCell(row, col)) {
+                $('#r' + row + 'c' + col).css("background-color", "white").text('X');
+                attempts--;
+                updateAttempts();
+            }
+            
+            if(isWinner(row, col)) {
+                    attempts = 0;
+                    updateAttempts();
+                    alert("You win!!!");
+                    exposeWinner(randomIndex[0], randomIndex[1]);
+                }else if(!isWinner(row, col) && !attemptsAvailable()) {
+                    alert("Out of attempts. You lose!!");
+                    exposeWinner(randomIndex[0], randomIndex[1]);
+                }
+        }
+
+        function exposeWinner(row, col) {
+            $('#r' + row + 'c' + col).css("background-color", "white").text("O");
+        }
+
+        function isWinner(row, col) {
+            if(row == randomIndex[0] && col == randomIndex[1]) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        /*checks if the selected cell has been chosen already*/
+        function isValidCell(row, col) {
+            var cellColor = $('#r' + row + 'c' + col).css("background-color");
+            var invalidCellColor = 'rgb(255, 255, 255)';
+
+            if(cellColor != invalidCellColor) {
+                return true;
+            }else{
+                return false;
+            }
         }
 
         /*checks if the row and column inputs have valid values*/
@@ -218,8 +263,8 @@
         /*returns an array with a random row and column index*/
         function randomizeO(row, col) {
             var index = new Object();
-            index[0] = Math.floor((Math.random() * row));
-            index[1] = Math.floor((Math.random() * col));
+            index[0] = Math.floor((Math.random() * row)) + 1;
+            index[1] = Math.floor((Math.random() * col)) + 1;
             return index;
         }
 
