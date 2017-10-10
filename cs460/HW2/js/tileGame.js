@@ -43,7 +43,6 @@ function clearTable() {
 /*updates the user attempts available*/
 function updateAttempts() {
     $('#attemptsLabel').text(attempts);
-
 }
 
 /*creates a table and adds id's to each cell*/
@@ -51,6 +50,7 @@ function createTable(row, col) {
     var tableHead = $('<thead></thead>');
     var tableHeadRow = $('<tr></tr>');
 
+    /*populate the header row with column indexes */
     for (var i = 0; i <= col; i++) {
         var tableCol = $('<th> ' + i + '</th>');
         $(tableCol).css("text-align", "center")
@@ -61,6 +61,7 @@ function createTable(row, col) {
 
     tableHead.append(tableHeadRow);
 
+    /*pupulate each row and set column 0 to act as row index */
     for (var ri = 0; ri < row; ri++) {
         var tableRow = $('<tr></tr>').attr("id", "r" + (ri + 1));
 
@@ -91,8 +92,17 @@ function createTable(row, col) {
     return tableHead;
 }
 
-/*checks to see if the current cell contains the "O"*/
+/*checks to see if the current cell is valid */
 function clickedCell(row, col) {
+    if(isValidCell(row, col) && attemptsAvailable()) {
+        checkCell(row, col);
+    }
+}
+
+/*checks to see if the current cell contains the "O". The first check
+is redundant but I want it there just for security purposes just in case
+the function is called without checking if the cell clicked is valid.*/
+function checkCell(row, col) {
     if (attemptsAvailable() && isValidCell(row, col)) {
         $('#r' + row + 'c' + col).css("background-color", "white").text('X');
         attempts--;
