@@ -12,9 +12,11 @@ function initialize() {
     var row = $("#rows").val().trim();
     var col = $("#columns").val().trim();
 
+    /*This part checks to see if the input is valid. Meaning the input
+    is an integer bretween 3 and 10. */
     if (isInputValid(row, col)) {
         attempts = calculateAttempsAllowed(row, col);
-        randomIndex = randomizeO(row, col);
+        randomIndex = randomizeOBox(row, col);
         if (attemptsAvailable()) {
             displayTable(row, col);
             updateAttempts();
@@ -78,6 +80,7 @@ function createTable(row, col) {
                     .attr("id", id)
                     .css("background-color", "#3F51B5").css("color", "#3F51B5");
 
+                /*set an onclick listener to each cell */
                 cell.on("click", function () {
                     var colClicked = $(this).parent().children().index($(this));
                     var rowClicked = $(this).parent().parent().children().index($(this).parent());
@@ -173,7 +176,7 @@ function isInputValid(row, col) {
 }
 
 /*returns an array with a random row and column index*/
-function randomizeO(row, col) {
+function randomizeOBox(row, col) {
     var index = new Object();
     index[0] = Math.floor((Math.random() * row)) + 1;
     index[1] = Math.floor((Math.random() * col)) + 1;
