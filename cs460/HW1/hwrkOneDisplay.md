@@ -9,7 +9,7 @@ layout: default
 ### The first requirement is the use of Bootstrap. 
 #### I have provided a Bootstrap navbar in my landing page and homework 1 page. 
 [Landing Page](https://goo.gl/CynbUB) and 
-[Homework 1 Page](https://goo.gl/RLCGrC)
+[Homework 1 Page](https://goo.gl/GrHjXg)
 
 ```html
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
@@ -31,7 +31,6 @@ layout: default
     
     
 ```
-
 
 ##### I used two columns in my landing page.
 [Landing Page](https://goo.gl/CynbUB)
@@ -74,7 +73,6 @@ layout: default
     
     
 ```
-
 
 #### I used a single column layout with an ordered list for my Git reference page.
 [Git Page](https://goo.gl/huAzXL)
