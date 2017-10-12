@@ -11,9 +11,7 @@
 ##### When the page initially loads the user must chose a column and row size. 
 ##### Columns and rows must be between 3 and 10 inclusive.
 
-![Column Row](../img/col_row.png?raw=true)
-
-##### Code for the two forms and the Generate button.
+##### Code for the two form column, rows and the Generate button.
 ```html
 <form>
     <label for="rows" id="rowsLabel">
