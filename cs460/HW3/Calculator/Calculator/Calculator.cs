@@ -19,14 +19,14 @@ namespace Calculator
 
         static void Main(string[] args)
         {
-            Calculator CalcApp = new Calculator();
+            Calculator calcApp = new Calculator();
 
             //As long as playAgain is true the calculator will keep asking for more input
             bool playAgain = true;
             Console.WriteLine("\nPostfix Calculator, Recognizes these operators: + - * /");
             while (playAgain)
             {
-                playAgain = CalcApp.DoCalculation();
+                playAgain = calcApp.DoCalculation();
             }
             Console.WriteLine("Bye.");
         }
@@ -38,14 +38,14 @@ namespace Calculator
         /// <returns>If the user does not enter "q" to quit then it returns true.
         /// Otherwise it returns false.</returns>
         private bool DoCalculation()
-        {
+        { 
             Console.WriteLine("Please enter q to quit\n");
             Console.Write(">");
 
-            string Input = Console.ReadLine();
+            string lineInput = Console.ReadLine();
 
             //sets character to lower case so we don't have to check agains 'q' and 'Q'
-            string CheckQuit = Input.ToLower();
+            string CheckQuit = lineInput.ToLower();
 
             if (CheckQuit.StartsWith("q"))
             {
@@ -55,13 +55,13 @@ namespace Calculator
             string Output = "";
             try
             {
-                Output = EvaluatePostFixInput(Input);
+                Output = EvaluatePostFixInput(lineInput);
             }
             catch (Exception e)
             {
                 Output = e.Message;
             }
-            Console.WriteLine("\n\t" + Input + " = " + Output);
+            Console.WriteLine("\n\t" + lineInput + " = " + Output);
             return true;
         }
 
