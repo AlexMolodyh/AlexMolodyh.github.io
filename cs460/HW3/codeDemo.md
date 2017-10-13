@@ -281,8 +281,6 @@ namespace Calculator
             {
                 double inputDouble;
 
-                Console.WriteLine("Current word is: " + word);
-
                 if(double.TryParse(word, out inputDouble))
                 {
                     calcStack.Push(inputDouble);
@@ -352,3 +350,7 @@ namespace Calculator
 }
 
 ```
+
+### The Output
+#### The following screen is the output of the program doing calculations.
+![Output](img/Calculator.png)

@@ -92,8 +92,6 @@ namespace Calculator
             {
                 double inputDouble;
 
-                Console.WriteLine("Current word is: " + word);
-
                 if(double.TryParse(word, out inputDouble))
                 {
                     calcStack.Push(inputDouble);
