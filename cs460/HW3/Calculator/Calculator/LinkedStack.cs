@@ -6,11 +6,11 @@ namespace Calculator
 {
     public class LinkedStack<T> : IStackADT<T>
     {
-        private Node Top;
+        private Node top;
 
         public LinkedStack()
         {
-            Top = null;
+            top = null;
         }
 
         public T Push(T newItem)
@@ -20,8 +20,8 @@ namespace Calculator
                 return default(T);
             }
 
-            Node NewNode = new Node(newItem, Top);
-            Top = NewNode;
+            Node NewNode = new Node(newItem, top);
+            top = NewNode;
             return newItem;
 
         }
@@ -32,26 +32,26 @@ namespace Calculator
             {
                 return default(T);
             }
-            object TopItem = Top.Data;
-            Top = Top.Next;
+            object TopItem = top.Data;
+            top = top.Next;
             return (T) TopItem;
         }
 
         public void Clear()
         {
-            Top = null;
+            top = null;
         }
 
         public bool IsEmpty()
         {
-            return Top == null;
+            return top == null;
         }
 
         public T Peek()
         {
             if (IsEmpty())
                 return default(T);
-            return (T) Top.Data;
+            return (T) top.Data;
         }
     }
 }

@@ -2,19 +2,26 @@
 {
     public class Node
     {
-        public object Data;
-        public Node Next;
+        private object data;
+        private Node next;
 
         public Node()
         {
-            Data = null;
-            Next = null;
+            data = null;
+            next = null;
         }
 
         public Node(object data, Node next)
         {
-            this.Data = data;
-            this.Next = next;
+            Data = data;
+            Next = next;
+        }
+
+        public object Data { get; set; }
+
+        public Node Next
+        {
+            get; set;
         }
     }
 }
