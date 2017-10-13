@@ -8,10 +8,7 @@ namespace Calculator
     {
         private Node top;
 
-        public LinkedStack()
-        {
-            top = null;
-        }
+        public LinkedStack() => top = null;
 
         public T Push(T newItem)
         {
@@ -37,15 +34,9 @@ namespace Calculator
             return (T) TopItem;
         }
 
-        public void Clear()
-        {
-            top = null;
-        }
+        public void Clear() => top = null;
 
-        public bool IsEmpty()
-        {
-            return top == null;
-        }
+        public bool IsEmpty() =>  (top == null);
 
         public T Peek()
         {
