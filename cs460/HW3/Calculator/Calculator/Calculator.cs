@@ -7,30 +7,44 @@ using System.Threading.Tasks;
 
 namespace Calculator
 {
+    // compile with: /doc:Calculator.xml
+
+    /// <summary>
+    /// A postfix calculator program that reads variables first and 
+    /// modifiers later. 
+    /// </summary>
     class Calculator
     {
-        private IStackADT<double> CalcStack = new LinkedStack<double>();
+        private IStackADT<double> calcStack = new LinkedStack<double>();
 
         static void Main(string[] args)
         {
             Calculator CalcApp = new Calculator();
 
-            bool PlayAgain = true;
+            //As long as playAgain is true the calculator will keep asking for more input
+            bool playAgain = true;
             Console.WriteLine("\nPostfix Calculator, Recognizes these operators: + - * /");
-            while (PlayAgain)
+            while (playAgain)
             {
-                PlayAgain = CalcApp.DoCalculation();
+                playAgain = CalcApp.DoCalculation();
             }
             Console.WriteLine("Bye.");
         }
 
+        /// <summary>
+        /// Asks the user for an expression in the format of numbers first separated by spaces
+        /// and then the operators separated by spaces.
+        /// </summary>
+        /// <returns>If the user does not enter "q" to quit then it returns true.
+        /// Otherwise it returns false.</returns>
         private bool DoCalculation()
         {
             Console.WriteLine("Please enter q to quit\n");
-            string Input = "2 2 +";
-            Console.Write("> ");
+            Console.Write(">");
 
-            Input = Console.ReadLine();
+            string Input = Console.ReadLine();
+
+            //sets character to lower case so we don't have to check agains 'q' and 'Q'
             string CheckQuit = Input.ToLower();
 
             if (CheckQuit.StartsWith("q"))
@@ -38,7 +52,7 @@ namespace Calculator
                 return false;
             }
 
-            string Output = "4";
+            string Output = "";
             try
             {
                 Output = EvaluatePostFixInput(Input);
@@ -51,6 +65,12 @@ namespace Calculator
             return true;
         }
 
+        /// <summary>
+        /// Loops through the whole input list and calculates an output. 
+        /// </summary>
+        /// <param name="input">A string of characters representing numbers and operators.</param>
+        /// <returns>Once done calculating all numbers, it then returns 
+        /// a string representing the result of the calculation.</returns>
         public string EvaluatePostFixInput(string input)
         {
             if(input == null || input.Equals(""))
@@ -58,21 +78,25 @@ namespace Calculator
                 throw new Exception("Illegal argument");
             }
 
-            CalcStack.Clear();
+            calcStack.Clear();
             
+            //place holders for the input and output numbers
             double a = 0.0;
             double b = 0.0;
             double c = 0.0;
 
-            string[] Words = input.Split();
+            string[] words = input.Split();
 
-            foreach(string word in Words)
+            //loops through the input string
+            foreach(string word in words)
             {
-                double InputDouble;
+                double inputDouble;
 
-                if(double.TryParse(word, out InputDouble))
+                Console.WriteLine("Current word is: " + word);
+
+                if(double.TryParse(word, out inputDouble))
                 {
-                    CalcStack.Push(InputDouble);
+                    calcStack.Push(inputDouble);
                 }
                 else
                 {
@@ -80,22 +104,31 @@ namespace Calculator
                     if (word.Length > 1)
                         throw new Exception("Input Error: " + word + " is not an allowed number or operator");
 
-                    if (CalcStack.IsEmpty())
+                    if (calcStack.IsEmpty())
                         throw new Exception("Improper input format. Stack became empty when expecting second operand.");
 
-                    b = CalcStack.Pop();
-                    if (CalcStack.IsEmpty())
+                    b = calcStack.Pop();
+                    if (calcStack.IsEmpty())
                         throw new Exception("Improper input format. Stack became empty when expecting first operand.");
 
-                    a = CalcStack.Pop();
+                    a = calcStack.Pop();
                     c = DoOperation(a, b, word);
 
-                    CalcStack.Push(c);
+                    //store the result back on top of the stack for next calculation
+                    calcStack.Push(c);
                 }
             }
-            return CalcStack.Pop().ToString();
+            return calcStack.Pop().ToString();
         }
 
+
+        /// <summary>
+        /// Calculates a result based on the input numbers and the operator string given.
+        /// </summary>
+        /// <param name="a">First number</param>
+        /// <param name="b">Second number</param>
+        /// <param name="s">Operator for calculation</param>
+        /// <returns>The sum of a and b.</returns>
         public double DoOperation(double a, double b, string s)
         {
             double c = 0.0;
@@ -109,6 +142,7 @@ namespace Calculator
             {
                 try
                 {
+                    //checks to see if a or b is a zero
                     c = (a / b);
                     if (double.IsNegativeInfinity(c) || double.IsPositiveInfinity(c))
                         throw new Exception("Can't divide by zero");

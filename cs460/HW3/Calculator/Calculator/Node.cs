@@ -1,6 +1,6 @@
 ﻿namespace Calculator
 {
-    //compile with: /doc:Calculator.xml
+    //compile with: /doc:Node.xml
     
     /// <summary>
     /// A node to hold a piece of data and a referrence to the next node.
