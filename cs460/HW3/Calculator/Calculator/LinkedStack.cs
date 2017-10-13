@@ -4,43 +4,54 @@ using Calculator.Interface;
 
 namespace Calculator
 {
-    public class LinkedStack<T> : IStackADT
+    public class LinkedStack<T> : IStackADT<T>
     {
-        private Node<T> Top;
+        private Node Top;
 
         public LinkedStack()
         {
             Top = null;
         }
 
-        public object Push(object newItem)
+        public T Push(T newItem)
         {
             if (newItem == null)
             {
-                return null;
+                return default(T);
             }
 
-            T newT = new Node<T>(newItem, Top);
+            Node NewNode = new Node(newItem, Top);
+            Top = NewNode;
+            return newItem;
+
+        }
+
+        public T Pop()
+        {
+            if(IsEmpty())
+            {
+                return default(T);
+            }
+            object TopItem = Top.Data;
+            Top = Top.Next;
+            return (T) TopItem;
         }
 
         public void Clear()
         {
-            throw new System.NotImplementedException();
+            Top = null;
         }
 
         public bool IsEmpty()
         {
-            throw new System.NotImplementedException();
+            return Top == null;
         }
 
-        public object Peek()
+        public T Peek()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public object Pop()
-        {
-            throw new System.NotImplementedException();
+            if (IsEmpty())
+                return default(T);
+            return (T) Top.Data;
         }
     }
 }

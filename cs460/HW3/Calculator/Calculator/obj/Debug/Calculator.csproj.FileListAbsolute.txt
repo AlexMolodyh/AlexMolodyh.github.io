@@ -1,0 +1,7 @@
+C:\Users\Almania\Documents\WOU\AlexMolodyh.github.io\cs460\HW3\Calculator\Calculator\obj\Debug\Calculator.csprojResolveAssemblyReference.cache
+C:\Users\Almania\Documents\WOU\AlexMolodyh.github.io\cs460\HW3\Calculator\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
+C:\Users\Almania\Documents\WOU\AlexMolodyh.github.io\cs460\HW3\Calculator\Calculator\bin\Debug\Calculator.exe.config
+C:\Users\Almania\Documents\WOU\AlexMolodyh.github.io\cs460\HW3\Calculator\Calculator\bin\Debug\Calculator.exe
+C:\Users\Almania\Documents\WOU\AlexMolodyh.github.io\cs460\HW3\Calculator\Calculator\bin\Debug\Calculator.pdb
+C:\Users\Almania\Documents\WOU\AlexMolodyh.github.io\cs460\HW3\Calculator\Calculator\obj\Debug\Calculator.exe
+C:\Users\Almania\Documents\WOU\AlexMolodyh.github.io\cs460\HW3\Calculator\Calculator\obj\Debug\Calculator.pdb

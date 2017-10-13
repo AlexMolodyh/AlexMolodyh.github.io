@@ -45,7 +45,7 @@
     <Compile Include="Interface\IStackADT.cs" />
     <Compile Include="LinkedStack.cs" />
     <Compile Include="Node.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Calculator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

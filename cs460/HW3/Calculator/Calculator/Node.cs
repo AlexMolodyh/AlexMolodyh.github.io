@@ -1,17 +1,17 @@
 ﻿namespace Calculator
 {
-    public class Node<T>
+    public class Node
     {
         public object Data;
-        public T Next;
+        public Node Next;
 
         public Node()
         {
             Data = null;
-            Next = default(T);
+            Next = null;
         }
 
-        public Node(object data, T next)
+        public Node(object data, Node next)
         {
             this.Data = data;
             this.Next = next;

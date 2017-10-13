@@ -2,11 +2,11 @@
 
 namespace Calculator.Interface
 {
-    public interface IStackADT
+    public interface IStackADT<T>
     {
-        object Push(Object newItem);
-        object Pop();
-        object Peek();
+        T Push(T newItem);
+        T Pop();
+        T Peek();
         bool IsEmpty();
         void Clear();
     }
