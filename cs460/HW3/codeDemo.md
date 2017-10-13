@@ -3,7 +3,7 @@
 ### I will try to describe the differences that I have implemented in to the c# version of the app. 
 
 ### The node class
-#### I have converted the prviously pubic fields into private fields and am utilizing the propertie feature in C# to access those private data types.
+##### I have converted the prviously pubic fields into private fields and am utilizing the propertie feature in C# to access those private data types.
 [Node class](https://goo.gl/q9N2Gz)
 
 ```c#
@@ -49,7 +49,7 @@ namespace Calculator
 ```
 
 ### The IStackADT interface
-#### I have implemented the IStackADT interface using C# Generics.
+##### I have implemented the IStackADT interface using C# Generics.
 [IStackADT class](https://goo.gl/noeHQ4)
 
 ```c#
@@ -100,7 +100,7 @@ namespace Calculator.Interface
 ```
 
 ### The LinkedStack
-#### The LinkedStack ADT implements the IStackADT interface and uses C# Generics to implement the overriden methods. Some shorter methods are implemented using lambdas.
+##### The LinkedStack ADT implements the IStackADT interface and uses C# Generics to implement the overriden methods. Some shorter methods are implemented using lambdas.
 [LinkedStack class](https://goo.gl/gQqeay)
 
 ```c#
@@ -183,7 +183,7 @@ namespace Calculator
 ```
 
 ### The Calculator
-#### The calculator class has been modified a bit from its Java implementation. Some objects like Java's Scanner class had to be replaced by a foreach loop. All private and local variables have been camelcased and methods and public fields are Pascal cased.
+##### The calculator class has been modified a bit from its Java implementation. Some objects like Java's Scanner class had to be replaced by a foreach loop. All private and local variables have been camelcased and methods and public fields are Pascal cased.
 [Calculator class](https://goo.gl/cPsKjr)
 
 ```c#
@@ -352,5 +352,5 @@ namespace Calculator
 ```
 
 ### The Output
-#### The following screen is the output of the program doing calculations.
+##### The following screen is the output of the program doing calculations.
 ![Output](img/Calculator.png)
