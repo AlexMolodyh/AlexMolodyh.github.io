@@ -3,36 +3,35 @@
     ViewBag.Title = "Page One";
 }
 
-<!DOCTYPE html>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post" class="form-group">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>PageOne</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    <div>
-        <form method="post" class="form-group">
+                <label for="temperature">Temperature:</label>
+                <input type="text" class="form-control" name="temperature" value="">
 
-            <label for="temperature">Temperature:</label>
-            <input type="text" class="form-control" name="temperature" value="">
+                <label for="temp_type">Select Temperature Type:</label>
+                <input type="text" class="form-control" name="temp_type" maxlength="1" value="" />
 
-            <label for="temp_type">Select Temperature Type:</label>
-            <input type="text" class="form-control" name="temp_type" maxlength="1" value="" />
-
-            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
-        </form>
-
+                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3>Temperature converter</h3>
+            <ol type="1">
+                <li>Enter the temperature into the temperature box</li>
+                <li>Enter (C)Celsius or (F)Fahrenheit</li>
+                <li>Click the Submit button to convert temperature</li>
+            </ol>
+        </div>
     </div>
-
-   
-        <h3>Your converted temperature is: @ViewBag.converted</h3>
-    
+</div>
 
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-</body>
-</html>
+@if (ViewBag.converted != null)
+{
+    <h3>Your converted temperature is: @ViewBag.converted</h3>
+}
+
+

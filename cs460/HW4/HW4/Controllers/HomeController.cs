@@ -30,25 +30,23 @@ namespace HW4.Controllers
 
         public ActionResult PageOne()
         {
-            string temperature = Request.Form["temperatue"];
+            string temperature = Request.Form["temperature"];
             string temp_type = Request.Form["temp_type"];
             double tempToConvert = 0.0;
-            double converted = 0.0;
-
-            ViewBag.converted = temperature;
-            Console.WriteLine("Hello " + temperature);
 
 
             if (Double.TryParse(temperature, out tempToConvert))
             {
-                if (temp_type.Equals("F"))
-                    converted = (((tempToConvert - 32) * 5) / 9);
-                else if (temp_type.Equals("C"))
-                    converted = (((tempToConvert * 9) / 5) + 32);
+                if (temp_type.Equals("C", StringComparison.InvariantCultureIgnoreCase))
+                    ViewBag.converted = (((tempToConvert - 32) * 5) / 9);
+                else if (temp_type.Equals("F", StringComparison.InvariantCultureIgnoreCase))
+                    ViewBag.converted = (((tempToConvert * 9) / 5) + 32);
                 else
-                    converted = 0.0;
-
-                ViewBag.converted = converted;
+                    ViewBag.converted = "Incorrect Input!";
+            }
+            else if(temperature != null && temp_type != null)
+            {
+                ViewBag.converted = "Incorrect Input!";
             }
 
 
