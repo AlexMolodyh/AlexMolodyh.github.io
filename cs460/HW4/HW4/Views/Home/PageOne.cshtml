@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Page One";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PageOne</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div>
+        <form method="post" class="form-group">
+
+            <label for="temperature">Temperature:</label>
+            <input type="text" class="form-control" name="temperature" value="">
+
+            <label for="temp_type">Select Temperature Type:</label>
+            <input type="text" class="form-control" name="temp_type" maxlength="1" value="" />
+
+            <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+
+   
+        <h3>Your converted temperature is: @ViewBag.converted</h3>
+    
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
