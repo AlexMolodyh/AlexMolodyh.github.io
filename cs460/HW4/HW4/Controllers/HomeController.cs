@@ -58,6 +58,31 @@ namespace HW4.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult PageTwo(FormCollection form)
+        {
+            ValueProviderResult distance = form.GetValue("distance");
+            ValueProviderResult dist_type = form.GetValue("dist_type");
+            double distToConvert = 0.0;
+
+
+            if (Double.TryParse(distance.AttemptedValue, out distToConvert))
+            {
+                if (dist_type.AttemptedValue.Equals("M", StringComparison.InvariantCultureIgnoreCase))
+                    ViewBag.converted = distToConvert * .62;
+                else if (dist_type.AttemptedValue.Equals("K", StringComparison.InvariantCultureIgnoreCase))
+                    ViewBag.converted = distToConvert * 1.609;
+                else
+                    ViewBag.converted = "Incorrect Input!";
+            }
+            else if (distance != null && dist_type != null)
+            {
+                ViewBag.converted = "Incorrect Input!";
+            }
+
+            return View();
+        }
+
         public ActionResult PageThree()
         {
             return View();
