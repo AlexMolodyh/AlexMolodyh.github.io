@@ -30,25 +30,24 @@ namespace HW4.Controllers
 
         public ActionResult PageOne()
         {
-            string temperature = Request.Form["temperature"];
-            string temp_type = Request.Form["temp_type"];
-            double tempToConvert = 0.0;
+            string temperature = Request.Form["temperature"];//temperature entered
+            string temp_type = Request.Form["temp_type"];//the type of temperature to convert to
+            double tempToConvert = 0.0;//the converted temperature entered so we can do computations
 
 
             if (Double.TryParse(temperature, out tempToConvert))
             {
                 if (temp_type.Equals("C", StringComparison.InvariantCultureIgnoreCase))
-                    ViewBag.converted = (((tempToConvert - 32) * 5) / 9);
+                    ViewBag.converted = (((tempToConvert - 32) * 5) / 9);//converted to celsius
                 else if (temp_type.Equals("F", StringComparison.InvariantCultureIgnoreCase))
-                    ViewBag.converted = (((tempToConvert * 9) / 5) + 32);
+                    ViewBag.converted = (((tempToConvert * 9) / 5) + 32);//converted to fahrenheit
                 else
-                    ViewBag.converted = "Incorrect Input!";
+                    ViewBag.converted = "Incorrect Input!";//incorrect temperature type was entered
             }
-            else if(temperature != null && temp_type != null)
+            else if(temperature != null && temp_type != null)//incorrect distance was entered
             {
                 ViewBag.converted = "Incorrect Input!";
             }
-
 
             return View();
         }
@@ -61,22 +60,37 @@ namespace HW4.Controllers
         [HttpPost]
         public ActionResult PageTwo(FormCollection form)
         {
-            ValueProviderResult distance = form.GetValue("distance");
-            ValueProviderResult dist_type = form.GetValue("dist_type");
-            double distToConvert = 0.0;
+            ValueProviderResult distance = form.GetValue("distance");//distance entered
+            ValueProviderResult distType = form.GetValue("dist_type");//miles or kilometers to convert to
+            double distToConvert = 0.0;//the converted distance entered so we can do computations
 
 
             if (Double.TryParse(distance.AttemptedValue, out distToConvert))
             {
-                if (dist_type.AttemptedValue.Equals("M", StringComparison.InvariantCultureIgnoreCase))
+                ViewBag.distance = distance.AttemptedValue;
+
+                //converting into miles
+                if (distType.AttemptedValue.Equals("M", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    ViewBag.convertFrom = "Kilometers";
+                    ViewBag.convertTo = "Miles";
                     ViewBag.converted = distToConvert * .62;
-                else if (dist_type.AttemptedValue.Equals("K", StringComparison.InvariantCultureIgnoreCase))
+                }
+                else if (distType.AttemptedValue.Equals("K", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    //converting into kilometers
+                    ViewBag.convertFrom = "Miles";
+                    ViewBag.convertTo = "Kilometers";
                     ViewBag.converted = distToConvert * 1.609;
+                }
                 else
-                    ViewBag.converted = "Incorrect Input!";
+                {
+                    ViewBag.error = "Incorrect Input!!";//wrong input for conversion type
+                }
             }
-            else if (distance != null && dist_type != null)
+            else if (distance != null && distType != null)
             {
+                //incorrect distance was entered, as in not a number
                 ViewBag.converted = "Incorrect Input!";
             }
 

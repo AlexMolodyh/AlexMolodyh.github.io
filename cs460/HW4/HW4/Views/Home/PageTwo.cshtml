@@ -8,10 +8,11 @@
     <div class="row">
         <div class="col-md-6">
             <form method="post" class="form-group">
-
+                <!--input to enter the distance to be converted-->
                 <label for="distance">Distance:</label>
                 <input type="text" class="form-control" name="distance" value="">
-
+                
+                <!--input to enter either Miles or Kilometers to convert -->
                 <label for="dist_type">Select Distance Type:</label>
                 <input type="text" class="form-control" name="dist_type" maxlength="1" value="" />
 
@@ -29,4 +30,16 @@
     </div>
 </div>
 
-
+@*if "error" isn't null then the input wasn't correct. Otherwise we can populate 
+    the converted results.*@
+@if (ViewBag.converted != null || ViewBag.error != null)
+{
+    if (ViewBag.error != null)
+    {
+        <h3>@ViewBag.error</h3>
+    }
+    else
+    {
+        <h3>@ViewBag.distance @ViewBag.convertFrom converted into @ViewBag.convertTo is: @ViewBag.converted @ViewBag.convertTo</h3>
+    }
+}
