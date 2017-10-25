@@ -99,9 +99,17 @@ namespace HW4.Controllers
         }
 
         [HttpGet]
+        public ActionResult PageThree()
+        {
+            
+
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult PageThree(int? loanAmount, double? interestRate, int? months)
         {
-            Debug.WriteLine("amount: " + loanAmount + " rate: " + interestRate + " months: " + months );
+            Debug.WriteLine("amount: " + loanAmount + " rate: " + interestRate + " months: " + months);
 
             double percentage = (interestRate / 100) / 12 ?? 0;
             Debug.WriteLine("percentage is: " + percentage);
@@ -109,29 +117,24 @@ namespace HW4.Controllers
             double monthsAsDouble = months * 1.0 ?? 1;
             Debug.WriteLine("months as double is: " + monthsAsDouble);
 
-            double partOfD = Math.Pow( (1 + percentage), monthsAsDouble );
+            double partOfD = Math.Pow((1 + percentage), monthsAsDouble);
             Debug.WriteLine("part of D is: " + partOfD);
 
-            double d = ( ( partOfD - 1) / ( percentage * partOfD ) );
+            double d = ((partOfD - 1) / (percentage * partOfD));
             Debug.WriteLine("D is: " + d);
 
             double montlyPyment = loanAmount / d ?? 0;
-            ViewBag.monthPayment = $"{montlyPyment:N2}%";
 
             Debug.WriteLine("Montly paiment is: " + montlyPyment);
 
             double paymentSum = montlyPyment * monthsAsDouble;
-            ViewBag.paySum = $"{paymentSum:N2}%";
 
-            Debug.WriteLine("Payment sum is: " + paymentSum);
+            ViewBag.totalMonths = months ?? 0;
+            ViewBag.monthPayment = $"{montlyPyment:C2}";
+            ViewBag.paySum = $"{paymentSum:C2}";
 
-            return View();
-        }
 
-        [HttpPost]
-        public ActionResult PageThree()
-        {
-            return View();
+            return View("PageThreePost");
         }
     }
 }
