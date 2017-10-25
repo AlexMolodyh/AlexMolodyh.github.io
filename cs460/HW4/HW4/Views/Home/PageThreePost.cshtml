@@ -3,6 +3,8 @@
     ViewBag.Title = "Page three post";
 }
 
+<!--after the pageThree post method is called, it populates this view with 
+    the montly payments, the sum of payments, and the total interest that will be paid.-->
 @if (ViewBag.monthPayment != null)
 {
     <h3>Your monthly payments are: @ViewBag.monthPayment for @ViewBag.totalMonths months</h3>

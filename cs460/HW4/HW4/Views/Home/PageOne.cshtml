@@ -7,10 +7,13 @@
     <div class="row">
         <div class="col-md-6">
             <form method="post" class="form-group">
-
+                
+                <!--this input takes the temperature amount-->
                 <label for="temperature">Temperature:</label>
                 <input type="text" class="form-control" name="temperature" value="">
-
+                
+                <!--takes a parameter such as "F" for fahrenheit conversion and
+                    "C" for celcius conversion.-->
                 <label for="temp_type">Select Temperature Type:</label>
                 <input type="text" class="form-control" name="temp_type" maxlength="1" value="" />
 
@@ -28,7 +31,7 @@
     </div>
 </div>
 
-
+<!--displays the converted tempereature amount-->
 @if (ViewBag.converted != null)
 {
     <h3>Your converted temperature is: @ViewBag.converted</h3>
