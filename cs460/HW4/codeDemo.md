@@ -2,6 +2,10 @@
 
 ### This page demonstrates some of the code used in this project. Such as calculations, views, and controller code.
 
+### NOTE! screenshots are not showing up here so please visit the the page below
+[Code Demo](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW4/codeDemo.md)
+
+
 ### The index page
 ##### The index page contains links to pages 1, 2, and 3
 [Index Page](https://goo.gl/Yv7982)
