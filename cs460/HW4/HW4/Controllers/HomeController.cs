@@ -101,38 +101,30 @@ namespace HW4.Controllers
         [HttpGet]
         public ActionResult PageThree()
         {
-            
-
             return View();
         }
 
         [HttpPost]
         public ActionResult PageThree(int? loanAmount, double? interestRate, int? months)
         {
-            Debug.WriteLine("amount: " + loanAmount + " rate: " + interestRate + " months: " + months);
+            double percentage = (interestRate / 100) / 12 ?? 0;//convert percentage to calculate for months
 
-            double percentage = (interestRate / 100) / 12 ?? 0;
-            Debug.WriteLine("percentage is: " + percentage);
+            double monthsAsDouble = months * 1.0 ?? 1;//convert months into a double for Pow method
 
-            double monthsAsDouble = months * 1.0 ?? 1;
-            Debug.WriteLine("months as double is: " + monthsAsDouble);
-
+            //we use this calculation twice so I just made it for simplicity
             double partOfD = Math.Pow((1 + percentage), monthsAsDouble);
-            Debug.WriteLine("part of D is: " + partOfD);
 
-            double d = ((partOfD - 1) / (percentage * partOfD));
-            Debug.WriteLine("D is: " + d);
+            double d = ((partOfD - 1) / (percentage * partOfD));//total calculation that we divide total amount by
 
-            double montlyPyment = loanAmount / d ?? 0;
+            double montlyPyment = loanAmount / d ?? 0;//total montly payment
 
-            Debug.WriteLine("Montly paiment is: " + montlyPyment);
-
-            double paymentSum = montlyPyment * monthsAsDouble;
+            double paymentSum = montlyPyment * monthsAsDouble;//loan amount plus interest 
 
             ViewBag.totalMonths = months ?? 0;
             ViewBag.monthPayment = $"{montlyPyment:C2}";
             ViewBag.paySum = $"{paymentSum:C2}";
-
+            ViewBag.totalInterest = $"{paymentSum - monthsAsDouble:C2}";
+            
 
             return View("PageThreePost");
         }

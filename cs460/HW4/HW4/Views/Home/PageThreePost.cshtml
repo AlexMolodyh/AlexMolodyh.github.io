@@ -5,6 +5,7 @@
 
 @if (ViewBag.monthPayment != null)
 {
-    <h3>Your monthly payments are: @ViewBag.monthPayment</h3>
+    <h3>Your monthly payments are: @ViewBag.monthPayment for @ViewBag.totalMonths months</h3>
     <h3>The sum of your payments is: @ViewBag.paySum</h3>
+    <h3>Total interest is: @ViewBag.totalInterest</h3>
 }
