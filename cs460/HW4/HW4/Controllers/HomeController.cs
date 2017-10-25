@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Web;
 using System.Web.Mvc;
 
@@ -97,6 +98,37 @@ namespace HW4.Controllers
             return View();
         }
 
+        [HttpGet]
+        public ActionResult PageThree(int? loanAmount, double? interestRate, int? months)
+        {
+            Debug.WriteLine("amount: " + loanAmount + " rate: " + interestRate + " months: " + months );
+
+            double percentage = (interestRate / 100) / 12 ?? 0;
+            Debug.WriteLine("percentage is: " + percentage);
+
+            double monthsAsDouble = months * 1.0 ?? 1;
+            Debug.WriteLine("months as double is: " + monthsAsDouble);
+
+            double partOfD = Math.Pow( (1 + percentage), monthsAsDouble );
+            Debug.WriteLine("part of D is: " + partOfD);
+
+            double d = ( ( partOfD - 1) / ( percentage * partOfD ) );
+            Debug.WriteLine("D is: " + d);
+
+            double montlyPyment = loanAmount / d ?? 0;
+            ViewBag.monthPayment = $"{montlyPyment:N2}%";
+
+            Debug.WriteLine("Montly paiment is: " + montlyPyment);
+
+            double paymentSum = montlyPyment * monthsAsDouble;
+            ViewBag.paySum = $"{paymentSum:N2}%";
+
+            Debug.WriteLine("Payment sum is: " + paymentSum);
+
+            return View();
+        }
+
+        [HttpPost]
         public ActionResult PageThree()
         {
             return View();

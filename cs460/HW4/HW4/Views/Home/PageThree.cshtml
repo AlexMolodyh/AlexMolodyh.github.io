@@ -1,17 +1,43 @@
 ﻿
 @{
-    Layout = null;
+    ViewBag.Title = "Page Three";
 }
 
-<!DOCTYPE html>
+@if (ViewBag.montPayment == null)
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <form method="post" class="form-group">
+                    <!--input to enter the distance to be converted-->
+                    <label for="loanAmount">Loan:</label>
+                    <input type="number" class="form-control" name="loanAmount" value="">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>PageThree</title>
-</head>
-<body>
-    <div> 
+                    <!--input to enter either Miles or Kilometers to convert -->
+                    <label for="interestRate">Interest Rate:</label>
+                    <input type="number" step="any" class="form-control" name="interestRate" maxlength="1" value=""/>
+
+                    <!--input to enter either Miles or Kilometers to convert -->
+                    <label for="months">Months:</label>
+                    <input type="number" class="form-control" name="months" maxlength="1" value=""/>
+
+                    <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h3>Loan Calculator</h3>
+                <ol type="1">
+                    <li>Enter the loan amount</li>
+                    <li>Enter the percentage amount such as: 6.2 for 6.2%</li>
+                    <li>Enter the amount of months you want to calculate for</li>
+                    <li>Click the Submit button to calculate the loan</li>
+                </ol>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+}
+else if (ViewBag.montPayment != null)
+{
+    <h3>Your monthly payments are: @ViewBag.monthPayment</h3>
+    <h3>The sum of your payments is: @ViewBag.paySum</h3>
+}
