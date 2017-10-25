@@ -28,6 +28,7 @@
 </div>
 ```
 
+
 ### Page One Controller Section
 ##### Here it simply checks for the type of temperature the user wants to convert their temperature amount into and then stores the result into a ViewBag parameter.
 [HomeController](https://goo.gl/TrbAL2)
@@ -57,6 +58,7 @@ public ActionResult PageOne()
     return View();
 }
 ```
+
 
 ### The PageOne View
 [PageOne View](https://goo.gl/SyqbBW)
@@ -101,18 +103,19 @@ public ActionResult PageOne()
 }
 ```
 
+
 ### PageOne Screenshots
 
 #### Input screenshot
 ![PageOne input](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW4/img/page_one_input.PNG)
+
 
 #### Output screenshot
 ![PageOne output](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW4/img/page_one_output.PNG)
 
 
 ### Page Two Controller Section
-##### Here it simply checks for the type of distance the user wants to convert their distance amount into and then stores the result into a ViewBag parameter. 
-##### The structure is basically the same as in the PageOne ActionMethod.
+##### Here it simply checks for the type of distance the user wants to convert their distance amount into and then stores the result into a ViewBag parameter. The structure is basically the same as in the PageOne ActionMethod.
 [HomeController](https://goo.gl/TrbAL2)
 
 ```csharp
@@ -206,18 +209,20 @@ public ActionResult PageTwo(FormCollection form)
 }
 ```
 
+
 ### PageTwo Screenshots
 
-##### PageTwo input
+#### PageTwo input
 ![PageTwo input](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW4/img/page_two_input.PNG)
 
-##### PageTwo Output
+
+#### PageTwo Output
 ![PageTwo output](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW4/img/page_two_output.PNG)
 
 
+
 ### Page Three Controller Section
-##### The HttpGet aciton method does nothing besides return the default view. We do the 
-##### calculation in the HttpPost method and then call a different view called PageThreePost.
+##### The HttpGet aciton method does nothing besides return the default view. We do the calculation in the HttpPost method and then call a different view called PageThreePost.
 [HomeController](https://goo.gl/TrbAL2)
 
 ```csharp
@@ -252,6 +257,7 @@ public ActionResult PageThree(int? loanAmount, double? interestRate, int? months
     return View("PageThreePost");
 }
 ```
+
 
 ### The PageThree View
 ##### The PageThree view sets up a form to get parameters for a loan calculation.
@@ -314,10 +320,12 @@ public ActionResult PageThree(int? loanAmount, double? interestRate, int? months
 }
 ```
 
+
 ### PageThree Screenshots
 
-##### PageThree input
+#### PageThree input
 ![PageThree input](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW4/img/page_three_inputt.PNG)
 
-##### PageThree Output
+
+#### PageThree Output
 ![PageTwo output](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW4/img/page_three_output.PNG)
