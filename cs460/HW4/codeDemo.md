@@ -104,7 +104,7 @@ public ActionResult PageOne()
 ### PageOne Screenshots
 
 #### Input screenshot
-![PageOne input](https://goo.gl/dEagHw)
+![PageOne input](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW4/img/page_one_input.PNG)
 
 #### Output screenshot
 ![PageOne output](https://goo.gl/Lmsu6h)
