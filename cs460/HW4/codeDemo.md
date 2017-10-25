@@ -107,178 +107,217 @@ public ActionResult PageOne()
 ![PageOne input](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW4/img/page_one_input.PNG)
 
 #### Output screenshot
-![PageOne output](https://goo.gl/Lmsu6h)
+![PageOne output](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW4/img/page_one_output.PNG)
 
 
-### The Calculator
-##### The calculator class has been modified a bit from its Java implementation. Some objects like Java's Scanner class had to be replaced by a foreach loop. All private and local variables have been camelcased and methods and public fields are Pascal cased.
-[Calculator class](https://goo.gl/cPsKjr)
+### Page Two Controller Section
+##### Here it simply checks for the type of distance the user wants to convert their distance amount into and then stores the result into a ViewBag parameter. 
+##### The structure is basically the same as in the PageOne ActionMethod.
+[HomeController](https://goo.gl/TrbAL2)
 
-```c#
-using Calculator.Interface;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Calculator
+```csharp
+public ActionResult PageTwo(FormCollection form)
 {
-    // compile with: /doc:Calculator.xml
+    ValueProviderResult distance = form.GetValue("distance");//distance entered
+    ValueProviderResult distType = form.GetValue("dist_type");//miles or kilometers to convert to
+    double distToConvert = 0.0;//the converted distance entered so we can do computations
 
-    /// <summary>
-    /// A postfix calculator program that reads variables first and 
-    /// modifiers later. 
-    /// </summary>
-    class Calculator
+
+    if (Double.TryParse(distance.AttemptedValue, out distToConvert))
     {
-        private IStackADT<double> calcStack = new LinkedStack<double>();
+        ViewBag.distance = distance.AttemptedValue;
 
-        static void Main(string[] args)
+        //converting into miles
+        if (distType.AttemptedValue.Equals("M", StringComparison.InvariantCultureIgnoreCase))
         {
-            Calculator calcApp = new Calculator();
-
-            //As long as playAgain is true the calculator will keep asking for more input
-            bool playAgain = true;
-            Console.WriteLine("\nPostfix Calculator, Recognizes these operators: + - * /");
-            while (playAgain)
-            {
-                playAgain = calcApp.DoCalculation();
-            }
-            Console.WriteLine("Bye.");
+            ViewBag.convertFrom = "Kilometers";
+            ViewBag.convertTo = "Miles";
+            ViewBag.converted = distToConvert * .62;
         }
-
-        /// <summary>
-        /// Asks the user for an expression in the format of numbers first separated by spaces
-        /// and then the operators separated by spaces.
-        /// </summary>
-        /// <returns>If the user does not enter "q" to quit then it returns true.
-        /// Otherwise it returns false.</returns>
-        private bool DoCalculation()
-        { 
-            Console.WriteLine("Please enter q to quit\n");
-            Console.Write(">");
-
-            string lineInput = Console.ReadLine();
-
-            //sets character to lower case so we don't have to check agains 'q' and 'Q'
-            string CheckQuit = lineInput.ToLower();
-
-            if (CheckQuit.StartsWith("q"))
-            {
-                return false;
-            }
-
-            string Output = "";
-            try
-            {
-                Output = EvaluatePostFixInput(lineInput);
-            }
-            catch (Exception e)
-            {
-                Output = e.Message;
-            }
-            Console.WriteLine("\n\t" + lineInput + " = " + Output);
-            return true;
-        }
-
-        /// <summary>
-        /// Loops through the whole input list and calculates an output. 
-        /// </summary>
-        /// <param name="input">A string of characters representing numbers and operators.</param>
-        /// <returns>Once done calculating all numbers, it then returns 
-        /// a string representing the result of the calculation.</returns>
-        public string EvaluatePostFixInput(string input)
+        else if (distType.AttemptedValue.Equals("K", StringComparison.InvariantCultureIgnoreCase))
         {
-            if(input == null || input.Equals(""))
-            {
-                throw new Exception("Illegal argument");
-            }
-
-            calcStack.Clear();
-            
-            //place holders for the input and output numbers
-            double a = 0.0;
-            double b = 0.0;
-            double c = 0.0;
-
-            string[] words = input.Split();
-
-            //loops through the input string
-            foreach(string word in words)
-            {
-                double inputDouble;
-
-                if(double.TryParse(word, out inputDouble))
-                {
-                    calcStack.Push(inputDouble);
-                }
-                else
-                {
-
-                    if (word.Length > 1)
-                        throw new Exception("Input Error: " + word + " is not an allowed number or operator");
-
-                    if (calcStack.IsEmpty())
-                        throw new Exception("Improper input format. Stack became empty when expecting second operand.");
-
-                    b = calcStack.Pop();
-                    if (calcStack.IsEmpty())
-                        throw new Exception("Improper input format. Stack became empty when expecting first operand.");
-
-                    a = calcStack.Pop();
-                    c = DoOperation(a, b, word);
-
-                    //store the result back on top of the stack for next calculation
-                    calcStack.Push(c);
-                }
-            }
-            return calcStack.Pop().ToString();
+             //converting into kilometers
+            ViewBag.convertFrom = "Miles";
+            ViewBag.convertTo = "Kilometers";
+            ViewBag.converted = distToConvert * 1.609;
         }
-
-
-        /// <summary>
-        /// Calculates a result based on the input numbers and the operator string given.
-        /// </summary>
-        /// <param name="a">First number</param>
-        /// <param name="b">Second number</param>
-        /// <param name="s">Operator for calculation</param>
-        /// <returns>The sum of a and b.</returns>
-        public double DoOperation(double a, double b, string s)
+        else
         {
-            double c = 0.0;
-            if (s.Equals("+"))
-                c = (a + b);
-            else if (s.Equals("-"))
-                c = (a - b);
-            else if (s.Equals("*"))
-                c = (a * b);
-            else if(s.Equals("/"))
-            {
-                try
-                {
-                    //checks to see if a or b is a zero
-                    c = (a / b);
-                    if (double.IsNegativeInfinity(c) || double.IsPositiveInfinity(c))
-                        throw new Exception("Can't divide by zero");
-                }
-                catch(ArithmeticException e)
-                {
-                    throw new ArgumentException(e.Message);
-                }
-            }
-            else
-            {
-                throw new ArgumentException("Improper operator: " + s + ", is not one of +, -, *, or /");
-            }
-
-            return c;
+            ViewBag.error = "Incorrect Input!!";//wrong input for conversion type
         }
     }
-}
+    else if (distance != null && distType != null)
+    {
+        //incorrect distance was entered, as in not a number
+        ViewBag.converted = "Incorrect Input!";
+    }
 
+    return View();
+}
 ```
 
-### The Output
-##### The following screen is the output of the program doing calculations.
-![Output](img/Calculator.png)
+### The PageTwo View
+[PageTwo View](https://goo.gl/whghXU)
+
+```html
+@{
+    ViewBag.Title = "Page Two";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post" class="form-group">
+                <!--input to enter the distance to be converted-->
+                <label for="distance">Distance:</label>
+                <input type="text" class="form-control" name="distance" value="">
+                
+                <!--input to enter either Miles or Kilometers to convert -->
+                <label for="dist_type">Select Distance Type:</label>
+                <input type="text" class="form-control" name="dist_type" maxlength="1" value="" />
+
+                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3>Mile Kilometer Converter</h3>
+            <ol type="1">
+                <li>Enter the distance into the distance box</li>
+                <li>Enter (M)Miles or (K)Kilometers</li>
+                <li>Click the Submit button to convert the distance</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+@*if "error" isn't null then the input wasn't correct. Otherwise we can populate 
+    the converted results.*@
+@if (ViewBag.converted != null || ViewBag.error != null)
+{
+    if (ViewBag.error != null)
+    {
+        <h3>@ViewBag.error</h3>
+    }
+    else
+    {
+        <h3>@ViewBag.distance @ViewBag.convertFrom converted into @ViewBag.convertTo is: @ViewBag.converted @ViewBag.convertTo</h3>
+    }
+}
+```
+
+### PageTwo Screenshots
+
+##### PageTwo input
+![PageTwo input](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW4/img/page_two_input.PNG)
+
+##### PageTwo Output
+![PageTwo output](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW4/img/page_two_output.PNG)
+
+
+### Page Three Controller Section
+##### The HttpGet aciton method does nothing besides return the default view. We do the 
+##### calculation in the HttpPost method and then call a different view called PageThreePost.
+[HomeController](https://goo.gl/TrbAL2)
+
+```csharp
+[HttpGet]
+public ActionResult PageThree()
+{
+    return View();
+}
+
+[HttpPost]
+public ActionResult PageThree(int? loanAmount, double? interestRate, int? months)
+{
+    double percentage = (interestRate / 100) / 12 ?? 0;//convert percentage to calculate for months
+
+    double monthsAsDouble = months * 1.0 ?? 1;//convert months into a double for Pow method
+
+    //we use this calculation twice so I just made it for simplicity
+    double partOfD = Math.Pow((1 + percentage), monthsAsDouble);
+
+    double d = ((partOfD - 1) / (percentage * partOfD));//total calculation that we divide total amount by
+
+    double montlyPyment = loanAmount / d ?? 0;//total montly payment
+
+    double paymentSum = montlyPyment * monthsAsDouble;//loan amount plus interest 
+
+    ViewBag.totalMonths = months ?? 0;
+    ViewBag.monthPayment = $"{montlyPyment:C2}";
+    ViewBag.paySum = $"{paymentSum:C2}";
+    ViewBag.totalInterest = $"{paymentSum - monthsAsDouble:C2}";
+            
+
+    return View("PageThreePost");
+}
+```
+
+### The PageThree View
+##### The PageThree view sets up a form to get parameters for a loan calculation.
+[PageThree View](https://goo.gl/oUH7zp)
+
+```html
+@{
+    ViewBag.Title = "Page Three";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form method="post" class="form-group">
+                <!--input to enter the distance to be converted-->
+                <label for="loanAmount">Loan:</label>
+                <input type="number" class="form-control" name="loanAmount" value="">
+
+                <!--input to enter either Miles or Kilometers to convert -->
+                <label for="interestRate">Interest Rate:</label>
+                <input type="number" step="any" class="form-control" name="interestRate" maxlength="1" value="" />
+
+                <!--input to enter either Miles or Kilometers to convert -->
+                <label for="months">Months:</label>
+                <input type="number" class="form-control" name="months" maxlength="1" value="" />
+
+                <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <h3>Loan Calculator</h3>
+            <ol type="1">
+                <li>Enter the loan amount</li>
+                <li>Enter the percentage amount such as: 6.2 for 6.2%</li>
+                <li>Enter the amount of months you want to calculate for</li>
+                <li>Click the Submit button to calculate the loan</li>
+            </ol>
+        </div>
+    </div>
+</div>
+```
+
+
+### The PageThreePost View
+##### The PageThreePost view displays the loan calculated payments and interest amount.
+[PageThree View](https://goo.gl/oUH7zp)
+
+```html
+@{
+    ViewBag.Title = "Page three post";
+}
+
+<!--after the pageThree post method is called, it populates this view with 
+    the montly payments, the sum of payments, and the total interest that will be paid.-->
+@if (ViewBag.monthPayment != null)
+{
+    <h3>Your monthly payments are: @ViewBag.monthPayment for @ViewBag.totalMonths months</h3>
+    <h3>The sum of your payments is: @ViewBag.paySum</h3>
+    <h3>Total interest is: @ViewBag.totalInterest</h3>
+}
+```
+
+### PageThree Screenshots
+
+##### PageThree input
+![PageThree input](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW4/img/page_three_inputt.PNG)
+
+##### PageThree Output
+![PageTwo output](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW4/img/page_three_output.PNG)
