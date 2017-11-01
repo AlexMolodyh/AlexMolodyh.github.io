@@ -4,10 +4,14 @@
     ViewBag.Title = "Create New Address";
 }
 
+<head>
+    <link href="~/Content/myStyles.css" rel="stylesheet"/>
+</head>
+
 
 <div class="row">
-    <div class="col-md-8">
-        <!--DMV Header Info-->
+    <div class="col-md-10">
+        <h1><b>CHANGE OF ADDRESS NOTICE FOR DMV RECORDS</b></h1>
     </div>
 
     <!--Column Containing Form-->
@@ -15,21 +19,98 @@
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-            
-            <ul>
-                <li>
-                    <!--CustomerID # and DOB Section-->
-                    <h2>Note: ALL information is REQUIRED to change your address.</h2>
-                    <div class="row">
-                        <div class="col-md-4">
+            <form class="my-form">
+                <div class="form-group">
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <ul>
+                        <!--List Item containing NOTE for REQUIRED information-->
+                        <li>
+                            <h4><b>Note:</b> <b>ALL</b> information is <b>REQUIRED</b> to change your address.</h4>
+                            <!--CustomerID # and DOB Section-->
+                            <div class="row">
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.CustomerNumber, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.CustomerNumber, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.CustomerNumber, "", new { @class = "text-danger" })
+                                </div>
 
-                        </div>
-                    </div>
-                </li>
-            </ul>
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.DOB, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <!--Row for Last, First, and Middle names-->
+                            <div class="row">
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-md-4">
+                                        @Html.LabelFor(model => model.MiddleName, htmlAttributes: new { @class = "control-label" })
+                                        @Html.EditorFor(model => model.MiddleName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.MiddleName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!--New Residence Address section-->
+                        <li>
+                            <h4><b>NEW MAILING ADDRESS</b> (No Post Office Box Number or mail forwarding adress)</h4>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @Html.LabelFor(model => model.NewAddress, htmlAttributes: new { @class = "control-label", @id = "address-field" })
+                                    @Html.EditorFor(model => model.NewAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewAddress, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    @Html.LabelFor(model => model.NewCity, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.NewCity, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewCity, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.LabelFor(model => model.NewState, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.NewState, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewState, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-2">
+                                    @Html.LabelFor(model => model.NewZip, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.NewZip, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewZip, "", new { @class = "text-danger" })
+                                </div>
+                                <div class="col-md-3">
+                                    @Html.LabelFor(model => model.NewCounty, htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => model.NewCounty, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.NewCounty, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <h4><b>Please</b> enter date to confirm address change.</h4>
+                            @Html.LabelFor(model => model.ChangeDate, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.ChangeDate, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ChangeDate, "", new { @class = "text-danger" })
+                        </li>
+                    </ul>
+                </div>
+            </form>
         }
     </div>
-    <div class="col-md-6"><!--Instructions Section-->
-
+    <div class="col-md-4">
+        <!--Instructions Section-->
+        <div class="row">
+            <div class="col-md-5">
+                <p id="oregon-law-p">Oregon Law requires you to notify DMV of any change of address within 30 days.</p>
+            </div>
+        </div>
     </div>
 </div>

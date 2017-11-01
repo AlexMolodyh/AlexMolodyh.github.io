@@ -11,7 +11,7 @@ namespace HW5.Models
         public int ID { get; set; }
 
         [Required]
-        [Display(Name = "Customer Number")]
+        [Display(Name = "Customer #")]
         public int CustomerNumber { get; set; }
 
         [Required, StringLength(100)]
@@ -26,6 +26,8 @@ namespace HW5.Models
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Required]
         [Display(Name = "Date Of Birth")]
         public DateTime DOB { get; set; }
@@ -50,6 +52,8 @@ namespace HW5.Models
         [Display(Name = "County")]
         public string NewCounty { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Required]
         [Display(Name = "Date of Change")]
         public DateTime ChangeDate { get; set; }

@@ -1,0 +1,14 @@
+﻿body {
+}
+
+#oregon-law-p {
+    border-style: solid;
+    border-width: 1px;
+    border-color: black;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#address-field {
+    min-width: 100%;
+}
