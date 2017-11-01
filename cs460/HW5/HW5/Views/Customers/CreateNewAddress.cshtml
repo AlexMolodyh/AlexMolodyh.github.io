@@ -1,0 +1,35 @@
+﻿@model HW5.Models.Customer
+
+@{
+    ViewBag.Title = "Create New Address";
+}
+
+
+<div class="row">
+    <div class="col-md-8">
+        <!--DMV Header Info-->
+    </div>
+
+    <!--Column Containing Form-->
+    <div class="col-md-8">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            
+            <ul>
+                <li>
+                    <!--CustomerID # and DOB Section-->
+                    <h2>Note: ALL information is REQUIRED to change your address.</h2>
+                    <div class="row">
+                        <div class="col-md-4">
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        }
+    </div>
+    <div class="col-md-6"><!--Instructions Section-->
+
+    </div>
+</div>

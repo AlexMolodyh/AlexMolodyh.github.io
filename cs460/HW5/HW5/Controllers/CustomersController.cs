@@ -36,6 +36,20 @@ namespace HW5.Controllers
             return View(customer);
         }
 
+        [HttpGet]
+        public ActionResult CreateNewAddress()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateNewAddress([Bind(Include = "ID,CustomerNumber,FirstName,MiddleName,LastName,DOB,NewAddress,NewCity,NewState,NewZip,NewCounty,ChangeDate")] Customer customer)
+        {
+
+
+            return View();
+        }
+
         // GET: Customers/Create
         public ActionResult Create()
         {

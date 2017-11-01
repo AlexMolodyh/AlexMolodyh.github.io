@@ -18,7 +18,7 @@ namespace HW5.Models
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
-        [Required, StringLength(100)]
+        [StringLength(100)]
         [Display(Name = "Middle Name")]
         public string MiddleName { get; set; }
 
