@@ -11,6 +11,7 @@
 <h2><b>Address change requests</b></h2>
 <br />
 <div class="table-div">
+    <!--table to display records in the database-->
     <table>
         <tr>
             <th>@Html.DisplayNameFor(model => model.CustomerNumber)</th>
@@ -26,6 +27,7 @@
             <th>@Html.DisplayNameFor(model => model.ChangeDate)</th>
         </tr>
 
+        <!--here we populate each row of the table from the database-->
         @foreach (var item in Model)
         {
             <tr>

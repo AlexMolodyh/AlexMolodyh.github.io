@@ -2,4 +2,5 @@
 
 GO
 
-DELETE FROM dbo.Customers;
+DROP TABLE dbo.Customers;
+GO

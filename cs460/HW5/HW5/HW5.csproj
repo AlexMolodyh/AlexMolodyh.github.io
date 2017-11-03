@@ -158,6 +158,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\db_DOWN.sql" />
     <Content Include="App_Data\db_UP.sql" />
     <Content Include="App_Data\HW5Database.mdf" />
     <Content Include="App_Data\HW5Database_log.ldf">
@@ -245,10 +246,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\Customers\CreateNewAddress.cshtml" />
     <Content Include="Views\Customers\displayRequests.cshtml" />
   </ItemGroup>

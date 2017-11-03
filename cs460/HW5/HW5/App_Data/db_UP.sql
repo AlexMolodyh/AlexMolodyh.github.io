@@ -14,6 +14,7 @@
 	ChangeDate DATETIME NOT NULL,
 	CONSTRAINT [PK_dbo.Customers] PRIMARY KEY CLUSTERED (ID ASC)
 );
+GO
 
 INSERT INTO dbo.Customers
         ( CustomerNumber ,
