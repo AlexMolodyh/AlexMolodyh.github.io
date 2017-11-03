@@ -45,7 +45,12 @@ namespace HW5.Controllers
         [HttpPost]
         public ActionResult CreateNewAddress([Bind(Include = "ID,CustomerNumber,FirstName,MiddleName,LastName,DOB,NewAddress,NewCity,NewState,NewZip,NewCounty,ChangeDate")] Customer customer)
         {
-
+            if(ModelState.IsValid)
+            {
+                db.Customers.Add(customer);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
             return View();
         }

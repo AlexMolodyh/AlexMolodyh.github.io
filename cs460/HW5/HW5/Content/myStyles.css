@@ -1,14 +1,24 @@
-﻿body {
-}
-
-#oregon-law-p {
+﻿#oregon-law-p {
     border-style: solid;
     border-width: 1px;
     border-color: black;
     border-radius: 5px;
     padding: 5px;
+    margin-top: 10px;
 }
 
-#address-field {
-    min-width: 100%;
+.image-col {
+    display: inline-block;
+}
+
+.image {
+    margin-top: 14px;
+}
+
+.margin-top {
+    margin-top: 15px;
+}
+
+.btn.btn-default {
+    background-color: deepskyblue;
 }
