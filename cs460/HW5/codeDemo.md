@@ -389,6 +389,83 @@ namespace HW5.Models
 }
 ```
 
+### DAL CustomerContext
+
+[CustomerContext](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW5/HW5/DAL/CustomerContext.cs)
+
+```csharp
+ public class CustomerContext : DbContext
+    {
+        public CustomerContext() : base("name=CustomerDBContext")
+        {
+
+        }
+
+        public virtual DbSet<Customer> Customers { get; set; }
+    }
+```
+
+
+### SQL Scripts
+
+#### Up script
+
+[db_UP.SQL](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW5/HW5/App_Data/db_UP.sql)
+
+```SQL
+CREATE TABLE dbo.Customers
+(
+	ID INT IDENTITY (1, 1) NOT NULL,
+	CustomerNumber INT NOT NULL,
+	FirstName NVARCHAR(100) NOT NULL,
+	MiddleName NVARCHAR(100) NULL,
+	LastName NVARCHAR(100) NOT NULL,
+	DOB DATETIME NOT NULL,
+	NewAddress NVARCHAR(300) NOT NULL,
+	NewCity NVARCHAR(80) NOT NULL,
+	NewState NVARCHAR(2) NOT NULL,
+	NewZip INT NOT NULL,
+	NewCounty NVARCHAR(50) NOT NULL,
+	ChangeDate DATETIME NOT NULL,
+	CONSTRAINT [PK_dbo.Customers] PRIMARY KEY CLUSTERED (ID ASC)
+);
+GO
+
+INSERT INTO dbo.Customers
+        ( CustomerNumber ,
+          FirstName ,
+          MiddleName ,
+          LastName ,
+          DOB ,
+          NewAddress ,
+          NewCity ,
+          NewState ,
+          NewZip ,
+          NewCounty ,
+          ChangeDate
+        )
+VALUES  ( 1563259 , 'Homer' , 'J' , 'Simpson' , '1958' , '12345 New Springfield St' , 'New Springfield' , 'OR' , 97403 , 'Lane County' , GETDATE()),
+		( 1763259 , 'Marge' , '' , 'Simpson' , '1960' , '12345 New Springfield St' , 'New Springfield' , 'OR' , 97403 , 'Lane County' , GETDATE()),
+		( 1504259 , 'Bart' , '' , 'Simpson' , '1980' , '12345 New Springfield St' , 'New Springfield' , 'OR' , 97403 , 'Lane County' , GETDATE()),
+		( 9463259 , 'Lisa' , '' , 'Simpson' , '1982' , '12345 New Springfield St' , 'New Springfield' , 'OR' , 97403 , 'Lane County' , GETDATE()),
+		( 9487259 , 'Maggie' , '' , 'Simpson' , '1989' , '12345 New Springfield St' , 'New Springfield' , 'OR' , 97403 , 'Lane County' , GETDATE());
+
+GO
+```
+
+#### Down script
+
+[db_DOWN.SQL](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW5/HW5/App_Data/db_DOWN.sql)
+
+```SQL
+ALTER TABLE dbo.Customers DROP CONSTRAINT [PK_dbo.Customers];
+
+GO
+
+DROP TABLE dbo.Customers;
+GO
+```
+
 
 ### CSS Used
 [tableStyle](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW5/HW5/Content/tableStyle.css)
