@@ -15,7 +15,10 @@
             @Html.ActionLink("Change Address", "CreateNewAddress", "Customers", null, new { @class = "btn btn-primary btn-lg" })
         </div>
         <div class="col-lg-3">
-            @Html.ActionLink("Current Requests", "DisplayRequests", "Customers", null, new { @class = "btn btn-primary btn-lg" })
+            <!--We add a null for the 4th parameter because without it the ActionLink thinks the fourth value is a routevalue. 
+                by adding the null in the 4th place forces it to use the proper overloads. If we put the null where the btn class is
+                it won't load the class and ActionLink won't become a button.-->
+            @Html.ActionLink("Current Requests", "Index", "Customers", null, new { @class = "btn btn-primary btn-lg" })
         </div>
     </div>
 </div>

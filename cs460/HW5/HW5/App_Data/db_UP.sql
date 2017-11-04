@@ -8,7 +8,7 @@
 	DOB DATETIME NOT NULL,
 	NewAddress NVARCHAR(300) NOT NULL,
 	NewCity NVARCHAR(80) NOT NULL,
-	NewState NVARCHAR(80) NOT NULL,
+	NewState NVARCHAR(2) NOT NULL,
 	NewZip INT NOT NULL,
 	NewCounty NVARCHAR(50) NOT NULL,
 	ChangeDate DATETIME NOT NULL,
@@ -29,10 +29,10 @@ INSERT INTO dbo.Customers
           NewCounty ,
           ChangeDate
         )
-VALUES  ( 0 , 'Homer' , 'J' , 'Simpson' , '1958' , '12345 New Springfield St' , 'New Springfield' , 'Oregon' , 97403 , 'Lane County' , GETDATE()),
-		( 0 , 'Marge' , '' , 'Simpson' , '1960' , '12345 New Springfield St' , 'New Springfield' , 'Oregon' , 97403 , 'Lane County' , GETDATE()),
-		( 0 , 'Bart' , '' , 'Simpson' , '1980' , '12345 New Springfield St' , 'New Springfield' , 'Oregon' , 97403 , 'Lane County' , GETDATE()),
-		( 0 , 'Lisa' , '' , 'Simpson' , '1982' , '12345 New Springfield St' , 'New Springfield' , 'Oregon' , 97403 , 'Lane County' , GETDATE()),
-		( 0 , 'Maggie' , '' , 'Simpson' , '1989' , '12345 New Springfield St' , 'New Springfield' , 'Oregon' , 97403 , 'Lane County' , GETDATE());
+VALUES  ( 1563259 , 'Homer' , 'J' , 'Simpson' , '1958' , '12345 New Springfield St' , 'New Springfield' , 'OR' , 97403 , 'Lane County' , GETDATE()),
+		( 1763259 , 'Marge' , '' , 'Simpson' , '1960' , '12345 New Springfield St' , 'New Springfield' , 'OR' , 97403 , 'Lane County' , GETDATE()),
+		( 1504259 , 'Bart' , '' , 'Simpson' , '1980' , '12345 New Springfield St' , 'New Springfield' , 'OR' , 97403 , 'Lane County' , GETDATE()),
+		( 9463259 , 'Lisa' , '' , 'Simpson' , '1982' , '12345 New Springfield St' , 'New Springfield' , 'OR' , 97403 , 'Lane County' , GETDATE()),
+		( 9487259 , 'Maggie' , '' , 'Simpson' , '1989' , '12345 New Springfield St' , 'New Springfield' , 'OR' , 97403 , 'Lane County' , GETDATE());
 
 GO
