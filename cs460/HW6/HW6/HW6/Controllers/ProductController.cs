@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using HW6.Models;
 using System.Diagnostics;
+using PagedList;
 
 namespace HW6.Controllers
 {
@@ -21,31 +22,30 @@ namespace HW6.Controllers
             return View();
         }
 
-        public ActionResult GetProducts(string category, string subCategory)
+        public ViewResult ProductsDisplay(string subCategory, int? page)
         {
-            Debug.WriteLine($"Category is: {category} and subcategory is: {subCategory}");
+            if (subCategory == null)
+                subCategory = "Mountain Bikes";
 
-            DbSet<Product> items = db.Products;
+            Debug.WriteLine($"Subcategory is: {subCategory}");
+            ViewBag.SubCategory = subCategory;
+           
 
-            var productSet = db.Products.Join(db.ProductSubcategories.Where(ps => ps.Name == "Gloves"),
-                p => p.ProductSubcategoryID,
-                ps1 => ps1.ProductSubcategoryID,
-                (p, ps1) => new { table = p });
-
-            var subCater = db.ProductSubcategories.Where(ps => ps.Name == "Mountain Bikes").Select(ps2 => ps2.ProductSubcategoryID);
+            var subCater = db.ProductSubcategories.Where(ps => ps.Name == subCategory).Select(ps2 => ps2.ProductSubcategoryID);
             int psIndex = subCater.First();
 
             var productIE = db.Products.Where(p => p.ProductSubcategoryID == psIndex);
             List<Product> productList = productIE.ToList<Product>();
 
 
-            foreach(Product p in productList)
-            {
-                Debug.WriteLine($"Product Name is: {p.Name}");
-            }
+            //foreach(Product p in productList)
+            //{
+            //    Debug.WriteLine($"Product Name is: {p.Name} Photo name is: {p.ProductProductPhotoes.FirstOrDefault().ProductPhoto.LargePhotoFileName}");
+            //}
 
-
-            return View("Index");
+            int pageSize = 12;
+            int pageNumber = (page ?? 1);
+            return View(productList.ToPagedList(pageNumber, pageSize));
         }
     }
 }

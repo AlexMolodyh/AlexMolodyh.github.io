@@ -24,9 +24,9 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bikes<span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Mountain Bikes", "GetProducts", "Product", new { category = "Bike", subCategory = "Mountain Bikes" }, null)</li>
-                            <li>@Html.ActionLink("Road Bikes", "Index", "Product")</li>
-                            <li>@Html.ActionLink("Touring Bikes", "Index", "Product")</li>
+                            <li>@Html.ActionLink("Mountain Bikes", "ProductsDisplay", "Product", new { category = "Bike", subCategory = "Mountain Bikes" }, null)</li>
+                            <li>@Html.ActionLink("Road Bikes", "ProductsDisplay", "Product", new { category = "Bike", subCategory = "Road Bikes" }, null)</li>
+                            <li>@Html.ActionLink("Touring Bikes", "ProductsDisplay", "Product", new { category = "Bike", subCategory = "Touring Bikes" }, null)</li>
                         </ul>
                     </li>                   
                     <!--Dropdown for Clothing category-->
@@ -56,5 +56,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @RenderSection("MyScripts", required: false)    @*Load our custom script*@
 </body>
 </html>

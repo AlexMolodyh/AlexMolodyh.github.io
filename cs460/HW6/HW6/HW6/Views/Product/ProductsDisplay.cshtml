@@ -1,0 +1,51 @@
+﻿@model PagedList.PagedList<HW6.Models.Product>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "ProductsDisplay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int counter = 0;
+    <link rel="stylesheet" href="~/Content/myStyle.css"/>
+}
+
+<h2>ProductsDisplay</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        if (counter != 0 && counter % 3 == 0)
+        {
+            @:</div>
+            @:<div class="row">
+        }
+        <div class="col-lg-4">
+            <div class="item-tile">
+                <div>
+                    <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.ProductProductPhotoes.FirstOrDefault().ProductPhoto.LargePhoto))" />
+                </div>
+                <hr />
+                <div>
+                    <!--Information goes here-->
+                    <!--Product name here-->
+                    <h4>@item.Name</h4>
+
+                    <!--Price goes here-->
+                    <h4><b>@item.ListPrice.ToString($"C")</b></h4>
+
+                </div>
+            </div>
+        </div>
+        counter++;
+    }
+</div>
+<hr />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("ProductsDisplay",
+    new { page, ViewBag.SubCategory }))
+
+
