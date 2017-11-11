@@ -1,7 +1,11 @@
-﻿.item-tile {
+﻿body {
+    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.item-tile {
     text-align: center;
     padding: 5px;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
 }
 
 #product-button.btn.btn-primary {
@@ -9,4 +13,99 @@
     color: dimgrey;
     background-color: white;
     border-color: dimgray;
+}
+
+.item-tile hr {
+    border: solid .3px;
+}
+
+.item-tile-description > h4:first-child {
+    min-height: 40px;
+}
+
+
+
+/**********************************navbar section*************************************/
+
+/*Class section on navbar*/
+.navbar {
+    background: #00695C;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    min-height: 60px;
+    margin-bottom: 0px;
+    border: none;
+}
+
+
+.gradient {
+    background: #00695C; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, #00695C, #009688); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #00695C, #009688); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #00695C, #009688); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #00695C, #009688); /* Standard syntax */
+}
+
+
+/*change the navbar-brand font*/
+.navbar-default .navbar-brand {
+    color: #f3f1f1;
+}
+
+/*change the color of the navbar-brand text so it stays white when hovering over it*/
+.navbar-default .navbar-brand:hover {
+    color: #f3f1f1;
+}
+
+/*change the color of the navbar item font*/
+.nav.navbar-nav li a {
+    color: #f3f1f1;
+    font-size: 16px;
+}
+
+/*when hovering over a dropdown tab, the font color is changed*/
+.nav.navbar-nav li a:hover {
+    color: #d2b0b0;
+}
+
+/*when hovering over a dropdown menuitem, the background color is changed as well as the font*/
+.dropdown .dropdown-menu li a:hover {
+    background-color: #004D40;
+    color: #f3f1f1;
+}
+
+/*when a dropdown tab is selected, the background is changed*/
+.navbar-default .navbar-nav .dropdown.open a:focus {
+    background-color: #009688;
+    color: #f3f1f1;
+}
+
+/*when a dropdown tab is selected, the background is changed*/
+.navbar-default .navbar-nav .active a {
+    background-color: #009688; /*dropdown button background when it is active*/
+    color: #f3f1f1;
+}
+
+/*this colors the dropdown menu background*/
+.dropdown-menu {
+    background-color: #009688;
+}
+
+/*this colors the font in the dropdown menu*/
+.dropdown-menu li a {
+    color: #f3f1f1;
+    margin: 8px;
+    padding: 5px;
+    font-size: 14px;
+}
+
+/*this makes the dropdown menu taller*/
+.dropdown-menu li {
+    min-height: 30px;
+}
+
+/*navbar dropdown caret*/
+.navbar-default .navbar-nav > .dropdown > a .caret {
+    border-top-color: darkgray;
+    border-bottom-color: darkgray;
 }

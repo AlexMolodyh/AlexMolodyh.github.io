@@ -10,25 +10,20 @@
 
 <h2>ProductsDisplay</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
 <div class="row">
     @foreach (var item in Model)
     {
-        if (counter != 0 && counter % 3 == 0)
+        if (counter != 0 && counter % 4 == 0)
         {
             @:</div>
             @:<div class="row">
         }
-        <div class="col-lg-4">
+        <div class="col-md-3">
             <div class="item-tile">
                 <div>
                     <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.ProductProductPhotoes.FirstOrDefault().ProductPhoto.LargePhoto))" />
                 </div>
-                <hr />
-                <div>
+                <div class="item-tile-description">
                     <!--Information goes here-->
                     <!--Product name here-->
                     <h4>@item.Name</h4>
