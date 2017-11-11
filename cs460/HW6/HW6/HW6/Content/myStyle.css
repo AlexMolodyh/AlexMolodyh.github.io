@@ -3,3 +3,10 @@
     padding: 5px;
     margin-bottom: 20px;
 }
+
+#product-button.btn.btn-primary {
+    min-width: 55%;
+    color: dimgrey;
+    background-color: white;
+    border-color: dimgray;
+}

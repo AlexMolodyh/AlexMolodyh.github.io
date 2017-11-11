@@ -36,6 +36,7 @@
                     <!--Price goes here-->
                     <h4><b>@item.ListPrice.ToString($"C")</b></h4>
 
+                    @Html.ActionLink("Details", "ProductInfo", "Product", new { pID = item.ProductID }, new { @class = "btn btn-primary", @id = "product-button" })
                 </div>
             </div>
         </div>

@@ -47,5 +47,18 @@ namespace HW6.Controllers
             int pageNumber = (page ?? 1);
             return View(productList.ToPagedList(pageNumber, pageSize));
         }
+
+        public ActionResult ProductInfo(int? pID)
+        {
+            Debug.WriteLine($"ProductID is: {pID ?? -1} ");
+
+            var IEProduct = db.Products.Where(p => p.ProductID == pID);
+            Product product = IEProduct.First();
+
+            Debug.WriteLine($"Product Name is: {product.Name} ");
+
+
+            return View(product);
+        }
     }
 }
