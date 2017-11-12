@@ -15,6 +15,7 @@ namespace HW6.Controllers
     public class ProductController : Controller
     {
         private HW6DBContext db = new HW6DBContext();
+        private static List<Product> productList;
 
         // GET: Products
         public ActionResult Index()
@@ -35,7 +36,7 @@ namespace HW6.Controllers
             int psIndex = subCater.First();
 
             var productIE = db.Products.Where(p => p.ProductSubcategoryID == psIndex);
-            List<Product> productList = productIE.ToList<Product>();
+            productList = productIE.ToList<Product>();
 
 
             //foreach(Product p in productList)
@@ -50,15 +51,42 @@ namespace HW6.Controllers
 
         public ActionResult ProductInfo(int? pID)
         {
-            Debug.WriteLine($"ProductID is: {pID ?? -1} ");
+            return View(GetProduct(pID));
+        }
 
-            var IEProduct = db.Products.Where(p => p.ProductID == pID);
-            Product product = IEProduct.First();
+        [HttpGet]
+        public ActionResult WriteReview(int? pID)
+        {
+            ProductReview productReview = new ProductReview();
+            productReview.ProductID = pID ?? 0;
 
-            Debug.WriteLine($"Product Name is: {product.Name} ");
+            ViewBag.CurrentProductName = GetProduct(pID).Name;
+            return View(productReview);
+        }
 
+        [HttpPost]
+        public ActionResult WriteReview(ProductReview productReview)
+        {
+            Debug.WriteLine($"ProductReview: {productReview.ReviewerName}");
+            
+            productReview.ModifiedDate = DateTime.Now;
+            productReview.ReviewDate = DateTime.Now;
 
-            return View(product);
+            db.Products.Select(p => p.ProductReviews).First().Add(productReview);
+            db.ProductReviews.Add(productReview);
+            db.SaveChanges();
+            return View("ThankYou", productReview);
+        }
+
+        public ActionResult ThankYou(ProductReview productReview)
+        {
+            return View(productReview);
+        }
+
+        public Product GetProduct(int? pID)
+        {
+            int productID = pID ?? 1;
+            return db.Products.Where(p => p.ProductID == productID).First();
         }
     }
 }

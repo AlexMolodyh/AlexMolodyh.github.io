@@ -1,11 +1,41 @@
 ﻿@model HW6.Models.Product
 
 @{
-    ViewBag.Title = "ProductInfo";
+    ViewBag.Title = "Product Info";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    <link rel="stylesheet" href="~/Content/myStyle.css" />
 }
 
-<h2>ProductInfo</h2>
+<div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="product-info-container">
+                <!--section for product photo-->
+                <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.ProductProductPhotoes.First().ProductPhoto.LargePhoto))" />
+            </div>
+        </div>
+        <div class="col-md-4 review-button-col">
+            <!--section for product name, price, and description-->
+            <h4><b>Product Name: </b>@Model.Name</h4>
+            <h4><b>Price: </b>@Model.ListPrice.ToString($"C")</h4>
+            <h4><b>Weight: </b>@(Model.Weight ?? 0)</h4>
 
-<h4>Product Name: @Model.Name</h4>
+            @Html.ActionLink("Write Review", "WriteReview", "Product", new { pID = Model.ProductID, product = Model }, new { @class = "btn btn-primary", @id = "write-review-button" })
+        </div>
+    </div>
+
+    <div class="product-review">
+        @if (Model.ProductReviews.Count > 0)
+        {
+            foreach (var review in Model.ProductReviews)
+            {
+                <hr />
+
+                <h4>Customer Name: @review.ReviewerName</h4>
+                <h4>Review Date: @review.ReviewDate</h4>
+                <p>@review.Comments</p>
+            }
+        }
+    </div>
+</div>
 

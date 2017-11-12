@@ -178,6 +178,7 @@
     <Compile Include="Models\ProductModelIllustration.cs" />
     <Compile Include="Models\ProductModelProductDescriptionCulture.cs" />
     <Compile Include="Models\ProductPhoto.cs" />
+    <Compile Include="Models\ProductPhotoHelper.cs" />
     <Compile Include="Models\ProductProductPhoto.cs" />
     <Compile Include="Models\ProductReview.cs" />
     <Compile Include="Models\ProductSubcategory.cs" />
@@ -192,6 +193,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\homePageStyle.css" />
     <Content Include="Content\myStyle.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
@@ -204,6 +206,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\imageRandomizer.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -226,13 +229,11 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Product\Create.cshtml" />
-    <Content Include="Views\Product\Delete.cshtml" />
-    <Content Include="Views\Product\Details.cshtml" />
-    <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\ProductsDisplay.cshtml" />
     <Content Include="Views\Product\ProductInfo.cshtml" />
+    <Content Include="Views\Product\WriteReview.cshtml" />
+    <Content Include="Views\Product\ThankYou.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

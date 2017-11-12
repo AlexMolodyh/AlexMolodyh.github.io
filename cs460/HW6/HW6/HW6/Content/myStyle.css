@@ -24,6 +24,74 @@
 }
 
 
+/**********************************home page stuff*************************************/
+
+.home-page-container h1 {
+    font-size: 80px;
+}
+
+#main-page-image {
+    width: 100%;
+}
+
+.home-page-container img {
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+}
+
+
+
+/**********************************product info page*************************************/
+
+
+#write-review-button.btn-primary {
+    min-width: 45%;
+    background-color: #00897B;
+    border-color: #00796B;
+}
+
+.row {
+    margin-top: 30px;
+}
+
+.product-info-container img {
+    min-width: 100%;
+}
+
+.product-info-container {
+    margin-bottom: 30px;
+}
+
+.product-review p {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid;
+    border-color: #4DB6AC;
+    border-radius: 5px;
+}
+
+
+/**********************************write reveiw page*************************************/
+
+#submit-review-button.btn-default {
+    min-width: 60%;
+    background-color: #00897B;
+    border-color: #00796B;
+    color: white;
+}
+
+#write-review-comment-box {
+    min-height: 100px;
+    min-width: 100%;
+}
+
+#create-review-form.form-horizontal .form-group {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+
 
 /**********************************navbar section*************************************/
 

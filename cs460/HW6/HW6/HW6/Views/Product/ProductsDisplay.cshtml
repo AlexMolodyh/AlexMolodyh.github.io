@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="~/Content/myStyle.css"/>
 }
 
-<h2>ProductsDisplay</h2>
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("ProductsDisplay",
+    new { page, ViewBag.SubCategory }))
 
 <div class="row">
     @foreach (var item in Model)

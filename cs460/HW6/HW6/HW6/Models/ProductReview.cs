@@ -17,16 +17,19 @@ namespace HW6.Models
         [StringLength(50)]
         public string ReviewerName { get; set; }
 
+
         public DateTime ReviewDate { get; set; }
 
         [Required]
         [StringLength(50)]
         public string EmailAddress { get; set; }
 
+        [Range(1, 5)]
         public int Rating { get; set; }
 
         [StringLength(3850)]
         public string Comments { get; set; }
+
 
         public DateTime ModifiedDate { get; set; }
 
