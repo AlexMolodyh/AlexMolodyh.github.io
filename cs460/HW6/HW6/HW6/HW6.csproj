@@ -193,9 +193,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\china.jpg" />
     <Content Include="Content\homePageStyle.css" />
+    <Content Include="Content\mountain.jpg" />
     <Content Include="Content\myStyle.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\world.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

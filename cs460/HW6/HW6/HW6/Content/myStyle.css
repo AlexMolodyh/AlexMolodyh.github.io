@@ -177,3 +177,8 @@
     border-top-color: darkgray;
     border-bottom-color: darkgray;
 }
+
+.dropdown {
+    margin-right: 10px;
+    margin-left: 10px;
+}
