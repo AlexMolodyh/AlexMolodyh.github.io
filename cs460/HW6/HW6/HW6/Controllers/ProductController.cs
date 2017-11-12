@@ -17,32 +17,18 @@ namespace HW6.Controllers
         private HW6DBContext db = new HW6DBContext();
         private static List<Product> productList;
 
-        // GET: Products
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public ViewResult ProductsDisplay(string subCategory, int? page)
         {
             if (subCategory == null)
                 subCategory = "Mountain Bikes";
-
-            Debug.WriteLine($"Subcategory is: {subCategory}");
+            
             ViewBag.SubCategory = subCategory;
-           
 
             var subCater = db.ProductSubcategories.Where(ps => ps.Name == subCategory).Select(ps2 => ps2.ProductSubcategoryID);
             int psIndex = subCater.First();
 
             var productIE = db.Products.Where(p => p.ProductSubcategoryID == psIndex);
             productList = productIE.ToList<Product>();
-
-
-            //foreach(Product p in productList)
-            //{
-            //    Debug.WriteLine($"Product Name is: {p.Name} Photo name is: {p.ProductProductPhotoes.FirstOrDefault().ProductPhoto.LargePhotoFileName}");
-            //}
 
             int pageSize = 12;
             int pageNumber = (page ?? 1);
@@ -67,20 +53,32 @@ namespace HW6.Controllers
         [HttpPost]
         public ActionResult WriteReview(ProductReview productReview)
         {
-            Debug.WriteLine($"ProductReview: {productReview.ReviewerName}");
-            
-            productReview.ModifiedDate = DateTime.Now;
-            productReview.ReviewDate = DateTime.Now;
+            try
+            {
 
-            db.Products.Select(p => p.ProductReviews).First().Add(productReview);
-            db.ProductReviews.Add(productReview);
-            db.SaveChanges();
-            return View("ThankYou", productReview);
+                productReview.ModifiedDate = DateTime.Now;
+                productReview.ReviewDate = DateTime.Now;
+
+                db.Products.Select(p => p.ProductReviews).First().Add(productReview);
+                db.ProductReviews.Add(productReview);
+                db.SaveChanges();
+                return View("ThankYou", productReview);
+            }
+            catch(Exception e)
+            {
+                return View("BadInput", productReview.ReviewerName);
+            }
         }
 
         public ActionResult ThankYou(ProductReview productReview)
         {
             return View(productReview);
+        }
+
+        public ActionResult BadInput(string name)
+        {
+            ViewBag.Name = name;
+            return View();
         }
 
         public Product GetProduct(int? pID)

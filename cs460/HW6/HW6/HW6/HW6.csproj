@@ -191,14 +191,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\1.jpg" />
+    <Content Include="Content\2.jpg" />
+    <Content Include="Content\3.jpg" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\china.jpg" />
     <Content Include="Content\homePageStyle.css" />
-    <Content Include="Content\mountain.jpg" />
     <Content Include="Content\myStyle.css" />
     <Content Include="Content\PagedList.css" />
-    <Content Include="Content\world.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -232,11 +232,11 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Product\ProductsDisplay.cshtml" />
     <Content Include="Views\Product\ProductInfo.cshtml" />
     <Content Include="Views\Product\WriteReview.cshtml" />
     <Content Include="Views\Product\ThankYou.cshtml" />
+    <Content Include="Views\Product\BadInput.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

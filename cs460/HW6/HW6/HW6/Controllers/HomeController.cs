@@ -14,6 +14,10 @@ namespace HW6.Controllers
         static List<ProductPhoto> photoList;
         static List<int> photoIDs;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Index()
         {
 
@@ -22,23 +26,7 @@ namespace HW6.Controllers
             photoList = photoVarList.ToList<ProductPhoto>();
             photoIDs = photoVarIDs.ToList<int>();
 
-            Debug.WriteLine($"random num is: {photoList.First().GetRandomInt(photoList.Count)}");
-
-            //Debug.WriteLine(String.Format("data:image/png;base64,{0}", Convert.ToBase64String(photoList.First().LargePhoto)));
-
             return View(photoList);
-        }
-
-        [HttpPost]
-        public byte[] NextImage()
-        {
-            byte[] img = null;
-            Random rand = new Random();
-            int newImgIndex = rand.Next(0, photoIDs.Count);
-
-            img = photoList[newImgIndex].LargePhoto;
-
-            return img;
         }
     }
 }
