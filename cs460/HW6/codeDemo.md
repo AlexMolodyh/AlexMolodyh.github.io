@@ -23,3 +23,8 @@
 
 ###### I didn't do anything fancy for the homepage. I included a navbar in the shared layout and added it to every View. This way a customer can select a subcategory from any page instead of having to go back to the homepage everytime.
 
+![Homepage Index](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/img/homepage.PNG)
+
+###### Homepage with dropdown list
+
+![Homepage Index Dropdown](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/img/homepage2.PNG)
