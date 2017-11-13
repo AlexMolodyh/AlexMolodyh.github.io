@@ -1,5 +1,5 @@
 ﻿input[type=text] {
-    width: 130px;
+    width: 140px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
@@ -7,4 +7,36 @@
     /* When the input field gets focus, change its width to 100% */
     input[type=text]:focus {
         width: 100%;
+        border: 1px solid;
+        border-color: dimgray;
+        border-radius: 20px;
     }
+
+
+#search-gifs {
+    text-align: center;
+}
+
+#search-box {
+    height: 40px;
+    border: 1px solid;
+    border-color: dimgray;
+    border-radius: 20px;
+    padding-left: 10px;
+    margin-right: 20px;
+}
+
+
+#search-box-col {
+    margin-left: 38%;
+}
+
+#search-button {
+    height: 40px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 20px;
+    border-color: dimgray;
+    color: dimgray;
+    background-color: white;
+}
