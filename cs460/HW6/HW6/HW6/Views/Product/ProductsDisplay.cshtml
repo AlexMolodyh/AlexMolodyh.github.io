@@ -8,14 +8,17 @@
     <link rel="stylesheet" href="~/Content/myStyle.css"/>
 }
 
+@*Add a pagination list on top of the items*@
 Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
 
 @Html.PagedListPager(Model, page => Url.Action("ProductsDisplay",
     new { page, ViewBag.SubCategory }))
 
 <div class="row">
+    @*This foreach loop populates a list of Product items*@
     @foreach (var item in Model)
     {
+        @*This checks to see if we have reached the end of one row and closes the row and opens another one*@
         if (counter != 0 && counter % 4 == 0)
         {
             @:</div>
@@ -23,6 +26,7 @@ Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.Page
         }
         <div class="col-md-3">
             <div class="item-tile">
+                @*convert the images from the database to a byte string*@
                 <div>
                     <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.ProductProductPhotoes.FirstOrDefault().ProductPhoto.LargePhoto))" />
                 </div>

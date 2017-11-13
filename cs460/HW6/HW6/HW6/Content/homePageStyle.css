@@ -1,4 +1,5 @@
-﻿#shared-layout-body-content.container {
+﻿/*removes the margins in the home page for the image to fill the whole screen*/
+#shared-layout-body-content.container {
     margin-left: 0px;
     margin-right: 0px;
     padding: 0px;

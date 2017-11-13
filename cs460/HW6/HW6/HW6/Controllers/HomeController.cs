@@ -14,13 +14,9 @@ namespace HW6.Controllers
         static List<ProductPhoto> photoList;
         static List<int> photoIDs;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
         public ActionResult Index()
         {
-
+            //Ignore the code here. It is meant for something else later on.
             var photoVarList = db.ProductPhotoes.ToList();
             var photoVarIDs = db.ProductPhotoes.Select(pp => pp.ProductPhotoID);
             photoList = photoVarList.ToList<ProductPhoto>();

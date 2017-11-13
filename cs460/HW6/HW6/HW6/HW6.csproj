@@ -178,7 +178,6 @@
     <Compile Include="Models\ProductModelIllustration.cs" />
     <Compile Include="Models\ProductModelProductDescriptionCulture.cs" />
     <Compile Include="Models\ProductPhoto.cs" />
-    <Compile Include="Models\ProductPhotoHelper.cs" />
     <Compile Include="Models\ProductProductPhoto.cs" />
     <Compile Include="Models\ProductReview.cs" />
     <Compile Include="Models\ProductSubcategory.cs" />
