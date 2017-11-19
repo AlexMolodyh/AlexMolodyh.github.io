@@ -1,6 +1,5 @@
 ﻿@{
     ViewBag.Title = "Home Page";
-    <link rel="stylesheet" href="@Url.Content("~/Content/myStyle.css")"/>
 }
 
 <div class="container">
@@ -9,10 +8,19 @@
             <h1 id="search-gifs">Search Gifs</h1>
         </div>
     </div>
-    <div class="row">
+    <div class="row" id="search-box-row">
         <div class="col-md-8" id="search-box-col">
             <input type="text" name="search" placeholder="Search Something.." id="search-box">
             <button class="btn btn-primary" type="button" id="search-button" onclick="search()">Search</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary">Rated G</button>
+                <button type="button" class="btn btn-primary">Rated PG</button>
+                <button type="button" class="btn btn-primary">Rated PG-13</button>
+            </div>
         </div>
     </div>
 </div>

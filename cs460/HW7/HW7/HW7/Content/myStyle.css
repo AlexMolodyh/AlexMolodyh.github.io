@@ -1,16 +1,30 @@
-﻿input[type=text] {
+﻿body {
+    /*background-color: black;
+    background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px), radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px), radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px), radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
+    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+    background-position: 0 0, 40px 60px, 130px 270px, 70px 100p*/
+
+    /*background: linear-gradient(135deg, #708090 22px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px), linear-gradient(225deg, #708090 22px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px)0 64px;
+    background-color: #708090;
+    background-size: 64px 128px*/
+
+    background-color: darkslategray;
+}
+
+input[type=text] {
     width: 140px;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
 }
 
-    /* When the input field gets focus, change its width to 100% */
-    input[type=text]:focus {
-        width: 100%;
-        border: 1px solid;
-        border-color: dimgray;
-        border-radius: 20px;
-    }
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+   width: 100%;
+   border: 1px solid;
+   border-color: dimgray;
+   border-radius: 20px;
+   box-shadow: #888888; 
+}
 
 
 #search-gifs {
@@ -39,4 +53,24 @@
     border-color: dimgray;
     color: dimgray;
     background-color: white;
+}
+
+#search-box-row {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+}
+
+
+.gif-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+.gif-image-div {
+    padding-bottom: 5px;
+    background-color: #E0E0E0;
+    box-shadow: 2px 2px 8px 2px #888888;
+    margin-top: 20px;
+    border-radius: 3px;
 }
