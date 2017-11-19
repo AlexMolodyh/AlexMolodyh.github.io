@@ -16,34 +16,40 @@ namespace HW7.Controllers
     {
         public ActionResult Index()
         {
-            string apiKey = System.Web.Configuration.WebConfigurationManager.AppSettings["GiphyKey"];
-            string url = "api.giphy.com/v1/gifs/trending?api_key=" + apiKey;
+            return View();
+        }
 
-            HttpWebRequest httpRequest = (HttpWebRequest)WebRequest.Create("http://api.giphy.com/v1/gifs/trending?api_key=" + apiKey);
+        [HttpGet]
+        public JsonResult GetJson(string searchArea, string searchParams)
+        {
+            Debug.WriteLine($"searchArea: {searchArea} searchParams: {searchParams}");
+
+            string apiKey = System.Web.Configuration.WebConfigurationManager.AppSettings["GiphyKey"];
+            string url2 = "api.giphy.com/v1/gifs/search?api_key=tMVARbZrhB0UhISU7uAiWIBiUKqUNcuf&q=cheeseburgers";
+            string url = $"http://api.giphy.com{searchArea}?api_key={apiKey}&q={searchParams}";
+            Debug.WriteLine($"Url is: {url}");
+
+            HttpWebRequest httpRequest = (HttpWebRequest)WebRequest.Create(url);
             httpRequest.Method = "GET";
             httpRequest.ContentType = "application/json";
-            JavaScriptSerializer serializer = new JavaScriptSerializer();
-            
+
             HttpWebResponse response = (HttpWebResponse)httpRequest.GetResponse();
-            //Stream stream = httpRequest.GetRequestStream();
             StreamReader sr = new StreamReader(response.GetResponseStream());
             var result = sr.ReadToEnd();
             Debug.WriteLine("Result is: " + result);
-
-            GettingStarted giphyObjs =  JsonConvert.DeserializeObject<GettingStarted>(result, Converter.Settings);
-
+    
+            GiphyObj giphyObjs = JsonConvert.DeserializeObject<GiphyObj>(result, Converter.Settings);
+            
             Debug.WriteLine("The data is: " + giphyObjs.Data.First().Type);
+            Debug.WriteLine($"Data count is: {giphyObjs.Data.Count}");
 
-            Debug.WriteLine("Api key is: " + apiKey);
-            return View();
+            return Json(giphyObjs, JsonRequestBehavior.AllowGet);
         }
-        
-
     }
 
     public static class Serialize
     {
-        public static string ToJson(this GettingStarted self) => JsonConvert.SerializeObject(self, Converter.Settings);
+        public static string ToJson(this GiphyObj self) => JsonConvert.SerializeObject(self, Converter.Settings);
     }
 
 

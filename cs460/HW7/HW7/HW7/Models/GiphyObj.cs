@@ -11,7 +11,7 @@ namespace HW7.Models
 
     using Newtonsoft.Json;
 
-    public partial class GettingStarted
+    public partial class GiphyObj
     {
         [JsonProperty("data")]
         public List<Datum> Data { get; set; }

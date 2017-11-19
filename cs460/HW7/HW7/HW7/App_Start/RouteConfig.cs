@@ -13,6 +13,11 @@ namespace HW7
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    name: "Giphy",
+            //    url: "~/{}",
+            //    defaults: new { });
+
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
