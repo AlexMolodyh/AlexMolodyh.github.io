@@ -6,7 +6,7 @@
     $.ajax({
         type: "get",
         datatype: "json",
-        url: "Home/GetJson",
+        url: "Giphy/GetJsonGifs",
         data: { searchArea: "/v1/gifs/search", searchParams: searchP },
         success: function (data) {
             //var gif = data.Gifs[0];

@@ -13,10 +13,10 @@ namespace HW7
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //routes.MapRoute(
-            //    name: "Giphy",
-            //    url: "~/{}",
-            //    defaults: new { });
+            routes.MapRoute(
+                name: "Giphy",
+                url: "gif/search/{id}",
+                defaults: new { conroller = "Giphy", action = "GetJsonGifs", id = UrlParameter.Optional });
 
             routes.MapRoute(
                 name: "Default",
