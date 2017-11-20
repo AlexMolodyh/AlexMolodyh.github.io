@@ -1,4 +1,5 @@
-﻿using HW7.Models;
+﻿using HW7.DAL;
+using HW7.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -13,30 +14,58 @@ namespace HW7.Controllers
 {
     public class GiphyController : Controller
     {
+        GifRequestContext db = new GifRequestContext();
 
         [HttpGet]
         public JsonResult GetJsonGifs(string searchArea, string searchParams, string rating)
         {
-            Debug.WriteLine($"searchArea: {searchArea} searchParams: {searchParams}");
+            string ipAddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            string userAgent = Request.Headers["User-Agent"].ToString();
+
+            if(string.IsNullOrEmpty(ipAddress))
+            {
+                ipAddress = Request.ServerVariables["REMOTE_ADDR"];
+                for(int i = 0; i < Request.ServerVariables.Count; i++)
+                {
+                    Debug.WriteLine($"Address: {Request.ServerVariables[i]}");
+                }
+            }
 
             string apiKey = System.Web.Configuration.WebConfigurationManager.AppSettings["GiphyKey"];
             string url = $"http://api.giphy.com{searchArea}?api_key={apiKey}&q={searchParams}";
             Debug.WriteLine($"Url is: {url}");
+            GifList gl = new GifList();
 
-            HttpWebRequest httpRequest = (HttpWebRequest)WebRequest.Create(url);
-            httpRequest.Method = "GET";
-            httpRequest.ContentType = "application/json";
+            try
+            {
+                HttpWebRequest httpRequest = (HttpWebRequest)WebRequest.Create(url);
+                httpRequest.Method = "GET";
+                httpRequest.ContentType = "application/json";
 
-            HttpWebResponse response = (HttpWebResponse)httpRequest.GetResponse();
-            StreamReader sr = new StreamReader(response.GetResponseStream());
-            var result = sr.ReadToEnd();
-            Debug.WriteLine("Result is: " + result);
+                HttpWebResponse response = (HttpWebResponse)httpRequest.GetResponse();
+                StreamReader sr = new StreamReader(response.GetResponseStream());
+                var result = sr.ReadToEnd();
+                Debug.WriteLine("Result is: " + result);
 
-            GiphyObj giphyObjs = JsonConvert.DeserializeObject<GiphyObj>(result, Converter.Settings);
+                GiphyObj giphyObjs = JsonConvert.DeserializeObject<GiphyObj>(result, Converter.Settings);
 
-            Debug.WriteLine("The data is: " + giphyObjs.Data[0].Images.OriginalStill.Url);
-            Debug.WriteLine($"Data count is: {giphyObjs.Data.Count}");
-            GifList gl = GetGifs(giphyObjs, rating);
+                Debug.WriteLine("The data is: " + giphyObjs.Data[0].Images.OriginalStill.Url);
+                Debug.WriteLine($"Data count is: {giphyObjs.Data.Count}");
+                gl = GetGifs(giphyObjs, rating);
+            }
+            catch (Exception e){}
+
+
+            GifRequest giphyRequest = new GifRequest()
+            {
+                IPAddress = ipAddress,
+                BrowserType = userAgent,
+                RequestDate = DateTime.Now,
+                SearchType = searchArea,
+                Rating = rating,
+                KeyWord = searchParams
+            };
+            LogRequest(giphyRequest);//Log user request
 
             return Json(gl, JsonRequestBehavior.AllowGet);
         }
@@ -77,6 +106,19 @@ namespace HW7.Controllers
             gifs.Add(myGif);
 
             return gifs;
+        }
+
+        private void LogRequest(GifRequest gif)
+        {
+            try
+            {
+                db.GifRequests.Add(gif);
+                db.SaveChanges();
+            }
+            catch(Exception e)
+            {
+                Debug.WriteLine($"Error is: {e.StackTrace}");
+            }
         }
     }
 

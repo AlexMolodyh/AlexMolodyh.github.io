@@ -2,14 +2,16 @@
 
     var searchP = $('#search-box').val();
     console.log("search param is: " + searchP);
-    var currentSearchArea = "/v1/gifs/" + document.searchArea;
+    var currentSearchArea = "/v1/gifs/search";
     console.log(currentSearchArea);
     var currentRating = "all";
+
+    if (document.searchArea)
+        currentSearchArea = "/v1/gifs/" + document.searchArea;
 
     if (document.selectedRating) {
         currentRating = document.selectedRating;
     }
-
 
     $.ajax({
         type: "get",
@@ -84,9 +86,11 @@ $(".btn-group > button.btn").on("click", function () {
         document.searchArea = this.innerHTML.toLowerCase();
         if (document.searchArea.toLowerCase() === "search") {
             $("#search-box").show();
+            $("#search-button").css("min-width", "60px");
         }
         else {
             $("#search-box").hide();
+            $("#search-button").css("min-width", "240px");
         }
     }
 
