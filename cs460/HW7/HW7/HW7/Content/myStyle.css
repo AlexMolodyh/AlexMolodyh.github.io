@@ -1,13 +1,4 @@
 ﻿body {
-    /*background-color: black;
-    background-image: radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px), radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px), radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px), radial-gradient(rgba(255,255,255,.4), rgba(255,255,255,.1) 2px, transparent 30px);
-    background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
-    background-position: 0 0, 40px 60px, 130px 270px, 70px 100p*/
-
-    /*background: linear-gradient(135deg, #708090 22px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px), linear-gradient(225deg, #708090 22px, #d9ecff 22px, #d9ecff 24px, transparent 24px, transparent 67px, #d9ecff 67px, #d9ecff 69px, transparent 69px)0 64px;
-    background-color: #708090;
-    background-size: 64px 128px*/
-
     background-color: darkslategray;
 }
 
@@ -33,32 +24,33 @@ input[type=text]:focus {
 }
 
 #search-box {
-    height: 40px;
+    height: 47px;
     border: 1px solid;
     border-color: dimgray;
-    border-radius: 20px;
+    border-radius: 23px;
     padding-left: 10px;
     margin-right: 20px;
 }
 
 
 #search-box-col {
-    margin-left: 38%;
+    margin-left: 37%;
 }
 
 #search-button {
-    height: 40px;
+    height: 47px;
+    min-width: 110px;
     padding-left: 25px;
     padding-right: 25px;
-    border-radius: 20px;
-    border-color: dimgray;
-    color: dimgray;
-    background-color: white;
+    border-radius: 23px;
+    border-color: #4527A0;
+    color: white;
+    background-color: #673AB7;
 }
 
 #search-box-row {
     margin-top: 20px !important;
-    margin-bottom: 20px !important;
+    margin-bottom: 40px !important;
 }
 
 
@@ -79,7 +71,7 @@ input[type=text]:focus {
 .btn-group.rating-button-group button.btn.btn-primary {
     background-color: #673AB7;
     border-color: #4527A0;
-    min-height: 40px;
+    min-height: 44px;
 }
 
 .btn-group.rating-button-group button.btn.btn-primary:visited {
