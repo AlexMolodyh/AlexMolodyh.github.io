@@ -2,17 +2,22 @@
 
     var searchP = $('#search-box').val();
     console.log("search param is: " + searchP);
+    var currentSearchArea = "/v1/gifs/" + document.searchArea;
+    console.log(currentSearchArea);
+    var currentRating = "all";
+
+    if (document.selectedRating) {
+        currentRating = document.selectedRating;
+    }
+
 
     $.ajax({
         type: "get",
         datatype: "json",
         url: "Giphy/GetJsonGifs",
-        data: { searchArea: "/v1/gifs/search", searchParams: searchP },
+        data: { searchArea: currentSearchArea, searchParams: searchP, rating: currentRating },
         success: function (data) {
-            //var gif = data.Gifs[0];
-            //console.log("response is: " + gif.Url);
-            //console.log("data count is: " + data.Gifs.Size);
-            populateGifs3(data);
+            populateGifs(data);
         },
         error: function () {
             alert("didn't work!");
@@ -20,20 +25,26 @@
     });
 }
 
-function populateGifs3(gifList) {
+function populateGifs(gifList) {
     var container = $("#gif-container");
     container.empty();
 
-    var gif;
+    var gifListSize = gifList.Size;
+    var imgPerUl = Math.ceil(gifListSize / 4);
+   
+    var row = $("<div></div>").attr("class", "row");
     for (var i = 0; i < gifList.Size; i++) {
-        var row = $("<div></div>").attr("class", "row");
+        var ul = $("<ul></ul>").css("list-style-type", "none");/*ul for a single column*/
+        var column = $("<div></div>").attr("class", "col-md-3").attr("id", "gif" + j);
+
         var j;
-        for (j = i; j < i + 4; j++) {
-            gif = gifList.Gifs[j];
+        for (j = i; j < i + imgPerUl && j < gifList.Size; j++) {
+            var gif = gifList.Gifs[j];
+
             var gifImageUrl = gif.Url;
             var imgDiv = $("<div></div>").attr("class", "gif-image-div");
+            var li = $("<li></li>");
 
-            var column = $("<div></div>").attr("class", "col-md-3").attr("id", "gif" + j);
             var gifImage = $("<img />")
                 .attr("src", gifImageUrl)
                 .attr("class", "gif-image")
@@ -50,85 +61,34 @@ function populateGifs3(gifList) {
 
             imgDiv.append(gifImage);
             imgDiv.append(h5);
-            column.append(imgDiv);
-            row.append(column);
+            li.append(imgDiv);
+            ul.append(li);
         }
-        container.append(row);
-        i = j;
+        column.append(ul);
+        row.append(column);
+        i = j - 1;
     }
+    container.append(row);
 }
 
-function populateGifs(gifList) {
-    var container = $("#gif-container");
-    container.empty();
-    
-    var gif;
-    for (var i = 0; i < gifList.Pagination.Count; i++){
-        var row = $("<div></div>").attr("class", "row");
-        var j;
-        for (j = i; j < i + 4; j++) {
-            gif = gifList.Data[j];
-            var gifImageUrl = gif.Images.Original.Url;
-            var imgDiv = $("<div></div>").attr("class", "gif-image-div");
+var num = null;
+$(".btn-group > button.btn").on("click", function () {
+    var buttonType = this.innerHTML.substring(0, 5);
+    console.log(buttonType);
 
-            var column = $("<div></div>").attr("class", "col-md-3").attr("id", "gif" + j);
-            var gifImage = $("<img />")
-                .attr("src", gifImageUrl)
-                .attr("class", "gif-image")
-                .attr("id", "img" + j)
-                .css("max-width", "100%");
-
-            var h5;
-            if (gif.User) {
-                var username = gif.User.Username;
-                var imgWidth = gif.Images.FixedHeight.Width;
-                
-                h5 = $("<h5>By: " + username + "</h5>")
-                    .css("margin", "0px")
-                    .css("padding", "6px");
-            }
-
-            imgDiv.append(gifImage);
-            imgDiv.append(h5);
-            column.append(imgDiv);
-            row.append(column);
-        }
-        container.append(row);
-        i = j;
+    if (buttonType.toLocaleLowerCase() === "rated") {
+        document.selectedRating = this.innerHTML.substring(6).toLowerCase();
+        $("#rating-h5").text("Current rating: " + this.innerHTML);
     }
-}
-
-function populateGifs2(gifList) {
-    var container = $("#gif-container");
-    container.empty();
-    
-    for (var i = 0; i < gifList.Pagination.Count; i++) {
-        var ul = $("<ul></ul>");
-        var gif = gifList.Data[i];
-        var gifImageUrl = gif.Images.Original.Url;
-        var imgDiv = $("<div></div>").attr("class", "gif-image-div");
-
-        var li = $("<li></li>").attr("id", "gif" + i);
-        var gifImage = $("<img />")
-            .attr("src", gifImageUrl)
-            .attr("class", "gif-image")
-            .attr("id", "img" + i);
-
-        var h5;
-        if (gif.User) {
-            var username = gif.User.Username;
-            var imgWidth = gif.Images.FixedHeight.Width;
-
-            h5 = $("<h5><b>Posted By: </b> " + username + "</h5>")
-                .css("margin", "0px")
-                .css("padding", "6px");
-
-        imgDiv.append(gifImage);
-        imgDiv.append(h5);
-        li.append(imgDiv);
-        ul.append(li);
+    else {
+        document.searchArea = this.innerHTML.toLowerCase();
+        if (document.searchArea.toLowerCase() === "search") {
+            $("#search-box").show();
         }
-        container.append(ul);
-
+        else {
+            $("#search-box").hide();
+        }
     }
-}
+
+    console.log("search area: " + document.searchArea);
+});
