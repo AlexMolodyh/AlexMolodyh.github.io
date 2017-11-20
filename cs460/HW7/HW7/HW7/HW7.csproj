@@ -149,7 +149,6 @@
     </Compile>
     <Compile Include="Models\Gif.cs" />
     <Compile Include="Models\GifList.cs" />
-    <Compile Include="Models\GiphyImage.cs" />
     <Compile Include="Models\GiphyObj.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -29,6 +29,7 @@ input[type=text]:focus {
 
 #search-gifs {
     text-align: center;
+    color: white;
 }
 
 #search-box {
@@ -73,4 +74,19 @@ input[type=text]:focus {
     box-shadow: 2px 2px 8px 2px #888888;
     margin-top: 20px;
     border-radius: 3px;
+}
+
+.btn-group.rating-button-group button.btn.btn-primary {
+    background-color: #673AB7;
+    border-color: #4527A0;
+    min-height: 40px;
+}
+
+.btn-group.rating-button-group button.btn.btn-primary:visited {
+    background-color: #4527A0;
+}
+
+#rating-h5 {
+    color: white;
+    font-size: 16px;
 }

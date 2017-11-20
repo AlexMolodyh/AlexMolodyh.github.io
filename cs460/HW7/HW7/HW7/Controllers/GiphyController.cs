@@ -57,6 +57,7 @@ namespace HW7.Controllers
             catch (Exception e){}
 
 
+<<<<<<< HEAD
             GifRequest giphyRequest = new GifRequest()
             {
                 IPAddress = ipAddress,
@@ -67,6 +68,11 @@ namespace HW7.Controllers
                 KeyWord = searchParams
             };
             LogRequest(giphyRequest);//Log user request
+=======
+            Debug.WriteLine("The data is: " + giphyObjs.Data[0].Images.OriginalStill.Url);
+            Debug.WriteLine($"Data count is: {giphyObjs.Data.Count}");
+            GifList gl = GetGifs(giphyObjs, rating);
+>>>>>>> HW7ul
 
             return Json(gl, JsonRequestBehavior.AllowGet);
         }
@@ -108,6 +114,7 @@ namespace HW7.Controllers
 
             return gifs;
         }
+<<<<<<< HEAD
 
         private void LogRequest(GifRequest gif)
         {
@@ -121,6 +128,8 @@ namespace HW7.Controllers
                 Debug.WriteLine($"Error is: {e.StackTrace}");
             }
         }
+=======
+>>>>>>> HW7ul
     }
 
     public static class Serialize

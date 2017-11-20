@@ -131,19 +131,19 @@ namespace HW7.Models
     public partial class Images
     {
         [JsonProperty("downsized")]
-        public The480wStill Downsized { get; set; }
+        public FixedHeight Downsized { get; set; }
 
         [JsonProperty("downsized_large")]
-        public The480wStill DownsizedLarge { get; set; }
+        public FixedHeight DownsizedLarge { get; set; }
 
         [JsonProperty("downsized_medium")]
-        public The480wStill DownsizedMedium { get; set; }
+        public FixedHeight DownsizedMedium { get; set; }
 
         [JsonProperty("downsized_small")]
-        public DownsizedSmall DownsizedSmall { get; set; }
+        public FixedHeight DownsizedSmall { get; set; }
 
         [JsonProperty("downsized_still")]
-        public The480wStill DownsizedStill { get; set; }
+        public FixedHeight DownsizedStill { get; set; }
 
         [JsonProperty("fixed_height")]
         public FixedHeight FixedHeight { get; set; }
@@ -155,10 +155,10 @@ namespace HW7.Models
         public FixedHeight FixedHeightSmall { get; set; }
 
         [JsonProperty("fixed_height_small_still")]
-        public The480wStill FixedHeightSmallStill { get; set; }
+        public FixedHeight FixedHeightSmallStill { get; set; }
 
         [JsonProperty("fixed_height_still")]
-        public The480wStill FixedHeightStill { get; set; }
+        public FixedHeight FixedHeightStill { get; set; }
 
         [JsonProperty("fixed_width")]
         public FixedHeight FixedWidth { get; set; }
@@ -170,46 +170,37 @@ namespace HW7.Models
         public FixedHeight FixedWidthSmall { get; set; }
 
         [JsonProperty("fixed_width_small_still")]
-        public The480wStill FixedWidthSmallStill { get; set; }
+        public FixedHeight FixedWidthSmallStill { get; set; }
 
         [JsonProperty("fixed_width_still")]
-        public The480wStill FixedWidthStill { get; set; }
+        public FixedHeight FixedWidthStill { get; set; }
 
         [JsonProperty("hd")]
-        public DownsizedSmall Hd { get; set; }
+        public FixedHeight Hd { get; set; }
 
         [JsonProperty("looping")]
-        public Looping Looping { get; set; }
+        public FixedHeight Looping { get; set; }
 
         [JsonProperty("original")]
         public FixedHeight Original { get; set; }
 
         [JsonProperty("original_mp4")]
-        public DownsizedSmall OriginalMp4 { get; set; }
+        public FixedHeight OriginalMp4 { get; set; }
 
         [JsonProperty("original_still")]
-        public The480wStill OriginalStill { get; set; }
+        public FixedHeight OriginalStill { get; set; }
 
         [JsonProperty("preview")]
-        public DownsizedSmall Preview { get; set; }
+        public FixedHeight Preview { get; set; }
 
         [JsonProperty("preview_gif")]
-        public The480wStill PreviewGif { get; set; }
+        public FixedHeight PreviewGif { get; set; }
 
         [JsonProperty("preview_webp")]
-        public The480wStill PreviewWebp { get; set; }
+        public FixedHeight PreviewWebp { get; set; }
 
         [JsonProperty("480w_still")]
-        public The480wStill The480wStill { get; set; }
-    }
-
-    public partial class Looping
-    {
-        [JsonProperty("mp4")]
-        public string Mp4 { get; set; }
-
-        [JsonProperty("mp4_size")]
-        public string Mp4Size { get; set; }
+        public FixedHeight The480wStill { get; set; }
     }
 
     public partial class FixedHeight
@@ -240,36 +231,6 @@ namespace HW7.Models
 
         [JsonProperty("webp_size")]
         public string WebpSize { get; set; }
-
-        [JsonProperty("width")]
-        public string Width { get; set; }
-    }
-
-    public partial class DownsizedSmall
-    {
-        [JsonProperty("height")]
-        public string Height { get; set; }
-
-        [JsonProperty("mp4")]
-        public string Mp4 { get; set; }
-
-        [JsonProperty("mp4_size")]
-        public string Mp4Size { get; set; }
-
-        [JsonProperty("width")]
-        public string Width { get; set; }
-    }
-
-    public partial class The480wStill
-    {
-        [JsonProperty("height")]
-        public string Height { get; set; }
-
-        [JsonProperty("size")]
-        public string Size { get; set; }
-
-        [JsonProperty("url")]
-        public string Url { get; set; }
 
         [JsonProperty("width")]
         public string Width { get; set; }
