@@ -19,12 +19,14 @@ input[type=text]:focus {
 
 
 #search-gifs {
+    margin-top: 50px;
+    font-size: 40px;
     text-align: center;
     color: white;
 }
 
 #search-box {
-    height: 47px;
+    height: 45px;
     border: 1px solid;
     border-color: dimgray;
     border-radius: 23px;
@@ -38,7 +40,7 @@ input[type=text]:focus {
 }
 
 #search-button {
-    height: 47px;
+    height: 45px;
     min-width: 110px;
     padding-left: 25px;
     padding-right: 25px;
@@ -71,7 +73,7 @@ input[type=text]:focus {
 .btn-group.rating-button-group button.btn.btn-primary {
     background-color: #673AB7;
     border-color: #4527A0;
-    min-height: 44px;
+    min-height: 43px;
 }
 
 .btn-group.rating-button-group button.btn.btn-primary:visited {
