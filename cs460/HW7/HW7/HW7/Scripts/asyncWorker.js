@@ -1,9 +1,7 @@
 ﻿function search() {
 
     var searchP = $('#search-box').val();
-    console.log("search param is: " + searchP);
     var currentSearchArea = "/v1/gifs/search";
-    console.log(currentSearchArea);
     var currentRating = "all";
 
     if (document.searchArea)
@@ -19,7 +17,10 @@
         url: "Giphy/GetJsonGifs",
         data: { searchArea: currentSearchArea, searchParams: searchP, rating: currentRating },
         success: function (data) {
-            populateGifs(data);
+            if (data.Size > 0)
+                populateGifs(data);
+            else
+                alert("No results found!");
         },
         error: function () {
             alert("didn't work!");
@@ -76,7 +77,6 @@ function populateGifs(gifList) {
 var num = null;
 $(".btn-group > button.btn").on("click", function () {
     var buttonType = this.innerHTML.substring(0, 5);
-    console.log(buttonType);
 
     if (buttonType.toLocaleLowerCase() === "rated") {
         document.selectedRating = this.innerHTML.substring(6).toLowerCase();
@@ -87,12 +87,12 @@ $(".btn-group > button.btn").on("click", function () {
         if (document.searchArea.toLowerCase() === "search") {
             $("#search-box").show();
             $("#search-button").css("min-width", "60px");
+            $("#search-gifs").text("Search Gifs");
         }
         else {
             $("#search-box").hide();
             $("#search-button").css("min-width", "240px");
+            $("#search-gifs").text("Search " + this.innerHTML + " Gifs");
         }
     }
-
-    console.log("search area: " + document.searchArea);
 });

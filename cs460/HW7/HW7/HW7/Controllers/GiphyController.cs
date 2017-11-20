@@ -65,6 +65,7 @@ namespace HW7.Controllers
                 Rating = rating,
                 KeyWord = searchParams
             };
+
             LogRequest(giphyRequest);//Log user request
 
             return Json(gl, JsonRequestBehavior.AllowGet);
