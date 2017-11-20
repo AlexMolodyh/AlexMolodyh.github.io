@@ -58,7 +58,7 @@ input[type=text]:focus {
 
 .gif-image {
     max-width: 100%;
-    height: auto;
+    max-height: 100%;
     margin-top: 20px;
 }
 

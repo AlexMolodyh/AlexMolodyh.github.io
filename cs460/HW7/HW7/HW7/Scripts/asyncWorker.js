@@ -71,7 +71,7 @@ function populateGifs(gifList) {
 
             var gifImageUrl = gif.Url;//get the gif url
             var imgDiv = $("<div></div>").attr("class", "gif-image-div");//holds the gif and username
-            var li = $("<li></li>");
+            var li = $("<li></li>").attr("class", "img-li");
 
             //holds the gif image
             var gifImage = $("<img />")
