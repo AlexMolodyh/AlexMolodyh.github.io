@@ -126,7 +126,7 @@ namespace HW7.Controllers
         //Inserts a client request into the database.
         private void LogRequest(string ipAddress, string userAgent, string searchArea, string searchParams, string rating)
         {
-            GifRequest giphyRequest = new GifRequest()
+            GiphyRequest giphyRequest = new GiphyRequest()
             {
                 IPAddress = ipAddress,
                 BrowserType = userAgent,
@@ -135,16 +135,9 @@ namespace HW7.Controllers
                 Rating = rating,
                 KeyWord = searchParams
             };
-
-            try
-            {
-                db.GifRequests.Add(giphyRequest);
+            
+                db.GiphyRequests.Add(giphyRequest);
                 db.SaveChanges();
-            }
-            catch(Exception e)
-            {
-                Debug.WriteLine($"Error is: {e.StackTrace}");
-            }
         }
     }
 

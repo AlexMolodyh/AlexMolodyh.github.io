@@ -153,13 +153,13 @@
     <Compile Include="Controllers\GiphyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\GifRequestContext.cs" />
+    <Compile Include="DAL\GiphyRequest.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Gif.cs" />
     <Compile Include="Models\GifList.cs" />
     <Compile Include="Models\GiphyObj.cs" />
-    <Compile Include="Models\GifRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

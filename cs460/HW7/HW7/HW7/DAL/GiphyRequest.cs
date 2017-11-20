@@ -1,4 +1,4 @@
-namespace HW7.Models
+namespace HW7.DAL
 {
     using System;
     using System.Collections.Generic;
@@ -7,15 +7,14 @@ namespace HW7.Models
     using System.Data.Entity.Spatial;
 
     [Table("GiphyRequest")]
-    public partial class GifRequest
+    public partial class GiphyRequest
     {
         public int ID { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string IPAddress { get; set; }
 
-        [StringLength(100)]
+        [StringLength(200)]
         public string BrowserType { get; set; }
 
         public DateTime RequestDate { get; set; }
