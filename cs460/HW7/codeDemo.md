@@ -1,4 +1,4 @@
-# ASP.Net MVC 5 Online Store
+# ASP.Net MVC 5 Giphy Web App
 
 ## I demonstrate Giphy search web app and how some of the functions work.
 
