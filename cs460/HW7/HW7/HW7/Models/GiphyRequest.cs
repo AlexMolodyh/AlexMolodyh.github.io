@@ -1,4 +1,4 @@
-namespace HW7.DAL
+namespace HW7.Models
 {
     using System;
     using System.Collections.Generic;

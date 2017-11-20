@@ -135,9 +135,12 @@ namespace HW7.Controllers
                 Rating = rating,
                 KeyWord = searchParams
             };
-            
+
+            try
+            {
                 db.GiphyRequests.Add(giphyRequest);
                 db.SaveChanges();
+            }catch(Exception e) { Debug.WriteLine(e.StackTrace); }
         }
     }
 

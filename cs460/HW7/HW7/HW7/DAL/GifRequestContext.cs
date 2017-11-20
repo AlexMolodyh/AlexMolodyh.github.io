@@ -4,6 +4,7 @@ namespace HW7.DAL
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using HW7.Models;
 
     public partial class GifRequestContext : DbContext
     {
