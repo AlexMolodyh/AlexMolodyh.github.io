@@ -1,244 +1,180 @@
 # ASP.Net MVC 5 Online Store
 
-## Here I demonstrate the nongeneral code used in the database. I include screenshots of the program to demonstrate how it would be used as well.
+## I demonstrate Giphy search web app and how some of the functions work.
 
-### The following are links to github for the code used in the web store. I didn't include the thank you page and the error page because they're 5 lines of code that is very typical code.
+### The following are links to github for the code used in the Giphy web app.
 
-[HomeController](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/HW6/HW6/Controllers/HomeController.cs)
+[HomeController](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Controllers/HomeController.cs)
 
-[Home page image](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/HW6/HW6/Views/Home/Index.cshtml)
+[Home page](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Views/Home/Index.cshtml)
 
-[ProductController](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/HW6/HW6/Controllers/ProductController.cs)
+[Custom Rout](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/App_Start/RouteConfig.cs)
 
-[Shared Layout](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/HW6/HW6/Views/Shared/_Layout.cshtml)
+[SQL Up Table](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/App_Data/db_UP.sql)
 
-[Product items display](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/HW6/HW6/Views/Product/ProductsDisplay.cshtml)
+[SQL DOWN Table](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/App_Data/db_DOWN.sql)
 
-[Product information display](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/HW6/HW6/Views/Product/ProductInfo.cshtml)
+[GiphyController](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Controllers/GiphyController.cs)
 
-[Write a reveiw page](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/HW6/HW6/Views/Product/WriteReview.cshtml)
+[Shared Layout](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Views/Shared/_Layout.cshtml)
+
+[Gif Object](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Models/Gif.cs)
+
+[GifList](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Models/GifList.cs)
+
+[GifRequestContext](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/DAL/GifRequestContext.cs)
+
+[GifRequest For Logging](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Models/GifRequest.cs)
+
+[GiphyObj for Json serialization](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Models/GiphyObj.cs)
+
+[Javascript File](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Scripts/asyncWorker.js)
+
+[CSS File](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Content/myStyle.css)
 
 
 #### **The Homepage**
 
-###### I didn't do anything fancy for the homepage. I included a navbar in the shared layout and added it to every View. This way a customer can select a subcategory from any page instead of having to go back to the homepage everytime.
+###### The homepage contains a navbar with a button group for selecting an area to search in. Theres a serchbar and another button group for filtering the search results with such as: Rated G, PG, PG-13, and All.
 
-![Homepage Index](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/img/homepage.PNG?raw=true)
+![Homepage Index](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/img/home_page.PNG?raw=true)
 
-##### **Homepage with dropdown list**
+##### **Homepage Expanded Searchbox**
 
-![Homepage Index Dropdown](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/img/homepage2.PNG?raw=true)
+![Homepage Index](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/img/expandable_search_bar.PNG?raw=true)
 
 
-#### **The Products Display Page**
+#### **Homepage Trending Rated All**
 
-###### I tried to nicely display the items with a large photo so a customer could see what the item is. I only allowed 12 items per page, which are in a paged list. To use the PagedList feature, I added a nuget package called PagedList.MVC. I generate each item in a foreach loop inside a View using razor. The following code demonstrates that code:
-```html
-@{
-    ViewBag.Title = "ProductsDisplay";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    int counter = 0;
-    <link rel="stylesheet" href="~/Content/myStyle.css"/>
-}
+###### When a rating is selected, the searchbox disappears and the text to the right of the rating buttons changes to the currently selected rating to let the user keep track of their selection. The ideal thing here would be to color the current button darker but after fiddeling with it for a while I stopped as I'm short on time....
 
-@*Add a pagination list on top of the items*@
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+![Homepage Index Trending](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/img/trending_search_rated_all.PNG?raw=true)
 
-@Html.PagedListPager(Model, page => Url.Action("ProductsDisplay",
-    new { page, ViewBag.SubCategory }))
+###### Here we have the output from searching the trending area.
 
-<div class="row">
-    @*This foreach loop populates a list of Product items*@
-    @foreach (var item in Model)
-    {
-        @*This checks to see if we have reached the end of one row and closes the row and opens another one*@
-        if (counter != 0 && counter % 4 == 0)
-        {
-            @:</div>
-            @:<div class="row">
-        }
-        <div class="col-md-3">
-            <div class="item-tile">
-                @*convert the images from the database to a byte string*@
-                <div>
-                    <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(item.ProductProductPhotoes.FirstOrDefault().ProductPhoto.LargePhoto))" />
-                </div>
-                <div class="item-tile-description">
-                    <!--Information goes here-->
-                    <!--Product name here-->
-                    <h4>@item.Name</h4>
+![Homepage Index Trending](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/img/trending_output.PNG?raw=true)
 
-                    <!--Price goes here-->
-                    <h4><b>@item.ListPrice.ToString($"C")</b></h4>
+###### Here we have the output from the rated PG Trending.
 
-                    @Html.ActionLink("Details", "ProductInfo", "Product", new { pID = item.ProductID }, new { @class = "btn btn-primary", @id = "product-button" })
-                </div>
-            </div>
-        </div>
-        counter++;
-    }
-</div>
-<hr />
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+![Homepage Index PG search](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/img/pg_rating_output.PNG?raw=true)
 
-@Html.PagedListPager(Model, page => Url.Action("ProductsDisplay",
-    new { page, ViewBag.SubCategory }))
-```
+###### Here we have the output from the rated All search.
 
-##### **Code to get the list of Products**
+![Homepage Index PG search](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/img/all_rating_output(slow%20network).PNG?raw=true)
 
+###### Here we have the database client request logs.
+
+![Homepage Index PG search](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/img/database_logs.PNG?raw=true)
+
+
+###### This is the code used for the custom routing.
 ```csharp
-public ViewResult ProductsDisplay(string subCategory, int? page)
+public static void RegisterRoutes(RouteCollection routes)
         {
-            if (subCategory == null)
-                subCategory = "Mountain Bikes";
-            
-            ViewBag.SubCategory = subCategory;
+            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            var subCater = db.ProductSubcategories.Where(ps => ps.Name == subCategory).Select(ps2 => ps2.ProductSubcategoryID);
-            int psIndex = subCater.First();
+            routes.MapRoute(
+                name: "Giphy",
+                url: "gif/search/{id}",
+                defaults: new { conroller = "Giphy", action = "GetJsonGifs", id = UrlParameter.Optional });
 
-            var productIE = db.Products.Where(p => p.ProductSubcategoryID == psIndex);
-            productList = productIE.ToList<Product>();
-
-            int pageSize = 12;
-            int pageNumber = (page ?? 1);
-            return View(productList.ToPagedList(pageNumber, pageSize));
+            routes.MapRoute(
+                name: "Default",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+            );
         }
 ```
 
-##### **Screenshot of ProductsDisplay View**
-
-![Products Display](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/img/display_items_page.PNG?raw=true)
-
-##### **Product Info Page**
-
-###### I used a simple design to display the selected item and its image. The image is stretched to fit my particular design choice so it doesn't look to good if the image isn't a good quality to begin with. If the product contains reviews, I display them in a top-down manner with a for loop using razor.
-
-##### **The View**
-```html
-<div>
-    <div class="row">
-        <div class="col-md-8">
-            <div class="product-info-container">
-                <!--section for product photo-->
-                <img src="@String.Format("data:image/png;base64,{0}", Convert.ToBase64String(Model.ProductProductPhotoes.First().ProductPhoto.LargePhoto))" />
-            </div>
-        </div>
-        <div class="col-md-4 review-button-col">
-            <!--section for product name, price, and description-->
-            <h4><b>Product Name: </b>@Model.Name</h4>
-            <h4><b>Price: </b>@Model.ListPrice.ToString($"C")</h4>
-            <h4><b>Weight: </b>@(Model.Weight ?? 0)</h4>
-
-            @Html.ActionLink("Write Review", "WriteReview", "Product", new { pID = Model.ProductID, product = Model }, new { @class = "btn btn-primary", @id = "write-review-button" })
-        </div>
-    </div>
-
-    <div class="product-review">
-        <!--Builds reviews from a list by laying the reviews in a top down order-->
-        @if (Model.ProductReviews.Count > 0)
-        {
-            foreach (var review in Model.ProductReviews)
-            {
-                <hr />
-
-                <h4>Customer Name: @review.ReviewerName</h4>
-                <h4>Review Date: @review.ReviewDate</h4>
-                <p>@review.Comments</p>
-            }
-        }
-    </div>
-</div>
-```
-
-##### **The Controller side**
-```csharp
-public ActionResult ProductInfo(int? pID)
-{
-    return View(GetProduct(pID));
-}
-
-//I use this method in many places, that's why I chose to write it this way.
-public Product GetProduct(int? pID)
-{
-    int productID = pID ?? 1;
-    return db.Products.Where(p => p.ProductID == productID).First();
-}
-```
-
-##### **The Product Info Page**
-
-![Product Info](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/img/product_info_page.PNG?raw=true)
-
-##### **After a review has been submitted**
-
-![Product Info with Review](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/img/after_writing_review.PNG?raw=true)
-
-
-##### **Product Review Page**
-
-###### I included the ProductID in the review page so that a customer can use it to select a different product by ID if they choose to. I didn't include the dates because when a user creates a review, it is on today's date. We don't have a section for a user to modify a review so I didn't include the EditDate either. The View code is simple and boring so no need to include it here, it can be found at the top at one of the product review link. The following code is from the ProductController:
+##### **The GiphyController section to send GET requests**
 
 ```csharp
-        /// <summary>
-        /// Prepares a ProductReview object to capture the users review of an item.
-        /// </summary>
-        /// <param name="pID">The Product that the customer wants to add a review to.</param>
-        /// <returns>A ProductReview object.</returns>
         [HttpGet]
-        public ActionResult WriteReview(int? pID)
+        public JsonResult GetJsonGifs(string searchArea, string searchParams, string rating)
         {
-            ProductReview productReview = new ProductReview();
-            productReview.ProductID = pID ?? 0;
+            //Get the IP address and browser user agent for logging.
+            string ipAddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
+            string userAgent = Request.Headers["User-Agent"].ToString();
+            if(string.IsNullOrEmpty(ipAddress))
+                ipAddress = Request.ServerVariables["REMOTE_ADDR"];
 
-            ViewBag.CurrentProductName = GetProduct(pID).Name;
-            return View(productReview);
-        }
+            //Get api key and build the GET request header.
+            string apiKey = System.Web.Configuration.WebConfigurationManager.AppSettings["GiphyKey"];
+            string url = $"http://api.giphy.com{searchArea}?api_key={apiKey}&q={searchParams}";
+            Debug.WriteLine($"Url is: {url}");
+            GifList gl = new GifList();
+            GiphyObj giphyObjs = null;
 
-        /// <summary>
-        /// WriteReview takes in a ProductReview object and saves it to the database.
-        /// </summary>
-        /// <param name="productReview">A ProductReview that needs to be saved 
-        /// to the database.</param>
-        /// <returns>A view thanking the user for the review or an error page if the user
-        /// input bad data.</returns>
-        [HttpPost]
-        public ActionResult WriteReview(ProductReview productReview)
-        {
+            /*Try to deserialize the json data into C# objects*/
             try
             {
-                productReview.ModifiedDate = DateTime.Now;
-                productReview.ReviewDate = DateTime.Now;
+                //Send request to Giphy.com
+                HttpWebRequest httpRequest = (HttpWebRequest)WebRequest.Create(url);
+                httpRequest.Method = "GET";
+                httpRequest.ContentType = "application/json";
 
-                db.Products.Select(p => p.ProductReviews).First().Add(productReview);
-                db.ProductReviews.Add(productReview);
-                db.SaveChanges();
-                return View("ThankYou", productReview);
+                //Handle response
+                HttpWebResponse response = (HttpWebResponse)httpRequest.GetResponse();
+                StreamReader sr = new StreamReader(response.GetResponseStream());
+                var result = sr.ReadToEnd();
+                Debug.WriteLine("Result is: " + result);
+
+                giphyObjs = JsonConvert.DeserializeObject<GiphyObj>(result, Converter.Settings);
             }
-            catch(Exception e)
-            {
-                return View("BadInput", productReview.ReviewerName);
-            }
+            catch (Exception e){ Debug.WriteLine(e.StackTrace); }
+
+            gl = GetGifs(gl, giphyObjs, rating);
+            LogRequest(ipAddress, userAgent, searchArea, searchParams, rating);//Log user request
+
+            return Json(gl, JsonRequestBehavior.AllowGet);
         }
 ```
 
-##### **Product Review Screenshots**
+##### Homepage view that include the javascript file via Script.
 
-![Product Review](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/img/write_review_page.PNG?raw=true)
+```html
+@{
+    ViewBag.Title = "Home Page";
+}
 
-##### **Product Review With Bad Input**
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 id="search-gifs">Search Gifs</h1>
+        </div>
+    </div>
+    <div class="row" id="search-box-row">
+        <div class="col-md-8" id="search-box-col">
+            <input type="text" name="search" placeholder="Search Something.." id="search-box">
+            <button class="btn btn-primary" type="button" id="search-button" onclick="search()">Search</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 col-md-offset-2">
+            <div class="btn-group rating-button-group">
+                <button type="button" class="btn btn-primary">Rated All</button>
+                <button type="button" class="btn btn-primary">Rated G</button>
+                <button type="button" class="btn btn-primary">Rated PG</button>
+                <button type="button" class="btn btn-primary">Rated PG-13</button>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h5 id="rating-h5">Current rating: Rated All</h5>
+        </div>
+    </div>
+</div>
 
-![Product Review Bad Input](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/img/write_reveiw_page_bad_input.PNG?raw=true)
+@*Section contains the unordered lists of gifs*@
+<div id="gif-container">
 
+</div>
 
-##### **Thank You Page**
+@section CustomScripts{ 
+    <script type="text/javascript" src="~/Scripts/asyncWorker.js"></script>
+}
+```
 
-![Thank You](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW6/img/thank_you_page.PNG?raw=true)
-
-
-##### **Code For Shared Layout**
-
+##### Shared layout with custom RenderSection
 ```html
 <!DOCTYPE html>
 <html>
@@ -247,15 +183,11 @@ public Product GetProduct(int? pID)
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/myStyle.css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" href="~/Content/myStyle.css"/>
 </head>
 <body>
-
-    @{
-        int defaultPage = 1;
-    }
-    <div class="navbar navbar-default navbar-fixed-top gradient">
+    <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -266,72 +198,19 @@ public Product GetProduct(int? pID)
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <!--Dropdown for Bikes category-->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bikes<span class="caret"></span></a>
-                        <ul class="dropdown-menu gradient">
-                            <li>@Html.ActionLink("Mountain Bikes", "ProductsDisplay", "Product", new { subCategory = "Mountain Bikes", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Road Bikes", "ProductsDisplay", "Product", new { subCategory = "Road Bikes", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Touring Bikes", "ProductsDisplay", "Product", new { subCategory = "Touring Bikes", defaultPage }, null)</li>
-                        </ul>
-                    </li>
-                    <!--Dropdown for Clothing category-->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Clothing<span class="caret"></span></a>
-                        <ul class="dropdown-menu gradient">
-                            <li>@Html.ActionLink("Bib Shorts", "ProductsDisplay", "Product", new { subCategory = "Bib-Shorts", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Caps", "ProductsDisplay", "Product", new { subCategory = "Caps", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Gloves", "ProductsDisplay", "Product", new { subCategory = "Gloves", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Jerseys", "ProductsDisplay", "Product", new { subCategory = "Jerseys", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Shorts", "ProductsDisplay", "Product", new { subCategory = "Shorts", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Socks", "ProductsDisplay", "Product", new { subCategory = "Socks", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Tights", "ProductsDisplay", "Product", new { subCategory = "Tights", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Vests", "ProductsDisplay", "Product", new { subCategory = "Vests", defaultPage }, null)</li>
-                        </ul>
-                    </li>
-                    <!--Dropdown for Accessories category-->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Accessories<span class="caret"></span></a>
-                        <ul class="dropdown-menu gradient">
-                            <li>@Html.ActionLink("Bike Racks", "ProductsDisplay", "Product", new { subCategory = "Bike Racks", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Bike Stands", "ProductsDisplay", "Product", new { subCategory = "Bike Stands", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Bottles and Cages", "ProductsDisplay", "Product", new { subCategory = "Bottles and Cages", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Cleaners", "ProductsDisplay", "Product", new { subCategory = "Cleaners", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Fenders", "ProductsDisplay", "Product", new { subCategory = "Fenders", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Helmets", "ProductsDisplay", "Product", new { subCategory = "Helmets", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Hydration Packs", "ProductsDisplay", "Product", new { subCategory = "Hydration Packs", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Lights", "ProductsDisplay", "Product", new { subCategory = "Lights", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Locks", "ProductsDisplay", "Product", new { subCategory = "Locks", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Panniers", "ProductsDisplay", "Product", new { subCategory = "Panniers", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Pumps", "ProductsDisplay", "Product", new { subCategory = "Pumps", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Tires and Tubes", "ProductsDisplay", "Product", new { subCategory = "Tires and Tubes", defaultPage }, null)</li>
-                        </ul>
-                        <!--Dropdown for Components category-->
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Components<span class="caret"></span></a>
-                        <ul class="dropdown-menu gradient">
-                            <li>@Html.ActionLink("Handlebars", "ProductsDisplay", "Product", new { subCategory = "Handlebars", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Bottom Brackets", "ProductsDisplay", "Product", new { subCategory = "Bottom Brackets", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Brakes", "ProductsDisplay", "Product", new { subCategory = "Brakes", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Chains", "ProductsDisplay", "Product", new { subCategory = "Chains", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Cranksets", "ProductsDisplay", "Product", new { subCategory = "Cranksets", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Derailleurs", "ProductsDisplay", "Product", new { subCategory = "Derailleurs", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Forks", "ProductsDisplay", "Product", new { subCategory = "Forks", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Headsets", "ProductsDisplay", "Product", new { subCategory = "Headsets", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Mountain Frames", "ProductsDisplay", "Product", new { subCategory = "Mountain Frames", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Pedals", "ProductsDisplay", "Product", new { subCategory = "Pedals", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Road Frames", "ProductsDisplay", "Product", new { subCategory = "Road Frames", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Saddles", "ProductsDisplay", "Product", new { subCategory = "Saddles", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Touring Frames", "ProductsDisplay", "Product", new { subCategory = "Touring Frames", defaultPage }, null)</li>
-                            <li>@Html.ActionLink("Wheels", "ProductsDisplay", "Product", new { subCategory = "Wheels", defaultPage }, null)</li>
-                        </ul>
-                    </li>
-                </ul>
+                <div class="nav navbar-nav">
+                    <form class="navbar-form form-inline">
+                        <div class="btn-group rating-button-group">
+                            <button type="button" class="btn btn-primary">Search</button>
+                            <button type="button" class="btn btn-primary">Trending</button>
+                            <button type="button" class="btn btn-primary">Random</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-    <div class="container body-content" id="shared-layout-body-content">
+    <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
@@ -342,210 +221,302 @@ public Product GetProduct(int? pID)
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    @RenderSection("MyScripts", required: false)    @*Load our custom script*@
+    @RenderSection("CustomScripts", required: false)
 </body>
 </html>
 ```
 
-##### **CSS Used**
+##### Method for logging gif requests
+```csharp
+
+//Inserts a client request into the database.
+private void LogRequest(string ipAddress, string userAgent, string searchArea, string searchParams, string rating)
+{
+    GiphyRequest giphyRequest = new GiphyRequest()
+    {
+        IPAddress = ipAddress,
+        BrowserType = userAgent,
+        RequestDate = DateTime.Now,
+        SearchType = searchArea,
+        Rating = rating,
+        KeyWord = searchParams
+    };
+
+    try
+    {
+        db.GiphyRequests.Add(giphyRequest);
+        db.SaveChanges();
+    }catch(Exception e) { Debug.WriteLine(e.StackTrace); }
+}
+```
+
+##### Method for filtering gifs by rating
+```csharp
+/// <summary>
+/// Filters the gifs based on the client rating selection.
+/// </summary>
+/// <param name="gifList">A GifList to populate with Gifs</param>
+/// <param name="giphyObj">The GiphyObj containing Json gifs that were serialized</param>
+/// <param name="rating">The rating to filter the gifs with</param>
+/// <returns></returns>
+private GifList GetGifs(GifList gifList, GiphyObj giphyObj, string rating)
+{
+    if (giphyObj == null)
+        return null;
+
+    int size = giphyObj.Data.Count;
+    List<Gif> gifs = new List<Gif>(size);
+
+    //filters the gifs
+    for (int i = 0; i < giphyObj.Data.Count; i++)
+    {
+        if (rating.Equals("all"))
+        {
+            gifs = AddGif(giphyObj, i, gifs);
+        }
+        else
+        {
+            if(rating.Equals(giphyObj.Data[i].Rating))
+            {
+                gifs = AddGif(giphyObj, i, gifs);
+            }
+        }
+    }
+
+    //add the gif list to the GifList object
+    gifList.Gifs = gifs;
+    gifList.Size = gifList.Gifs.Count;
+    return gifList;
+}
+
+//Adds a gif to the list of gifs
+private List<Gif> AddGif(GiphyObj giphyObj, int i, List<Gif> gifs)
+{
+    Gif myGif = new Gif();
+    myGif.Url = giphyObj.Data[i].Images.Original.Url;
+    myGif.Username = (giphyObj.Data[i].User != null) ? giphyObj.Data[i].User.Username : null;
+    gifs.Add(myGif);
+
+    return gifs;
+}
+```
+
+##### Javascript File
+
+```javascript
+/**
+ * Author: Alexander Molodyh
+ * Date: 11/19/2017
+ * Class: CS460
+ * Assignment: HW7
+ */
+
+
+/*Performs a GET request to the GiphyController and populates the page with 
+ *gifs uppon success.*/
+function search() {
+    //search parameters
+    var searchP = $('#search-box').val();
+
+    //area to search in such as: /v1/gifs/search, /v1/gifs/trending, or /v1/gifs/random
+    var currentSearchArea = "/v1/gifs/search";
+
+    //the rating to filter the return gifs with
+    var currentRating = "all";
+
+    //check if the search area has been modified. If yes then change the currentSearchArea
+    if (document.searchArea)
+        currentSearchArea = "/v1/gifs/" + document.searchArea;
+
+    //if the rating has been modified then set currentRating to the chosen rating.
+    if (document.selectedRating) {
+        currentRating = document.selectedRating;
+    }
+
+    //call the controller with the search parameters
+    $.ajax({
+        type: "get",
+        datatype: "json",
+        url: "Giphy/GetJsonGifs",
+        data: { searchArea: currentSearchArea, searchParams: searchP, rating: currentRating },
+        success: function (data) {
+            if (data.Size > 0)
+                populateGifs(data);//populate gifs onto the page
+            else
+                alert("No results found!");
+        },
+        error: function () {
+            alert("didn't work!");
+        }
+    });
+}
+
+
+/**
+ * Builds a row with unordered lists of gifs and displays them on the Index page.
+ * @param {any} gifList Is a Json object that represents a GifList. A GifList contains a list of Gif objects
+ * that have a Url for the gif and a username.
+ */
+function populateGifs(gifList) {
+    var container = $("#gif-container");
+    container.empty();
+
+    var gifListSize = gifList.Size;
+    var imgPerUl = Math.ceil(gifListSize / 4);//The amount of gifs each <ul> should have
+
+    //the first loop builds columns containing an unordered list of gifs
+    var row = $("<div></div>").attr("class", "row");
+    for (var i = 0; i < gifList.Size; i++) {
+        var ul = $("<ul></ul>").css("list-style-type", "none");/*ul for a single column*/
+        var column = $("<div></div>").attr("class", "col-md-3").attr("id", "gif" + j);
+
+        //second loop populates each unordered list with gifs
+        var j;
+        for (j = i; j < i + imgPerUl && j < gifList.Size; j++) {
+            var gif = gifList.Gifs[j];//get the current gif
+
+            var gifImageUrl = gif.Url;//get the gif url
+            var imgDiv = $("<div></div>").attr("class", "gif-image-div");//holds the gif and username
+            var li = $("<li></li>");
+
+            //holds the gif image
+            var gifImage = $("<img />")
+                .attr("src", gifImageUrl)
+                .attr("class", "gif-image")
+                .attr("id", "img" + j)
+                .css("max-width", "100%");
+
+            var h5;//checks if the usernaem isn't null and populates the usename section
+            if (gif.Username) {
+                h5 = $("<h5>By " + gif.Username + "</h5>")
+                    .css("max-width", "100%")
+                    .css("margin", "0px")
+                    .css("padding", "6px");
+            }
+
+            imgDiv.append(gifImage);
+            imgDiv.append(h5);
+            li.append(imgDiv);
+            ul.append(li);
+        }
+        column.append(ul);
+        row.append(column);
+        i = j - 1;
+    }
+    container.append(row);
+}
+
+/*This function registers the Rating and Search Area selections*/
+$(".btn-group > button.btn").on("click", function () {
+    var buttonType = this.innerHTML.substring(0, 5);
+
+    if (buttonType.toLocaleLowerCase() === "rated") {
+        document.selectedRating = this.innerHTML.substring(6).toLowerCase();
+        $("#rating-h5").text("Current rating: " + this.innerHTML);
+    }
+    else {
+        document.searchArea = this.innerHTML.toLowerCase();
+        if (document.searchArea.toLowerCase() === "search") {
+            $("#search-box").show();
+            $("#search-button").css("min-width", "110px");
+            $("#search-gifs").text("Search Gifs");
+        }
+        else {
+            $("#search-box").hide();
+            $("#search-button").css("min-width", "240px");
+            $("#search-gifs").text("Search " + this.innerHTML + " Gifs");
+        }
+    }
+});
+```
+
+###### CSS file used
 
 ```css
 body {
-    font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: darkslategray;
 }
 
-.item-tile {
+input[type=text] {
+    width: 140px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100% */
+input[type=text]:focus {
+   width: 100%;
+   border: 1px solid;
+   border-color: dimgray;
+   border-radius: 20px;
+   box-shadow: #888888; 
+}
+
+
+#search-gifs {
+    margin-top: 50px;
+    font-size: 40px;
     text-align: center;
-    padding: 5px;
-    margin-bottom: 50px;
-}
-
-#product-button.btn.btn-primary {
-    min-width: 55%;
-    color: dimgrey;
-    background-color: white;
-    border-color: dimgray;
-}
-
-.item-tile hr {
-    border: solid .3px;
-}
-
-.item-tile-description > h4:first-child {
-    min-height: 40px;
-}
-
-
-/**********************************home page stuff*************************************/
-
-.home-page-container h1 {
-    font-size: 80px;
-}
-
-#main-page-image {
-    width: 100%;
-}
-
-.home-page-container img {
-    width: 100%;
-    height: auto;
-    max-height: 100%;
-}
-
-
-
-/**********************************product info page*************************************/
-
-
-#write-review-button.btn-primary {
-    min-width: 45%;
-    background-color: #00897B;
-    border-color: #00796B;
-}
-
-.row {
-    margin-top: 30px;
-}
-
-.product-info-container img {
-    min-width: 100%;
-}
-
-.product-info-container {
-    margin-bottom: 30px;
-}
-
-.product-review p {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid;
-    border-color: #4DB6AC;
-    border-radius: 5px;
-}
-
-.product-review hr {
-    margin-bottom: 20px;
-}
-
-
-/**********************************write reveiw page*************************************/
-
-#submit-review-button.btn-default {
-    min-width: 60%;
-    background-color: #00897B;
-    border-color: #00796B;
     color: white;
 }
 
-#write-review-comment-box {
-    min-height: 100px;
-    min-width: 100%;
-}
-
-#create-review-form.form-horizontal .form-group {
-    margin-left: 0px;
-    margin-right: 0px;
-}
-
-
-
-/**********************************navbar section*************************************/
-
-/*Class section on navbar*/
-.navbar {
-    background: #00695C;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    min-height: 60px;
-    margin-bottom: 0px;
-    border: none;
+#search-box {
+    height: 45px;
+    border: 1px solid;
+    border-color: dimgray;
+    border-radius: 23px;
+    padding-left: 10px;
+    margin-right: 20px;
 }
 
 
-.gradient {
-    background: #00695C; /* For browsers that do not support gradients */
-    background: -webkit-linear-gradient(left top, #00695C, #009688); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(bottom right, #00695C, #009688); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient(bottom right, #00695C, #009688); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom right, #00695C, #009688); /* Standard syntax */
+#search-box-col {
+    margin-left: 37%;
+}
+
+#search-button {
+    height: 45px;
+    min-width: 110px;
+    padding-left: 25px;
+    padding-right: 25px;
+    border-radius: 23px;
+    border-color: #4527A0;
+    color: white;
+    background-color: #673AB7;
+}
+
+#search-box-row {
+    margin-top: 20px !important;
+    margin-bottom: 40px !important;
 }
 
 
-/*change the navbar-brand font*/
-.navbar-default .navbar-brand {
-    color: #f3f1f1;
-}
-
-/*change the color of the navbar-brand text so it stays white when hovering over it*/
-.navbar-default .navbar-brand:hover {
-    color: #f3f1f1;
-}
-
-/*change the color of the navbar item font*/
-.nav.navbar-nav li a {
-    color: #f3f1f1;
-    font-size: 16px;
-}
-
-/*when hovering over a dropdown tab, the font color is changed*/
-.nav.navbar-nav li a:hover {
-    color: #d2b0b0;
-}
-
-/*when hovering over a dropdown menuitem, the background color is changed as well as the font*/
-.dropdown .dropdown-menu li a:hover {
-    background-color: #004D40;
-    color: #f3f1f1;
-}
-
-/*when a dropdown tab is selected, the background is changed*/
-.navbar-default .navbar-nav .dropdown.open a:focus {
-    background-color: #009688;
-    color: #f3f1f1;
-}
-
-/*when a dropdown tab is selected, the background is changed*/
-.navbar-default .navbar-nav .active a {
-    background-color: #009688; /*dropdown button background when it is active*/
-    color: #f3f1f1;
-}
-
-/*this colors the dropdown menu background*/
-.dropdown-menu {
-    background-color: #009688;
-}
-
-/*this colors the font in the dropdown menu*/
-.dropdown-menu li a {
-    color: #f3f1f1;
-    margin: 8px;
-    padding: 5px;
-    font-size: 14px;
-}
-
-/*this makes the dropdown menu taller*/
-.dropdown-menu li {
-    min-height: 30px;
-}
-
-/*navbar dropdown caret*/
-.navbar-default .navbar-nav > .dropdown > a .caret {
-    border-top-color: darkgray;
-    border-bottom-color: darkgray;
-}
-
-.dropdown {
-    margin-right: 10px;
-    margin-left: 10px;
-}
-
-/*************************this is for the homepage exclusively***************************/
-
-/*removes the margins in the home page for the image to fill the whole screen*/
-#shared-layout-body-content.container {
-    margin-left: 0px;
-    margin-right: 0px;
-    padding: 0px;
+.gif-image {
     max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+.gif-image-div {
+    padding-bottom: 5px;
+    background-color: #E0E0E0;
+    box-shadow: 2px 2px 8px 2px #888888;
+    margin-top: 20px;
+    border-radius: 3px;
+}
+
+.btn-group.rating-button-group button.btn.btn-primary {
+    background-color: #673AB7;
+    border-color: #4527A0;
+    min-height: 43px;
+}
+
+.btn-group.rating-button-group button.btn.btn-primary:visited {
+    background-color: #4527A0;
+}
+
+#rating-h5 {
+    color: white;
+    font-size: 16px;
 }
 ```
