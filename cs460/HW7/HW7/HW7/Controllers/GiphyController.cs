@@ -19,6 +19,7 @@ namespace HW7.Controllers
         [HttpGet]
         public JsonResult GetJsonGifs(string searchArea, string searchParams, string rating)
         {
+            //Get the 
             string ipAddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
             string userAgent = Request.Headers["User-Agent"].ToString();
 
@@ -54,8 +55,7 @@ namespace HW7.Controllers
                 gl = GetGifs(giphyObjs, rating);
             }
             catch (Exception e){}
-
-
+            
             GifRequest giphyRequest = new GifRequest()
             {
                 IPAddress = ipAddress,
