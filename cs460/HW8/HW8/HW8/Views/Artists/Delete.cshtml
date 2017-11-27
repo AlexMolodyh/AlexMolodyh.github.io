@@ -16,6 +16,7 @@
     <h4><b>@Html.DisplayNameFor(model => model.ArtistName):</b> @Html.DisplayFor(model => model.ArtistName)</h4>
     <h4><b>@Html.DisplayNameFor(model => model.DOB):</b> @Html.DisplayFor(model => model.DOB)</h4>
     <h4><b>@Html.DisplayNameFor(model => model.BirthCity):</b> @Html.DisplayFor(model => model.BirthCity)</h4>
+    <br />
 
 
     @using (Html.BeginForm())
@@ -23,8 +24,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete" class="btn btn-default" />
         </div>
     }
 </div>

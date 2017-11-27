@@ -1,0 +1,47 @@
+﻿/**
+ * Author: Alexander Molodyh
+ * Date: 11/26/2017
+ * Class: CS460
+ * Assignment: HW8
+ */
+
+function getArtWorkByGenre(btnObj) {
+    console.log("Button clicked is: " + btnObj.value);
+
+    $.ajax({
+        type: "get",
+        datatype: "json",
+        url: "/Home/GenreArtWork",
+        data: { genre: btnObj.value},
+        success: function (data) {
+                populateTable(data);
+        },
+        error: function () {
+            alert("didn't work!");
+        }
+    });
+}
+
+
+function populateTable(genreList) {
+    var table = $("#genre-table");
+    table.empty();
+
+    var tr = $("<tr></tr>");
+    var th1 = $("<th>ArtWork</th>");
+    var th2 = $("<th>Genre</th>");
+    tr.append(th1);
+    tr.append(th2);
+
+    //Builds the rest of the table.
+    table.append(tr);
+    for (var i = 0; i < genreList.Size; i++) {
+        var tr = $("<tr></tr>");
+        var tdArtWork = $("<td>" + genreList.ArtList[i] + "</td>");
+        var tdGenre = $("<td>" + genreList.GenreName + "</td>");
+
+        tr.append(tdArtWork);
+        tr.append(tdGenre);
+        table.append(tr);
+    }
+}

@@ -47,3 +47,7 @@ tr:nth-child(even) {
 a {
     color: #4054c1;
 }
+
+#genre-table {
+    min-width: 100%;
+}
