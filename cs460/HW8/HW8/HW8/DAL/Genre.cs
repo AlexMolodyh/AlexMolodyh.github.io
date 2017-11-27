@@ -1,4 +1,4 @@
-namespace HW8.Model
+namespace HW8.DAL
 {
     using System;
     using System.Collections.Generic;
@@ -6,26 +6,20 @@ namespace HW8.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ArtWork")]
-    public partial class ArtWork
+    [Table("Genre")]
+    public partial class Genre
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ArtWork()
+        public Genre()
         {
-            Genres = new HashSet<Genre>();
+            ArtWorks = new HashSet<ArtWork>();
         }
 
         [Key]
-        [StringLength(50)]
-        public string ArtWorkTitle { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string Artist { get; set; }
-
-        public virtual Artist Artist1 { get; set; }
+        [StringLength(40)]
+        public string GenreName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Genre> Genres { get; set; }
+        public virtual ICollection<ArtWork> ArtWorks { get; set; }
     }
 }
