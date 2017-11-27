@@ -1,0 +1,24 @@
+﻿@model IEnumerable<HW8.Model.ArtWork>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="myTable">
+    <tr>
+        <th>ArtWork</th>
+        <th>Genre</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        foreach (var genre in item.Genres)
+        {
+            <tr>
+                <td>@item.ArtWorkTitle</td>
+                <td>@genre.GenreName</td>
+            </tr>
+        }
+    }
+
+</table>
