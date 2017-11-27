@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<HW8.Model.ArtWork>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "ArtWorks";
 }
+
+<h2 class="title-h2">ArtWork List</h2>
+<hr />
 
 <table class="myTable">
     <tr>
@@ -14,8 +17,8 @@
     {
         <tr>
             <td>@Html.DisplayFor(modelItem => item.ArtWorkTitle)</td>
-        <td>@Html.DisplayFor(modelItem => item.Artist)</td>
-    </tr>
+            <td>@Html.DisplayFor(modelItem => item.Artist)</td>
+        </tr>
     }
 
 </table>

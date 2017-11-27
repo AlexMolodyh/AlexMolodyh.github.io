@@ -158,7 +158,7 @@
     <Compile Include="DAL\ArtDBContext.cs" />
     <Compile Include="Models\Artist.cs" />
     <Compile Include="Models\ArtWork.cs" />
-    <Compile Include="Models\Classification.cs" />
+    <Compile Include="Models\DateValidationAtt.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -210,21 +210,15 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Artists\Create.cshtml" />
-    <Content Include="Views\Artists\Delete.cshtml" />
-    <Content Include="Views\Artists\Details.cshtml" />
-    <Content Include="Views\Artists\Edit.cshtml" />
+    <Content Include="Views\Artists\Read.cshtml" />
+    <Content Include="Views\Artists\Update.cshtml" />
     <Content Include="Views\Artists\Index.cshtml" />
     <Content Include="Views\ArtWorks\Index.cshtml" />
-    <Content Include="Views\Genres\Create.cshtml" />
-    <Content Include="Views\Genres\Delete.cshtml" />
-    <Content Include="Views\Genres\Details.cshtml" />
-    <Content Include="Views\Genres\Edit.cshtml" />
     <Content Include="Views\Genres\Index.cshtml" />
     <Content Include="Views\Classifications\Index.cshtml" />
+    <Content Include="Views\Artists\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

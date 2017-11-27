@@ -1,5 +1,6 @@
 namespace HW8.Model
 {
+    using HW8.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -16,14 +17,21 @@ namespace HW8.Model
         }
 
         [Key]
+        [Required]
         [StringLength(50)]
+        [Display(Name = "Artist Name")]
         public string ArtistName { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Column(TypeName = "datetime2")]
+        [Display(Name = "Date Of Birt")]
+        [DateValidationAtt(ErrorMessage = "Not a valid birth date")]
         public DateTime DOB { get; set; }
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "City Of Birth")]
         public string BirthCity { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

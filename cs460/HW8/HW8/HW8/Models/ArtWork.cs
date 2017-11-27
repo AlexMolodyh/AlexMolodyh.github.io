@@ -17,10 +17,12 @@ namespace HW8.Model
 
         [Key]
         [StringLength(50)]
+        [Display(Name = "Title")]
         public string ArtWorkTitle { get; set; }
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Artist Name")]
         public string Artist { get; set; }
 
         public virtual Artist Artist1 { get; set; }

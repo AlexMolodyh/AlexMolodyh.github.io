@@ -12,10 +12,38 @@ td {
 }
 
 th {
-    background-color: #6807d4;
+    background-color: #3949AB;
     color: white;
 }
 
 tr:nth-child(even) {
     background-color: #f2f2f2
+}
+
+.form-control {
+    border: solid 2px;
+    border-color: #b9b4b4;
+    border-radius: 0px;
+    background-color: #fffef7;
+}
+
+.btn.btn-default {
+    background-color: #4054c1;
+    border-radius: 0px;
+    color: white;
+    font-size: 16px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.control-label {
+    color: #515151;
+}
+
+.title-h2 {
+    color: #515151;
+}
+
+a {
+    color: #4054c1;
 }

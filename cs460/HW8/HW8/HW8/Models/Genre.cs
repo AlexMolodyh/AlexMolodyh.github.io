@@ -17,6 +17,7 @@ namespace HW8.Model
 
         [Key]
         [StringLength(40)]
+        [Display(Name = "Genre")]
         public string GenreName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

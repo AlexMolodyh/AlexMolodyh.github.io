@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using HW8.DAL;
 using HW8.Model;
+using System.Diagnostics;
 
 namespace HW8.Controllers
 {
@@ -22,7 +23,7 @@ namespace HW8.Controllers
         }
 
         // GET: Artists/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Read(string id)
         {
             if (id == null)
             {
@@ -60,7 +61,7 @@ namespace HW8.Controllers
         }
 
         // GET: Artists/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Update(string id)
         {
             if (id == null)
             {
@@ -79,7 +80,7 @@ namespace HW8.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ArtistName,DOB,BirthCity")] Artist artist)
+        public ActionResult Update([Bind(Include = "ArtistName,DOB,BirthCity")] Artist artist)
         {
             if (ModelState.IsValid)
             {
