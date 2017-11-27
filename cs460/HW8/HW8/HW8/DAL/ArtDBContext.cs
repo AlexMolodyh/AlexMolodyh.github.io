@@ -4,6 +4,7 @@ namespace HW8.DAL
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using HW8.Model;
 
     public partial class ArtDBContext : DbContext
     {
