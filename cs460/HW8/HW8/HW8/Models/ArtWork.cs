@@ -22,7 +22,7 @@ namespace HW8.Model
 
         [Required]
         [StringLength(50)]
-        [Display(Name = "Artist Name")]
+        [Display(Name = "Artist")]
         public string Artist { get; set; }
 
         public virtual Artist Artist1 { get; set; }

@@ -36,12 +36,12 @@ function populateTable(genreList) {
     //Builds the rest of the table.
     table.append(tr);
     for (var i = 0; i < genreList.Size; i++) {
-        var tr = $("<tr></tr>");
+        var tr1 = $("<tr></tr>");
         var tdArtWork = $("<td>" + genreList.ArtList[i] + "</td>");
         var tdGenre = $("<td>" + genreList.GenreName + "</td>");
 
-        tr.append(tdArtWork);
-        tr.append(tdGenre);
-        table.append(tr);
+        tr1.append(tdArtWork);
+        tr1.append(tdGenre);
+        table.append(tr1);
     }
 }

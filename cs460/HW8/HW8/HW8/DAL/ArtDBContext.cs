@@ -1,14 +1,17 @@
 namespace HW8.DAL
 {
+    using HW8.Model;
     using System;
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
-    using HW8.Model;
 
     public partial class ArtDBContext : DbContext
     {
-        public ArtDBContext() : base("name=ArtDBContext") {}
+        public ArtDBContext()
+            : base("name=ArtDBContext")
+        {
+        }
 
         public virtual DbSet<Artist> Artists { get; set; }
         public virtual DbSet<ArtWork> ArtWorks { get; set; }
