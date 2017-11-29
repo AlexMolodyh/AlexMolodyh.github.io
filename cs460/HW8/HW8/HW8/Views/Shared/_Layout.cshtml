@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     @Styles.Render("~/Content/myStyle.css")
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/Scripts/asyncWorkder.js")
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -21,7 +22,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Artists", "Index", "Artists")</li>
+                    <li>@Html.ActionLink("Artists", "Index", "Artists", new { @id = "artistLink" }, null)</li>
                     <li>@Html.ActionLink("ArtWork", "Index", "ArtWorks")</li>
                     <li>@Html.ActionLink("Classification", "Index", "Classifications")</li>
                 </ul>

@@ -10,7 +10,7 @@ function getArtWorkByGenre(btnObj) {
     var table = $("#genre-table");
     table.empty();
 
-    document.tSpinner = setTimeout("showSpinner()", 250);
+    document.tSpinner = setTimeout("showSpinner()", 300);
 
     $.ajax({
         type: "get",
@@ -29,9 +29,7 @@ function getArtWorkByGenre(btnObj) {
 
 
 function populateTable(genreList) {
-    $(".overlay").hide();
-    $(".loader").hide();
-
+    hideSpinner();
     var table = $("#genre-table");
     table.empty();
 
@@ -54,7 +52,19 @@ function populateTable(genreList) {
     }
 }
 
+/**
+ * Section for handling actionLink clicks
+ */
+
+$(window).load(hideSpinner());
+
+
 function showSpinner() {
     $(".overlay").show();
     $(".loader").show();
+}
+
+function hideSpinner() {
+    $(".overlay").hide();
+    $(".loader").hide();
 }
