@@ -9,7 +9,8 @@ function getArtWorkByGenre(btnObj) {
     console.log("Button clicked is: " + btnObj.value);
     var table = $("#genre-table");
     table.empty();
-    $(".loader").show();
+
+    document.tSpinner = setTimeout("showSpinner()", 100);
 
     $.ajax({
         type: "get",
@@ -17,7 +18,8 @@ function getArtWorkByGenre(btnObj) {
         url: "/Home/GenreArtWork",
         data: { genre: btnObj.value},
         success: function (data) {
-                populateTable(data);
+            clearTimeout(document.tSpinner);
+            populateTable(data);
         },
         error: function () {
             alert("didn't work!");
@@ -27,7 +29,9 @@ function getArtWorkByGenre(btnObj) {
 
 
 function populateTable(genreList) {
+    $(".overlay").hide();
     $(".loader").hide();
+
     var table = $("#genre-table");
     table.empty();
 
@@ -48,4 +52,9 @@ function populateTable(genreList) {
         tr1.append(tdGenre);
         table.append(tr1);
     }
+}
+
+function showSpinner() {
+    $(".overlay").show();
+    $(".loader").show();
 }
