@@ -13,8 +13,8 @@ INSERT INTO dbo.ArtWork
     Artist
 )
 VALUES
-(   'Circle Limit III', 'M.C. Escher' ),
-(   'Twon Tree', 'M.C. Escher' ),
+(   'Circle Limit III', 'MC Escher' ),
+(   'Twon Tree', 'MC Escher' ),
 (   'Mona Lisa', 'Leonardo Da Vinci' ),
 (   'The Vitruvian Man', 'Leonardo Da Vinci' ),
 (   'Ebru', 'Hatip Mehmed Efendi' ),

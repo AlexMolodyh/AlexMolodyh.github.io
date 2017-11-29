@@ -14,7 +14,7 @@ INSERT INTO dbo.Artist
     BirthCity
 )
 VALUES
-    ('M.C. Escher', DATETIME2FROMPARTS(1898,6,17,1,1,1,5,1), 'Leeuwarden, Netherlands'),
+    ('MC Escher', DATETIME2FROMPARTS(1898,6,17,1,1,1,5,1), 'Leeuwarden, Netherlands'),
 	('Leonardo Da Vinci', DATETIME2FROMPARTS(1519, 5, 2,1,1,1,5,1), 'Vinci, Italy'),
 	('Hatip Mehmed Efendi', DATETIME2FROMPARTS(1680, 11, 18,1,1,1,5,1), 'Unknown'),
 	('Salvador Dali', DATETIME2FROMPARTS(1904, 5, 11,1,1,1,5,1), 'Figueres, Spain');
