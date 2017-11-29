@@ -7,6 +7,9 @@
 
 function getArtWorkByGenre(btnObj) {
     console.log("Button clicked is: " + btnObj.value);
+    var table = $("#genre-table");
+    table.empty();
+    $(".loader").show();
 
     $.ajax({
         type: "get",
@@ -24,6 +27,7 @@ function getArtWorkByGenre(btnObj) {
 
 
 function populateTable(genreList) {
+    $(".loader").hide();
     var table = $("#genre-table");
     table.empty();
 
