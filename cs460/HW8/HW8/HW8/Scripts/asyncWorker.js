@@ -10,7 +10,7 @@ function getArtWorkByGenre(btnObj) {
     var table = $("#genre-table");
     table.empty();
 
-    document.tSpinner = setTimeout("showSpinner()", 100);
+    document.tSpinner = setTimeout("showSpinner()", 250);
 
     $.ajax({
         type: "get",
