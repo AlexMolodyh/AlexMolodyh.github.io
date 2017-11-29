@@ -8,10 +8,7 @@ namespace HW8.DAL
 
     public partial class ArtDBContext : DbContext
     {
-        public ArtDBContext()
-            : base("name=ArtDBContext")
-        {
-        }
+        public ArtDBContext() : base("name=ArtDBContext") {}
 
         public virtual DbSet<Artist> Artists { get; set; }
         public virtual DbSet<ArtWork> ArtWorks { get; set; }
