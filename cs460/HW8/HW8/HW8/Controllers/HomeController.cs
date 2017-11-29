@@ -21,8 +21,6 @@ namespace HW8.Controllers
 
         public JsonResult GenreArtWork(string genre)
         {
-            Debug.WriteLine($"Genre is {genre}");
-
             var genreList = db.Genres.Where(g => g.GenreName == genre).ToList().First();
             ArtWorkList awl = new ArtWorkList();
             awl.ArtList = ConvertArtWork(genreList);

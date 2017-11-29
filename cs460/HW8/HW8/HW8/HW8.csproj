@@ -167,10 +167,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\Artist_UP.sql" />
-    <Content Include="App_Data\ArtWork_UP.sql" />
-    <Content Include="App_Data\Classification_UP.sql" />
-    <Content Include="App_Data\Genre_UP.sql" />
+    <Content Include="App_Data\HW8Database_DOWN.sql" />
+    <Content Include="App_Data\HW8Database_UP.sql" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\myStyle.css" />
@@ -184,7 +182,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Properties\PublishProfiles\amolodyhhw9 - Web Deploy.pubxml" />
+    <Content Include="connections.config" />
+    <None Include="Properties\PublishProfiles\molodyhhw9 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

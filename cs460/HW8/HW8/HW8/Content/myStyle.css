@@ -36,6 +36,15 @@ tr:nth-child(even) {
     padding-right: 35px;
 }
 
+#main-page-title {
+    margin-top: 40px;
+}
+
+.home-page-genre-list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .control-label {
     color: #515151;
 }
