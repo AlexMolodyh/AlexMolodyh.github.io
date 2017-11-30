@@ -60,8 +60,6 @@
 ![Homepage Index](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/home_page.PNG?raw=true)
 
 
-## **The following will display the genre button functions**
-
 #### After clicking a genre button a spinner pops up so the user knows it is working on the request. 
 
 ![Homepage spinner](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/spinner.PNG?raw=true)
@@ -178,7 +176,7 @@ function hideSpinner() {
 }
 ```
 
-## **The following is a demonstration of the Artist creation and manipulation**
+## **The following is a demonstration of Artist creation and manipulation**
 
 #### Creating an artist.
 
