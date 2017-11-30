@@ -12,7 +12,7 @@ namespace HW8.Controllers
     {
         public ArtDBContext db = new ArtDBContext();
 
-        // GET: Classifications
+        
         public ActionResult Index()
         {
             var artWorks = db.ArtWorks.Include(a => a.Artist1);

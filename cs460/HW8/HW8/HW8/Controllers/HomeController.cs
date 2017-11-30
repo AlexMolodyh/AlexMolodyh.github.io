@@ -19,6 +19,11 @@ namespace HW8.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Retrieves a list of artwork based on the genre selected.
+        /// </summary>
+        /// <param name="genre">The genre of artwork to query</param>
+        /// <returns>A Json object that is a list of artwork names and genres.</returns>
         public JsonResult GenreArtWork(string genre)
         {
             var genreList = db.Genres.Where(g => g.GenreName == genre).ToList().First();
@@ -30,7 +35,7 @@ namespace HW8.Controllers
             return Json(awl, JsonRequestBehavior.AllowGet);
         }
 
-
+        /*populates a list of of artwork names and genres from a Genre list.*/
         private List<string> ConvertArtWork(Genre gList)
         {
             List<string> tempList = new List<string>();

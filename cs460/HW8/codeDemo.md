@@ -4,89 +4,193 @@
 
 ### The following are links to github for the code used in the artist database web app.
 
-[HomeController](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Controllers/HomeController.cs)
+[ArtWorks Controller](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/HW8/HW8/Controllers/ArtWorksController.cs)
 
-[Home page](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Views/Home/Index.cshtml)
+[Artist Controller](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/HW8/HW8/Controllers/ArtistsController.cs)
 
-[Custom Rout](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/App_Start/RouteConfig.cs)
+[Classification Controller](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/HW8/HW8/Controllers/ClassificationsController.cs)
 
-[SQL Up Table](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/App_Data/db_UP.sql)
+[Home Controller](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/HW8/HW8/Controllers/HomeController.cs)
 
-[SQL DOWN Table](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/App_Data/db_DOWN.sql)
+[ArtDBContext](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/HW8/HW8/DAL/ArtDBContext.cs)
 
-[GiphyController](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Controllers/GiphyController.cs)
+[ArtList Model](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/HW8/HW8/Models/ArtList.cs)
 
-[Shared Layout](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Views/Shared/_Layout.cshtml)
+[Artist Model](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/HW8/HW8/Models/Artist.cs)
 
-[Gif Object](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Models/Gif.cs)
+[ArtWork Model](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/HW8/HW8/Models/ArtWork.cs)
 
-[GifList](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Models/GifList.cs)
+[Genre Model](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/HW8/HW8/Models/Genre.cs)
 
-[GifRequestContext](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/DAL/GifRequestContext.cs)
+[DateValidation Custom Attribute](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/HW8/HW8/Models/DateValidationAtt.cs)
 
-[GifRequest For Logging](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Models/GifRequest.cs)
+[JS Cutom Script](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/HW8/HW8/Scripts/asyncWorker.js)
 
-[GiphyObj for Json serialization](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Models/GiphyObj.cs)
+[CSS File](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/HW8/HW8/Content/myStyle.css)
 
-[Javascript File](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Scripts/asyncWorker.js)
+[Database Up Script](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/HW8/HW8/App_Data/HW8Database_UP.sql)
 
-[CSS File](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Content/myStyle.css)
+[Database Down Script](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/HW8/HW8/App_Data/HW8Database_DOWN.sql)
 
+[Connection Config File](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/HW8/HW8/connections.config)
 
-#### **The Homepage**
+[Home Index View](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/HW8/HW8/Views/Home/Index.cshtml)
 
-###### The homepage contains a navbar with a button group for selecting an area to search in. Theres a serchbar and another button group for filtering the search results with such as: Rated G, PG, PG-13, and All.
+[Artist Views](https://github.com/AlexMolodyh/AlexMolodyh.github.io/tree/master/cs460/HW8/HW8/HW8/Views/Artists)
 
-![Homepage Index](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/img/home_page.PNG?raw=true)
+[ArtWork Views](https://github.com/AlexMolodyh/AlexMolodyh.github.io/tree/master/cs460/HW8/HW8/HW8/Views/ArtWorks)
 
-##### **Homepage Expanded Searchbox**
+[Classification Views](https://github.com/AlexMolodyh/AlexMolodyh.github.io/tree/master/cs460/HW8/HW8/HW8/Views/Classifications)
 
-![Homepage Index](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/img/expandable_search_bar.PNG?raw=true)
+[Genre Views](https://github.com/AlexMolodyh/AlexMolodyh.github.io/tree/master/cs460/HW8/HW8/HW8/Views/Genres)
 
-
-#### **Homepage Trending Rated All**
-
-###### When a rating is selected, the searchbox disappears and the text to the right of the rating buttons changes to the currently selected rating to let the user keep track of their selection. The ideal thing here would be to color the current button darker but after fiddeling with it for a while I stopped as I'm short on time....
-
-![Homepage Index Trending](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/img/trending_search_rated_all.PNG?raw=true)
-
-###### Here we have the output from searching the trending area.
-
-![Homepage Index Trending](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/img/trending_output.PNG?raw=true)
-
-###### Here we have the output from the rated PG Trending.
-
-![Homepage Index PG search](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/img/pg_rating_output.PNG?raw=true)
-
-###### Here we have the output from the rated All search.
-
-![Homepage Index PG search](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/img/all_rating_output(slow%20network).PNG?raw=true)
-
-###### Here we have the database client request logs.
-
-![Homepage Index PG search](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/img/database_logs.PNG?raw=true)
+[Shared Views](https://github.com/AlexMolodyh/AlexMolodyh.github.io/tree/master/cs460/HW8/HW8/HW8/Views/Shared)
 
 
-###### This is the code used for the custom routing.
-```csharp
-public static void RegisterRoutes(RouteCollection routes)
-        {
-            routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+## **The Database ER Diagram**
 
-            routes.MapRoute(
-                name: "Giphy",
-                url: "gif/search/{id}",
-                defaults: new { conroller = "Giphy", action = "GetJsonGifs", id = UrlParameter.Optional });
+#### I used Toad Data Modeler to create the ER Diagram.
 
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+![Database ER Diagram](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/HW8_ER_Diagram.PNG?raw=true)
+
+## **The Homepage**
+
+#### The homepage has a list of buttons with different genres. Each button will display a list of artworks by their genres. A loading spinner will display while the content is being retrieved so that you knwo it's doing something in the background. Once the artwork has been retrieved, it will be displayed using ajax.
+
+![Homepage Index](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/home_page.PNG?raw=true)
+
+
+## **The following will display the genre button functions**
+
+#### After clicking a genre button a spinner pops up so the user knows it is working on the request. 
+
+![Homepage spinner](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/spinner.PNG?raw=true)
+
+#### List of portrait genres.
+
+![Portrait Genre](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/portrait_genre.PNG?raw=true)
+
+#### List of renaissance genres.
+
+![Renaissance Genre](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/renaissance_list.PNG?raw=true)
+
+#### List of surrealism genres.
+
+![Surrealism Genre](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/surrealism_genre.PNG?raw=true)
+
+#### List of tesselation genres.
+
+![Tesselation Genre](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/tesselation_genre.PNG?raw=true)
+
+
+#### This is the code used to populate the tables of genre artworks.
+```javascript
+function getArtWorkByGenre(btnObj) {
+    console.log("Button clicked is: " + btnObj.value);
+    var table = $("#genre-table");
+    table.empty();
+
+    document.tSpinner = setTimeout("showSpinner()", 300);
+
+    $.ajax({
+        type: "get",
+        datatype: "json",
+        url: "/Home/GenreArtWork",
+        data: { genre: btnObj.value},
+        success: function (data) {
+            clearTimeout(document.tSpinner);
+            populateTable(data);
+        },
+        error: function () {
+            alert("didn't work!");
         }
+    });
+}
+
+
+function populateTable(genreList) {
+    hideSpinner();
+    var table = $("#genre-table");
+    table.empty();
+
+    var tr = $("<tr></tr>");
+    var th1 = $("<th>ArtWork</th>");
+    var th2 = $("<th>Genre</th>");
+    tr.append(th1);
+    tr.append(th2);
+
+    //Builds the rest of the table.
+    table.append(tr);
+    for (var i = 0; i < genreList.Size; i++) {
+        var tr1 = $("<tr></tr>");
+        var tdArtWork = $("<td>" + genreList.ArtList[i] + "</td>");
+        var tdGenre = $("<td>" + genreList.GenreName + "</td>");
+
+        tr1.append(tdArtWork);
+        tr1.append(tdGenre);
+        table.append(tr1);
+    }
+}
 ```
 
-##### **The GiphyController section to send GET requests**
+## **The following is a demonstration of the Artist creation and manipulation**
+
+#### Creating an artist.
+
+![Artist List](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/artist_list.PNG?raw=true)
+
+
+#### Entering invalid data into the name and place of birth.
+
+![Create Artist Bad Name](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/create_new_artist_page_with_wrong_name_and_birth_city.png?raw=tru)
+
+
+#### Entering invalid date.
+
+![Artist Invalid Date](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/create_new_artist_page_with_future_date.png?raw=true)
+
+
+#### Entering valid data for a user.
+
+![Artist Good Input](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/create_new_artist_page_good_data.png?raw=true)
+
+
+#### Artist list after creating John Birks.
+
+![Artist John Birks](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/artist_list_new_artists.PNG?raw=true)
+
+
+#### Artist details page.
+
+![Artist Details](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/artist_details_page.PNG?raw=true)
+
+
+#### Updating an artist.
+
+![Artist Update](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/update_artist.PNG?raw=true)
+
+
+#### Delete artist page.
+
+![Artist Delete](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/delete_artist_page.PNG?raw=true)
+
+
+#### After deleting Alexander Molodyh.
+
+![Artist Deleted](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/artist_deleted.PNG?raw=true)
+
+
+#### Entering invalid date
+
+![](?raw=true)
+
+
+#### Entering invalid date
+
+![](?raw=true)
+
+
+#### Creating an artist 
 
 ```csharp
         [HttpGet]

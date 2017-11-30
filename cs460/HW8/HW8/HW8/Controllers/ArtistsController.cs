@@ -16,13 +16,13 @@ namespace HW8.Controllers
     {
         private ArtDBContext db = new ArtDBContext();
 
-        // GET: Artists
+        
         public ActionResult Index()
         {
             return View(db.Artists.ToList());
         }
 
-        // GET: Artists/Details/5
+        /*Displays the details of an artist*/
         public ActionResult Read(string id)
         {
             if (id == null)
@@ -43,9 +43,7 @@ namespace HW8.Controllers
             return View();
         }
 
-        // POST: Artists/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        /*Inserts a new artist into the database*/
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ArtistName,DOB,BirthCity")] Artist artist)
@@ -60,7 +58,7 @@ namespace HW8.Controllers
             return View(artist);
         }
 
-        // GET: Artists/Edit/5
+        /*Gets the artist to display for the deletion confirmation page*/
         public ActionResult Update(string id)
         {
             if (id == null)
@@ -75,9 +73,7 @@ namespace HW8.Controllers
             return View(artist);
         }
 
-        // POST: Artists/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        /*Updates the edited artist*/
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Update([Bind(Include = "ArtistName,DOB,BirthCity")] Artist artist)
@@ -91,7 +87,7 @@ namespace HW8.Controllers
             return View(artist);
         }
 
-        // GET: Artists/Delete/5
+        /*Deletes the artist by their ID*/
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -106,7 +102,7 @@ namespace HW8.Controllers
             return View(artist);
         }
 
-        // POST: Artists/Delete/5
+        /*Conferms the deletion of and artist*/
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
