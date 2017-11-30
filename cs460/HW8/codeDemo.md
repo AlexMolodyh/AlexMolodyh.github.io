@@ -1,8 +1,8 @@
-# ASP.Net MVC 5 Giphy Web App
+# ASP.Net MVC 5 Artist Database
 
-## I demonstrate Giphy search web app and how some of the functions work.
+## I'll be demonstrating the artist database web app here. I'll cover what the pages are and how to use the artist management pages.
 
-### The following are links to github for the code used in the Giphy web app.
+### The following are links to github for the code used in the artist database web app.
 
 [HomeController](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW7/HW7/HW7/Controllers/HomeController.cs)
 

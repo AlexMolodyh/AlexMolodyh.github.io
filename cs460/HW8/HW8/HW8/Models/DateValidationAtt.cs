@@ -11,7 +11,7 @@ namespace HW8.Models
         public override bool IsValid(object value)
         {
             DateTime dt = Convert.ToDateTime(value);
-            return dt <= DateTime.Now;
+            return dt < DateTime.Now;
         }
     }
 }
