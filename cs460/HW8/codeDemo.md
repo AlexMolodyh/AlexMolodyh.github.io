@@ -83,6 +83,21 @@
 ![Tesselation Genre](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/tesselation_genre.PNG?raw=true)
 
 
+#### Code used to create the genre buttons.
+
+```csharp
+<div class="home-page-genre-list">
+    @foreach (string genre in genres)
+    {
+        @*Must use input to pass button instance as "this" not bootstrap button*@
+        <input type="button" class="btn btn-default" onclick="getArtWorkByGenre(this)" value="@($"{genre}")" />
+    }
+</div>
+
+<br />
+```
+
+
 #### This is the code used to populate the tables of genre artworks.
 ```javascript
 function getArtWorkByGenre(btnObj) {
@@ -130,6 +145,36 @@ function populateTable(genreList) {
         tr1.append(tdGenre);
         table.append(tr1);
     }
+}
+
+/**
+ * Section opening and closing the spinner when the page loads
+ */
+//$(".navLink").click(function () {
+//    console.log("Artist clicked");
+//    showSpinner();
+//});
+
+$(window).on("beforeunload", function () {
+    showSpinner();
+});
+
+$(window).on("unload", function () {
+    console.log("hello");
+    hideSpinner();
+});
+
+$(window).load(hideSpinner());
+
+
+function showSpinner() {
+    $(".overlay").show();
+    $(".loader").show();
+}
+
+function hideSpinner() {
+    $(".overlay").hide();
+    $(".loader").hide();
 }
 ```
 
@@ -180,447 +225,326 @@ function populateTable(genreList) {
 ![Artist Deleted](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/artist_deleted.PNG?raw=true)
 
 
-#### Entering invalid date
+## A list of ArtWork
 
-![](?raw=true)
-
-
-#### Entering invalid date
-
-![](?raw=true)
+![ArtWork List](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/artwork_list.PNG?raw=true)
 
 
-#### Creating an artist 
+## A list fo Classifications.
 
-```csharp
-        [HttpGet]
-        public JsonResult GetJsonGifs(string searchArea, string searchParams, string rating)
-        {
-            //Get the IP address and browser user agent for logging.
-            string ipAddress = Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
-            string userAgent = Request.Headers["User-Agent"].ToString();
-            if(string.IsNullOrEmpty(ipAddress))
-                ipAddress = Request.ServerVariables["REMOTE_ADDR"];
+![Classification](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/classification.PNG?raw=true)
 
-            //Get api key and build the GET request header.
-            string apiKey = System.Web.Configuration.WebConfigurationManager.AppSettings["GiphyKey"];
-            string url = $"http://api.giphy.com{searchArea}?api_key={apiKey}&q={searchParams}";
-            Debug.WriteLine($"Url is: {url}");
-            GifList gl = new GifList();
-            GiphyObj giphyObjs = null;
 
-            /*Try to deserialize the json data into C# objects*/
-            try
-            {
-                //Send request to Giphy.com
-                HttpWebRequest httpRequest = (HttpWebRequest)WebRequest.Create(url);
-                httpRequest.Method = "GET";
-                httpRequest.ContentType = "application/json";
+## These are the database tables with the sample data.
 
-                //Handle response
-                HttpWebResponse response = (HttpWebResponse)httpRequest.GetResponse();
-                StreamReader sr = new StreamReader(response.GetResponseStream());
-                var result = sr.ReadToEnd();
-                Debug.WriteLine("Result is: " + result);
+#### Artist table
 
-                giphyObjs = JsonConvert.DeserializeObject<GiphyObj>(result, Converter.Settings);
-            }
-            catch (Exception e){ Debug.WriteLine(e.StackTrace); }
+![Artist Table](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/artist_table.PNG?raw=true)
 
-            gl = GetGifs(gl, giphyObjs, rating);
-            LogRequest(ipAddress, userAgent, searchArea, searchParams, rating);//Log user request
+#### ArtWork table
 
-            return Json(gl, JsonRequestBehavior.AllowGet);
-        }
-```
+![ArtWork Table](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/artwork_table.PNG?raw=true)
 
-##### Homepage view that include the javascript file via Script.
+#### Genre table
 
-```html
-@{
-    ViewBag.Title = "Home Page";
-}
+![Genre Table](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/genre_table.PNG?raw=true)
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <h1 id="search-gifs">Search Gifs</h1>
-        </div>
-    </div>
-    <div class="row" id="search-box-row">
-        <div class="col-md-8" id="search-box-col">
-            <input type="text" name="search" placeholder="Search Something.." id="search-box">
-            <button class="btn btn-primary" type="button" id="search-button" onclick="search()">Search</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-5 col-md-offset-2">
-            <div class="btn-group rating-button-group">
-                <button type="button" class="btn btn-primary">Rated All</button>
-                <button type="button" class="btn btn-primary">Rated G</button>
-                <button type="button" class="btn btn-primary">Rated PG</button>
-                <button type="button" class="btn btn-primary">Rated PG-13</button>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <h5 id="rating-h5">Current rating: Rated All</h5>
-        </div>
-    </div>
-</div>
+#### Classification table
 
-@*Section contains the unordered lists of gifs*@
-<div id="gif-container">
+![Classification Table](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW8/img/screenshots/classification_table.PNG?raw=true)
 
-</div>
 
-@section CustomScripts{ 
-    <script type="text/javascript" src="~/Scripts/asyncWorker.js"></script>
-}
-```
+#### The database up script
 
-##### Shared layout with custom RenderSection
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Styles.Render("~/Content/myStyle.css")
-    @Scripts.Render("~/bundles/modernizr")
-</head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <div class="nav navbar-nav">
-                    <form class="navbar-form form-inline">
-                        <div class="btn-group rating-button-group">
-                            <button type="button" class="btn btn-primary">Search</button>
-                            <button type="button" class="btn btn-primary">Trending</button>
-                            <button type="button" class="btn btn-primary">Random</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    @RenderSection("CustomScripts", required: false)
-</body>
-</html>
-```
-
-##### Method for logging gif requests
-```csharp
-
-//Inserts a client request into the database.
-private void LogRequest(string ipAddress, string userAgent, string searchArea, string searchParams, string rating)
-{
-    GiphyRequest giphyRequest = new GiphyRequest()
-    {
-        IPAddress = ipAddress,
-        BrowserType = userAgent,
-        RequestDate = DateTime.Now,
-        SearchType = searchArea,
-        Rating = rating,
-        KeyWord = searchParams
-    };
-
-    try
-    {
-        db.GiphyRequests.Add(giphyRequest);
-        db.SaveChanges();
-    }catch(Exception e) { Debug.WriteLine(e.StackTrace); }
-}
-```
-
-##### Method for filtering gifs by rating
-```csharp
-/// <summary>
-/// Filters the gifs based on the client rating selection.
-/// </summary>
-/// <param name="gifList">A GifList to populate with Gifs</param>
-/// <param name="giphyObj">The GiphyObj containing Json gifs that were serialized</param>
-/// <param name="rating">The rating to filter the gifs with</param>
-/// <returns></returns>
-private GifList GetGifs(GifList gifList, GiphyObj giphyObj, string rating)
-{
-    if (giphyObj == null)
-        return null;
-
-    int size = giphyObj.Data.Count;
-    List<Gif> gifs = new List<Gif>(size);
-
-    //filters the gifs
-    for (int i = 0; i < giphyObj.Data.Count; i++)
-    {
-        if (rating.Equals("all"))
-        {
-            gifs = AddGif(giphyObj, i, gifs);
-        }
-        else
-        {
-            if(rating.Equals(giphyObj.Data[i].Rating))
-            {
-                gifs = AddGif(giphyObj, i, gifs);
-            }
-        }
-    }
-
-    //add the gif list to the GifList object
-    gifList.Gifs = gifs;
-    gifList.Size = gifList.Gifs.Count;
-    return gifList;
-}
-
-//Adds a gif to the list of gifs
-private List<Gif> AddGif(GiphyObj giphyObj, int i, List<Gif> gifs)
-{
-    Gif myGif = new Gif();
-    myGif.Url = giphyObj.Data[i].Images.Original.Url;
-    myGif.Username = (giphyObj.Data[i].User != null) ? giphyObj.Data[i].User.Username : null;
-    gifs.Add(myGif);
-
-    return gifs;
-}
-```
-
-##### Javascript File
-
-```javascript
-/**
+```sql
+/*
  * Author: Alexander Molodyh
- * Date: 11/19/2017
+ * Date: 11/28/2017
  * Class: CS460
- * Assignment: HW7
+ * Assignment: HW8
+ *
  */
 
-
-/*Performs a GET request to the GiphyController and populates the page with 
- *gifs uppon success.*/
-function search() {
-    //search parameters
-    var searchP = $('#search-box').val();
-
-    //area to search in such as: /v1/gifs/search, /v1/gifs/trending, or /v1/gifs/random
-    var currentSearchArea = "/v1/gifs/search";
-
-    //the rating to filter the return gifs with
-    var currentRating = "all";
-
-    //check if the search area has been modified. If yes then change the currentSearchArea
-    if (document.searchArea)
-        currentSearchArea = "/v1/gifs/" + document.searchArea;
-
-    //if the rating has been modified then set currentRating to the chosen rating.
-    if (document.selectedRating) {
-        currentRating = document.selectedRating;
-    }
-
-    //call the controller with the search parameters
-    $.ajax({
-        type: "get",
-        datatype: "json",
-        url: "Giphy/GetJsonGifs",
-        data: { searchArea: currentSearchArea, searchParams: searchP, rating: currentRating },
-        success: function (data) {
-            if (data.Size > 0)
-                populateGifs(data);//populate gifs onto the page
-            else
-                alert("No results found!");
-        },
-        error: function () {
-            alert("didn't work!");
-        }
-    });
-}
+/*Artist table*/
+CREATE TABLE dbo.Artist
+(
+	ArtistName NVARCHAR(50) NOT NULL,
+	DOB DATETIME2 NOT NULL,
+	BirthCity NCHAR(100) NOT NULL,
+	CONSTRAINT [PK_dbo.ArtistName] PRIMARY KEY CLUSTERED (ArtistName ASC)
+);
 
 
-/**
- * Builds a row with unordered lists of gifs and displays them on the Index page.
- * @param {any} gifList Is a Json object that represents a GifList. A GifList contains a list of Gif objects
- * that have a Url for the gif and a username.
- */
-function populateGifs(gifList) {
-    var container = $("#gif-container");
-    container.empty();
+/*ArtWork table*/
+CREATE TABLE dbo.ArtWork 
+(
+	ArtWorkTitle NVARCHAR(50) NOT NULL,
+	Artist NVARCHAR(50) NOT NULL
+	CONSTRAINT [PK_dbo.ArtWorkTitle] PRIMARY KEY CLUSTERED (ArtWorkTitle ASC),
+	CONSTRAINT [FK_dbo.Artist] FOREIGN KEY (Artist) REFERENCES dbo.Artist(ArtistName)
+);
 
-    var gifListSize = gifList.Size;
-    var imgPerUl = Math.ceil(gifListSize / 4);//The amount of gifs each <ul> should have
 
-    //the first loop builds columns containing an unordered list of gifs
-    var row = $("<div></div>").attr("class", "row");
-    for (var i = 0; i < gifList.Size; i++) {
-        var ul = $("<ul></ul>").css("list-style-type", "none");/*ul for a single column*/
-        var column = $("<div></div>").attr("class", "col-md-3").attr("id", "gif" + j);
+/*Genre table*/
+CREATE TABLE dbo.Genre
+(
+	GenreName NVARCHAR(40) NOT NULL,
+	CONSTRAINT [PK_dbo.Genre] PRIMARY KEY CLUSTERED (GenreName ASC)
+);
 
-        //second loop populates each unordered list with gifs
-        var j;
-        for (j = i; j < i + imgPerUl && j < gifList.Size; j++) {
-            var gif = gifList.Gifs[j];//get the current gif
 
-            var gifImageUrl = gif.Url;//get the gif url
-            var imgDiv = $("<div></div>").attr("class", "gif-image-div");//holds the gif and username
-            var li = $("<li></li>");
+/*Classification table*/
+CREATE TABLE dbo.Classification
+(
+	ArtWork NVARCHAR(50) NOT NULL,
+	Genre NVARCHAR(40) NOT NULL,
+	CONSTRAINT [PK_dbo.ArtWork_Genre] PRIMARY KEY CLUSTERED (ArtWork, Genre ASC),
+	CONSTRAINT [FK_dbo.ArtWork] FOREIGN KEY (ArtWork) REFERENCES dbo.ArtWork(ArtWorkTitle),
+	CONSTRAINT [FK_dbo.Genre] FOREIGN KEY (Genre) REFERENCES dbo.Genre(GenreName)
+);
 
-            //holds the gif image
-            var gifImage = $("<img />")
-                .attr("src", gifImageUrl)
-                .attr("class", "gif-image")
-                .attr("id", "img" + j)
-                .css("max-width", "100%");
 
-            var h5;//checks if the usernaem isn't null and populates the usename section
-            if (gif.Username) {
-                h5 = $("<h5>By " + gif.Username + "</h5>")
-                    .css("max-width", "100%")
-                    .css("margin", "0px")
-                    .css("padding", "6px");
-            }
+/*Artist sample data*/
+INSERT INTO dbo.Artist
+(
+    ArtistName,
+    DOB,
+    BirthCity
+)
+VALUES
+    ('MC Escher', DATETIME2FROMPARTS(1898,6,17,1,1,1,5,1), 'Leeuwarden, Netherlands'),
+	('Leonardo Da Vinci', DATETIME2FROMPARTS(1519, 5, 2,1,1,1,5,1), 'Vinci, Italy'),
+	('Hatip Mehmed Efendi', DATETIME2FROMPARTS(1680, 11, 18,1,1,1,5,1), 'Unknown'),
+	('Salvador Dali', DATETIME2FROMPARTS(1904, 5, 11,1,1,1,5,1), 'Figueres, Spain');
 
-            imgDiv.append(gifImage);
-            imgDiv.append(h5);
-            li.append(imgDiv);
-            ul.append(li);
-        }
-        column.append(ul);
-        row.append(column);
-        i = j - 1;
-    }
-    container.append(row);
-}
 
-/*This function registers the Rating and Search Area selections*/
-$(".btn-group > button.btn").on("click", function () {
-    var buttonType = this.innerHTML.substring(0, 5);
+/*Genre sample data*/
+INSERT INTO dbo.Genre
+(
+    GenreName
+)
+VALUES
+('Tesselation'),
+('Surrealism'),
+('Portrait'),
+('Renaissance');
 
-    if (buttonType.toLocaleLowerCase() === "rated") {
-        document.selectedRating = this.innerHTML.substring(6).toLowerCase();
-        $("#rating-h5").text("Current rating: " + this.innerHTML);
-    }
-    else {
-        document.searchArea = this.innerHTML.toLowerCase();
-        if (document.searchArea.toLowerCase() === "search") {
-            $("#search-box").show();
-            $("#search-button").css("min-width", "110px");
-            $("#search-gifs").text("Search Gifs");
-        }
-        else {
-            $("#search-box").hide();
-            $("#search-button").css("min-width", "240px");
-            $("#search-gifs").text("Search " + this.innerHTML + " Gifs");
-        }
-    }
-});
+
+/*ArtWork sample data*/
+INSERT INTO dbo.ArtWork
+(
+    ArtWorkTitle,
+    Artist
+)
+VALUES
+(   'Circle Limit III', 'MC Escher' ),
+(   'Twon Tree', 'MC Escher' ),
+(   'Mona Lisa', 'Leonardo Da Vinci' ),
+(   'The Vitruvian Man', 'Leonardo Da Vinci' ),
+(   'Ebru', 'Hatip Mehmed Efendi' ),
+(   'Honey Is Sweeter Than Blood', 'Salvador Dali' );
+
+
+/*Classification sample data*/
+INSERT INTO dbo.Classification
+(
+    ArtWork,
+    Genre
+)
+VALUES
+( 'Circle Limit III', 'Tesselation' ),
+( 'Twon Tree', 'Tesselation' ),
+( 'Twon Tree', 'Surrealism' ),
+( 'Mona Lisa', 'Portrait' ),
+( 'Mona Lisa', 'Renaissance' ),
+( 'The Vitruvian Man', 'Renaissance' ),
+( 'Ebru', 'Tesselation' ),
+( 'Honey Is Sweeter Than Blood', 'Surrealism' );
+GO
 ```
 
-###### CSS file used
+##### The database down script
+
+```sql
+/*
+ * Author: Alexander Molodyh
+ * Date: 11/28/2017
+ * Class: CS460
+ * Assignment: HW8
+ *
+ */
+
+
+/*Drop Classification Constraints*/
+ALTER TABLE dbo.Classification DROP CONSTRAINT [PK_dbo.ArtWork_Genre], [FK_dbo.ArtWork], [FK_dbo.Genre];
+GO
+
+/*Drop Classification table*/
+DROP TABLE dbo.Classification;
+GO
+
+
+
+/*Drop ArtWork table constraints*/
+ALTER TABLE dbo.ArtWork DROP CONSTRAINT [PK_dbo.ArtWorkTitle], [FK_dbo.Artist];
+GO
+
+/*Drop ArtWork table*/
+DROP TABLE dbo.ArtWork;
+GO
+
+
+
+/*Drop Artist constraints*/
+ALTER TABLE dbo.Artist DROP CONSTRAINT [PK_dbo.ArtistName];
+GO
+
+/*Drop Artist table*/
+DROP TABLE dbo.Artist;
+GO
+
+
+
+/*Drop Genre constraints*/
+ALTER TABLE dbo.Genre DROP CONSTRAINT [PK_dbo.Genre];
+GO
+
+/*Drop Genre table*/
+DROP TABLE dbo.Genre;
+GO
+```
+
+#### I used a connection string in a separate file outside of the repository. When deploying the app to azure I would take out the connection string from web.config because I have set a connection string in azure for the database. I need the connection string in web.config only when debugging the app on my local machine.
+
+```xml
+<connectionStrings>
+  <add name="ArtDBContext" connectionString="data source=hw9server.database.windows.net;initial catalog=HW8Database;user id=Almania;password=Fenyacam@20;multipleactiveresultsets=True;application name=EntityFramework" providerName="System.Data.SqlClient" />
+</connectionStrings>
+
+<!--I reference the file with the following code in web.config inside the <configuration></configuration> brackets-->
+<connectionStrings configSource="connections.config" />
+```
+
+#### I made a custom attribute for checking if the date for an artist date of birth is in the future.
+```csharp
+public class DateValidationAtt : ValidationAttribute
+    {
+
+        /*Validates the date entered so that it's not in the future*/
+        public override bool IsValid(object value)
+        {
+            DateTime dt = Convert.ToDateTime(value);
+            return dt < DateTime.Now;
+        }
+    }
+```
+
+
+#### This is my css that I used.
 
 ```css
-body {
-    background-color: darkslategray;
+/*table style*/
+
+.myTable {
+    border-collapse: collapse;
+    width: 100%;
 }
 
-input[type=text] {
-    width: 140px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
+th,
+td {
+    padding: 12px;
+    text-align: left;
 }
 
-/* When the input field gets focus, change its width to 100% */
-input[type=text]:focus {
-   width: 100%;
-   border: 1px solid;
-   border-color: dimgray;
-   border-radius: 20px;
-   box-shadow: #888888; 
-}
-
-
-#search-gifs {
-    margin-top: 50px;
-    font-size: 40px;
-    text-align: center;
+th {
+    background-color: #3949AB;
     color: white;
 }
 
-#search-box {
-    height: 45px;
-    border: 1px solid;
-    border-color: dimgray;
-    border-radius: 23px;
-    padding-left: 10px;
-    margin-right: 20px;
+tr:nth-child(even) {
+    background-color: #f2f2f2
 }
 
-
-#search-box-col {
-    margin-left: 37%;
+.form-control {
+    border: solid 2px;
+    border-color: #b9b4b4;
+    border-radius: 0px;
+    background-color: #fffef7;
 }
 
-#search-button {
-    height: 45px;
-    min-width: 110px;
-    padding-left: 25px;
-    padding-right: 25px;
-    border-radius: 23px;
-    border-color: #4527A0;
-    color: white;
-    background-color: #673AB7;
-}
-
-#search-box-row {
-    margin-top: 20px !important;
-    margin-bottom: 40px !important;
-}
-
-
-.gif-image {
-    max-width: 100%;
-    height: auto;
-    margin-top: 20px;
-}
-
-.gif-image-div {
-    padding-bottom: 5px;
-    background-color: #E0E0E0;
-    box-shadow: 2px 2px 8px 2px #888888;
-    margin-top: 20px;
-    border-radius: 3px;
-}
-
-.btn-group.rating-button-group button.btn.btn-primary {
-    background-color: #673AB7;
-    border-color: #4527A0;
-    min-height: 43px;
-}
-
-.btn-group.rating-button-group button.btn.btn-primary:visited {
-    background-color: #4527A0;
-}
-
-#rating-h5 {
+.btn.btn-default {
+    background-color: #4054c1;
+    border-radius: 0px;
     color: white;
     font-size: 16px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+#main-page-title {
+    margin-top: 40px;
+}
+
+.home-page-genre-list {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 25%;
+}
+
+.control-label {
+    color: #515151;
+}
+
+.title-h2 {
+    color: #515151;
+    text-align: center;
+}
+
+a {
+    color: #4054c1;
+}
+
+#genre-table {
+    min-width: 100%;
+}
+
+/*Main page loading spinner*/
+.loader {
+    position: fixed;
+    border-top: 10px solid #4054c1;
+    border-right: 10px solid #aef0ff;
+    border-bottom: 10px solid #4054c1;
+    border-left: 10px solid #aef0ff;
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    animation: spin 2s linear infinite;
+    background-position: center;
+    /*Center the spinner in center of screen*/
+    left: 50%;
+    top: 50%;
+    margin-left: -65px;
+    margin-top: -65px;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    80% {
+        transform: rotate(360deg);
+    }
+}
+
+.overlay {
+    background: #e9e9e9; 
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.5;
 }
 ```
