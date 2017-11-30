@@ -1,0 +1,29 @@
+﻿@model IEnumerable<HW8.Model.ArtWork>
+
+@{
+    ViewBag.Title = "ArtWorks";
+}
+
+<h2 class="title-h2">ArtWork List</h2>
+<hr />
+
+<table class="myTable">
+    <tr>
+        <th>Title</th>
+        <th>Artist</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.ArtWorkTitle)</td>
+            <td>@Html.DisplayFor(modelItem => item.Artist)</td>
+        </tr>
+    }
+
+</table>
+
+@section CustomScripts
+{
+    <script type="text/javascript" src="~/Scripts/asyncWorker.js"></script>
+}

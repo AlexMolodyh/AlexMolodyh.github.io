@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{65E541CD-10C1-4006-9FB9-CF04C241C018}</ProjectGuid>
+    <ProjectGuid>{AFEE64FE-5E72-4DDF-AB46-E4CA979AF263}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>HW7</RootNamespace>
-    <AssemblyName>HW7</AssemblyName>
+    <RootNamespace>HW8</RootNamespace>
+    <AssemblyName>HW8</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -47,10 +47,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -150,25 +150,25 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\GiphyController.cs" />
+    <Compile Include="Controllers\ArtistsController.cs" />
+    <Compile Include="Controllers\ArtWorksController.cs" />
+    <Compile Include="Controllers\ClassificationsController.cs" />
+    <Compile Include="Controllers\GenresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="DAL\GifRequestContext.cs" />
-    <Compile Include="Models\GiphyRequest.cs" />
+    <Compile Include="DAL\ArtDBContext.cs" />
+    <Compile Include="Models\Artist.cs" />
+    <Compile Include="Models\ArtWork.cs" />
+    <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\ArtList.cs" />
+    <Compile Include="Models\DateValidationAtt.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Gif.cs" />
-    <Compile Include="Models\GifList.cs" />
-    <Compile Include="Models\GiphyObj.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\db_DOWN.sql" />
-    <Content Include="App_Data\db_UP.sql" />
-    <Content Include="App_Data\HW7Database.mdf" />
-    <Content Include="App_Data\HW7Database_log.ldf">
-      <DependentUpon>HW7Database.mdf</DependentUpon>
-    </Content>
+    <Content Include="App_Data\HW8Database_DOWN.sql" />
+    <Content Include="App_Data\HW8Database_UP.sql" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\myStyle.css" />
@@ -182,13 +182,11 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Properties\PublishProfiles\amolodyhhw9 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\molodyhhw9 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
-    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -210,10 +208,16 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Artists\Create.cshtml" />
+    <Content Include="Views\Artists\Read.cshtml" />
+    <Content Include="Views\Artists\Update.cshtml" />
+    <Content Include="Views\Artists\Index.cshtml" />
+    <Content Include="Views\ArtWorks\Index.cshtml" />
+    <Content Include="Views\Genres\Index.cshtml" />
+    <Content Include="Views\Classifications\Index.cshtml" />
+    <Content Include="Views\Artists\Delete.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Giphy\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
@@ -246,9 +250,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>55413</DevelopmentServerPort>
+          <DevelopmentServerPort>4534</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:55413/</IISUrl>
+          <IISUrl>http://localhost:4534/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

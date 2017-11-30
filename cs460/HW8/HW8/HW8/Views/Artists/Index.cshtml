@@ -1,0 +1,40 @@
+﻿@model IEnumerable<HW8.Model.Artist>
+
+@{
+    ViewBag.Title = "Artists";
+}
+
+<h2 class="title-h2">Artists</h2>
+<hr />
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Date Of Birth</th>
+        <th>Birth City</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.ArtistName)</td>
+        <td>@Html.DisplayFor(modelItem => item.DOB)</td>
+        <td>@Html.DisplayFor(modelItem => item.BirthCity)</td>
+        <td>
+            @Html.ActionLink("Edit", "Update", new { id=item.ArtistName }) |
+            @Html.ActionLink("Details", "Read", new { id=item.ArtistName }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ArtistName })
+        </td>
+    </tr>
+}
+
+</table>
+
+<p>
+    @Html.ActionLink("Create New Artist", "Create", null, new { @class = "btn btn-default" })
+</p>
+
+@section CustomScripts
+{
+    <script type="text/javascript" src="~/Scripts/asyncWorker.js"></script>
+}

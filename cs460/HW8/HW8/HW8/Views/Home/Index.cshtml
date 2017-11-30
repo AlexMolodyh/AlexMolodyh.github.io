@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+    string[] genres = { "Portrait", "Renaissance", "Surrealism", "Tesselation" };
+}
+
+<h2 class="title-h2" id="main-page-title">Select genre to display artwork</h2>
+<br />
+
+<div class="home-page-genre-list">
+    @foreach (string genre in genres)
+    {
+        @*Must use input to pass button instance as "this" not bootstrap button*@
+        <input type="button" class="btn btn-default" onclick="getArtWorkByGenre(this)" value="@($"{genre}")" />
+    }
+</div>
+
+<br />
+
+
+<div class="table-containder">
+
+    <table id="genre-table"></table>
+
+</div>
+
+@section CustomScripts 
+{
+    <script type="text/javascript" src="~/Scripts/asyncWorker.js"></script>
+}

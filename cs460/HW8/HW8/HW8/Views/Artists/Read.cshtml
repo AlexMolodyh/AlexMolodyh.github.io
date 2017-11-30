@@ -1,0 +1,32 @@
+﻿@model HW8.Model.Artist
+
+@{
+    ViewBag.Title = "Artist Details";
+}
+
+<h2 class="title-h2">Artist Details</h2>
+<hr />
+
+<table class="myTable">
+    <tr>
+        <th>Name</th>
+        <th>Date Of Birth</th>
+        <th>City Of Birth</th>
+    </tr>
+    <tr>
+        <td>@Html.DisplayFor(model => model.ArtistName)</td>
+        <td>@Html.DisplayFor(model => model.DOB)</td>
+        <td>@Html.DisplayFor(model => model.BirthCity)</td>
+    </tr>
+</table>
+
+<br />
+
+<p>
+    @Html.ActionLink("Edit Artist", "Update", new { id = Model.ArtistName }, new { @class = "btn btn-default" })
+</p>
+
+@section CustomScripts
+{
+    <script type="text/javascript" src="~/Scripts/asyncWorker.js"></script>
+}
