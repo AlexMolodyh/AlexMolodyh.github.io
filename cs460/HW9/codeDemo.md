@@ -4,23 +4,52 @@
 
 ### The process that I went through to deploy in Azure.
 
+
+#### Start new resource group
+
+![New Resource Group](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW9/img/start_new_resource_group.PNG?raw=tru)
+
 #### Create the a new empty database, resource group, and server.
 
-![](?raw=tru)
+![New Database and Server](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW9/img/create_new_database_and_server.PNG?raw=tru)
 
-![](?raw=tru)
 
-![](?raw=tru)
+#### Allow IP address in server
 
-![](?raw=tru)
+![Allow IP Address](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW9/img/allow_ip_addresses.PNG?raw=tru)
 
-![](?raw=tru)
 
-![](?raw=tru)
+#### Create new Web App
 
-![](?raw=tru)
+![New Web App](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW9/img/create_new_web_app.PNG?raw=true)
 
-![](?raw=tru)
+
+#### Database connection string location
+
+![Connection String](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW9/img/copy_connection_string.PNG?raw=tru)
+
+
+#### Enter connection string in application settings
+
+![Enter Connection String](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW9/img/enter_connection_string.PNG?raw=tru)
+
+
+#### Enter deployment credentials
+
+![Deployment Credentials](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW9/img/setup_deployment_credentials.PNG?raw=tru)
+
+
+#### Set up new connection in ADO
+
+![ADO Connection](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW9/img/setup_new_connection_in_ADO.PNG?raw=tru)
+
+#### Publish app
+
+![Publish](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW9/img/publish.png?raw=tru)
+
+#### Deploy app
+
+![Deploy](https://github.com/AlexMolodyh/AlexMolodyh.github.io/blob/master/cs460/HW9/img/deploy_app.PNG?raw=tru)
 
 ## **The Homepage**
 
