@@ -22,7 +22,7 @@ namespace HW8.Model
         public string ArtistName { get; set; }
 
         [Column(TypeName = "datetime2")]
-        [Display(Name = "Date Of Birt")]
+        [Display(Name = "Date Of Birth")]
         [DataType(DataType.Date)]//Must use Date not DateTime for calendar to show up in form
         [DateValidationAtt(ErrorMessage = "Not a valid birth date")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]

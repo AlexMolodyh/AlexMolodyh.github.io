@@ -55,8 +55,12 @@ function populateTable(genreList) {
 /**
  * Section opening and closing the spinner when the page loads
  */
-$(".navLink").click(function () {
-    console.log("Artist clicked");
+//$(".navLink").click(function () {
+//    console.log("Artist clicked");
+//    showSpinner();
+//});
+
+$(window).on("beforeunload", function () {
     showSpinner();
 });
 
