@@ -25,3 +25,8 @@
 <p>
     @Html.ActionLink("Edit Artist", "Update", new { id = Model.ArtistName }, new { @class = "btn btn-default" })
 </p>
+
+@section CustomScripts
+{
+    <script type="text/javascript" src="~/Scripts/asyncWorker.js"></script>
+}
