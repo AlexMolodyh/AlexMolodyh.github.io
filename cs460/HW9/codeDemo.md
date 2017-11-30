@@ -4,8 +4,23 @@
 
 ### The process that I went through to deploy in Azure.
 
+#### Create the a new empty database, resource group, and server.
 
+![](?raw=tru)
 
+![](?raw=tru)
+
+![](?raw=tru)
+
+![](?raw=tru)
+
+![](?raw=tru)
+
+![](?raw=tru)
+
+![](?raw=tru)
+
+![](?raw=tru)
 
 ## **The Homepage**
 
