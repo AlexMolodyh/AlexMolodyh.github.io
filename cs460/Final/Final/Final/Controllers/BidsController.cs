@@ -53,6 +53,7 @@ namespace Final.Controllers
         {
             if (ModelState.IsValid)
             {
+                bid.TimeStamp = DateTime.Now;
                 db.Bids.Add(bid);
                 db.SaveChanges();
                 return RedirectToAction("Index");
