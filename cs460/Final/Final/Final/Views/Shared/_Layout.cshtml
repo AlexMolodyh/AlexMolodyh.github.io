@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/myStyle.css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -16,16 +17,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Buyers", "Index", "Buyers", null, new { @class = "navLink" })</li>
+                    <li>@Html.ActionLink("Sellers", "Index", "Sellers", null, new { @class = "navLink" })</li>
+                    <li>@Html.ActionLink("Bids", "Index", "Bids", null, new { @class = "navLink" })</li>
+                    <li>@Html.ActionLink("Items", "Index", "Items", null, new { @class = "navLink" })</li>
                 </ul>
             </div>
         </div>
     </div>
+    <div class="overlay">
+
+    </div>
     <div class="container body-content">
+
+        <div class="loader" hidden></div>
+
         @RenderBody()
         <hr />
         <footer>
@@ -36,5 +46,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    @RenderSection("CustomScripts", required: false)
 </body>
 </html>

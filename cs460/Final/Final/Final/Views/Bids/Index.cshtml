@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Final.Model.Bid>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Welcome, Bid on an item!</h2>
+
+<p>
+    @Html.ActionLink("Create Bid!", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Buyer.BuyerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeStamp)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Buyer.BuyerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeStamp)
+        </td>
+    </tr>
+}
+
+</table>
